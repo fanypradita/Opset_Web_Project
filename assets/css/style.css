@@ -45,6 +45,12 @@ h6 {
   padding: 20px 30px;
   transition: all 0.3s;
 }
+#mainn {
+  margin-top: 10px;
+  padding: 100px ;
+  margin-left: 10px;
+  transition: all 0.3s;
+}
 
 @media (max-width: 1199px) {
   #main {
