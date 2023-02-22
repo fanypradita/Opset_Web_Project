@@ -128,14 +128,24 @@
             <li>Sewa</li>
           </ol>
           <br>
-          <form class="d-flex justify-content-end" role="search">
-            <input class=" form-control  col-md 1" type="search" placeholder="Search Property" >
-          
-          
-            
-            <input class=" form-control  col-md 1" type="search" placeholder="Search Property" label="Search" id="post-category">
-            <input type="hidden" id="tipe" value="">
-            <button class="btn btn-outline-warning " type="submit" id="tombol">Search</button>
+          <form class="d-flex align-items-start me-2" role="search">
+            <div class="col-md-4 me-2">
+              
+              <select id="inputState" class="form-select">
+                <option selected>Jenis properti</option>
+                <option>Tanah</option>
+                <option>Rumah</option>
+                <option>Ruko</option>
+                <option>Gedung</option>
+                <option>Unit Apartement</option>
+                
+              </select>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon1"><link rel="shortcut icon" > <link href="assets/img/lok.png"></href></span>
+              <input type="text" class="form-control me-2" placeholder="Lokasi" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <button class="btn btn-outline-success " type="submit" id="tombol">Search</button>
             
           
     </div><!-- End Breadcrumbs -->
@@ -339,20 +349,20 @@
           <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="index.html#about">Tentang Kami</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href="konsultasi.html">Konsultasi</a></li>
+            <li><a href="sewa.html">Sewa Aset</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
+          <h4>Sewa properti</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href="#">Tanah</a></li>
+            <li><a href="#">Rumah</a></li>
+            <li><a href="#">Ruko</a></li>
+            <li><a href="#">Gedung</a></li>
+            <li><a href="#">Unit Apartement</a></li>
           </ul>
         </div>
 
