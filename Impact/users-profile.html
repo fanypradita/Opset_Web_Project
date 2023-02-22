@@ -47,12 +47,14 @@
         <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">perhutanidivrejateng@example.com</a></i>
         <i class="bi bi-phone d-flex align-items-center ms-4"><span>+628 8765 0987</span></i>
       </div>
+      <!--
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
       </div>
+    -->
     </div>
   </section><!-- End Top Bar -->
 
@@ -66,7 +68,7 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="#hero">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <!--
           <li><a href="#about">Tentang Kami</a></li>
           <li><a href="#services">Services</a></li>
@@ -87,8 +89,9 @@
           </li>
           <li class="dropdown"><a href="info.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="#">Tata cara pendaftaran</a></li>
-              <li><a href="#">Metode Pembayaran</a></li>
+              <li><a href="#FAQ">Frequently Asked Questions</a></li>
+              <li><a href="#Daftar">Tata cara pendaftaran</a></li>
+              <li><a href="#Bayar">Metode Pembayaran</a></li>
             </ul>
           </li>
           <!--
@@ -159,15 +162,24 @@
 
   
   <main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Profile</h1>
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>Profilku</h2>
+            </div>
+          </div>
+        </div>
+      </div>
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Users</li>
-          <li class="breadcrumb-item active">Profile</li>
-        </ol>
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>User</li>
+            <li>profile</li>
+          </ol>
+        </div>
       </nav>
     </div><!-- End Page Title -->
 
@@ -181,12 +193,14 @@
               <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
               <h2>Kevin Anderson</h2>
               <h3>Web Designer</h3>
+              <!--
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                 <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                 <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
               </div>
+            -->
             </div>
           </div>
 
@@ -205,6 +219,10 @@
 
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                </li>
+
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pengajuan">Pengajuan</button>
                 </li>
 
                 <li class="nav-item">
@@ -331,7 +349,7 @@
                         <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
                       </div>
                     </div>
-
+<!--
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                       <div class="col-md-8 col-lg-9">
@@ -359,11 +377,54 @@
                         <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
                       </div>
                     </div>
+                  -->
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
+
+                </div>
+
+                <div class="tab-pane fade pt-3" id="pengajuan">
+
+                  <!-- Settings Form -->
+                  <form>
+
+                    <div class="row mb-3">
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Pengajuan</label>
+                      <div class="col-md-8 col-lg-9">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="changesMade" checked>
+                          <label class="form-check-label" for="changesMade">
+                            Changes made to your account
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="newProducts" checked>
+                          <label class="form-check-label" for="newProducts">
+                            Information on new products and services
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="proOffers">
+                          <label class="form-check-label" for="proOffers">
+                            Marketing and promo offers
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
+                          <label class="form-check-label" for="securityNotify">
+                            Security alerts
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                  </form><!-- End settings Form -->
 
                 </div>
 
