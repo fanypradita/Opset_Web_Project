@@ -24,9 +24,10 @@ if (!isset($_SESSION['username'])) {
             <?php echo "<h1>Selamat Datang, " . $_SESSION['username'] ."!". "</h1>"; ?>
              
             <div class="input-group">
-            <a href="logout.php" class="btn">Logout</a>
+            <a href="users-profile.html" class="btn">START PERHUTANI</a><br>
             </div>
         </form>
+        
     </div>
 </body>
 </html>
