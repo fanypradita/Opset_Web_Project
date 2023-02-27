@@ -27,8 +27,8 @@ if (isset($_POST['submit'])) {
         $sql = "SELECT * FROM tbl_customer WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO tbl_customer (username, email, password)
-                    VALUES ('$username', '$email', '$password')";
+            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, foto)
+                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$foto')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
@@ -36,6 +36,7 @@ if (isset($_POST['submit'])) {
                 $email = "";
                 $_POST['password'] = "";
                 $_POST['cpassword'] = "";
+                
             } else {
                 echo "<script>alert('Username Telah Digunakan !.')</script>";
             }
@@ -101,8 +102,8 @@ if (isset($_POST['submit'])) {
                 <input type="file" placeholder="" name="" value="<?php echo $foto; ?>" required>
             </div >
             
-            <div class="input-group"><a href="login.php"></a>
-                <button name="submit" class="btn"><a href="login.php">Register</button></a>
+            <div class="input-group">
+                <button name="submit" class="btn">Register</button></a>
 
             </div>
             <p class="login-register-text">Anda sudah punya akun? <a href="login.php">Login </a></p>
