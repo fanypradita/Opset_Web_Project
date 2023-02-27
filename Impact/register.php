@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
             </div >
             
             <div class="input-group">
-                <button name="submit" class="btn">Register</button></a>
+                <button name="submit" href="login.php" class="btn">Register</button></a>
 
             </div>
             <p class="login-register-text">Anda sudah punya akun? <a href="login.php">Login </a></p>
