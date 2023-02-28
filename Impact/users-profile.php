@@ -79,8 +79,8 @@
 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa</a></li>
-              <li><a href="kerjasama.html">Kerjasama Aset</a></li>
+              <li><a href="sewa.php">Sewa</a></li>
+              <li><a href="kerjasama.php">Kerjasama Aset</a></li>
               <li><a href="pengajuan.html">Pengajuan form</a></li>
               <!---
               <li><a href="#">Drop Down 4</a></li>
@@ -116,7 +116,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -234,6 +234,7 @@
                 </li>
 
               </ul>
+
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -280,81 +281,9 @@
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-                  <?php
-
-                  include 'config.php';
-                  session_start();
-                  $id = $_SESSION['id'];
-                  
-                  if(isset($_POST['update_profile'])){
-                  
-                     $update_nama = mysqli_real_escape_string($conn, $_POST['update_nama']);
-                     $update_email = mysqli_real_escape_string($conn, $_POST['update_email']);
-                  
-                     mysqli_query($conn, "UPDATE `tbl_admin` SET nama = '$update_nama', email = '$update_email' WHERE id = '$id'");
-                  
-                     $old_pass = $_POST['old_pass'];
-                     $update_password = mysqli_real_escape_string($conn, md5($_POST['update_password']));
-                     $new_pass = mysqli_real_escape_string($conn, md5($_POST['new_pass']));
-                     $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm_password']));
-                  
-                     if(!empty($update_password) || !empty($new_password) || !empty($confirm_password)){
-                        if($update_password != $old_pass){
-                           $message[] = 'old password not matched!confirm password not matched!';
-                        }elseif($new_pass != $confirm_password){
-                           $message[] = 'old password not matched!';
-                        }else{
-                           mysqli_query($conn, "UPDATE `tbl_admin` SET password = '$confirm_password' WHERE id = '$id'");
-                           $message[] = 'password updated successfully!';
-                        }
-                     }
-                  
-                     $update_image = $_FILES['update_image']['name'];
-                     $update_image_size = $_FILES['update_image']['size'];
-                     $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
-                     $update_image_folder = 'uploaded_img/'.$update_image;
-                  
-                     if(!empty($update_image)){
-                        if($update_images_size > 2000000){
-                           $message[] = 'image is too large';
-                        }else{
-                           $images_update_query = mysqli_query($conn, "UPDATE `tbl_admin` SET image = '$update_images' WHERE id = '$id'");
-                           if($images_update_query){
-                              move_uploaded_file($update_images_tmp_name, $update_images_folder);
-                           }
-                           $message[] = 'image updated succssfully!';
-                        }
-                     }
-                  
-                  }
-                  
-                  ?>
                   <!-- Profile Edit Form -->
                   <div class="update-profile">
-
-                    <?php
-                       $select = mysqli_query($conn, "SELECT * FROM tbl_admin WHERE id = '$id'") or die('query failed');
-                       if(mysqli_num_rows($select) > 0){
-                          $fetch = mysqli_fetch_assoc($select);
-                       }
-                    ?>
-                 
-                    <form action="" method="post" enctype="multipart/form-data">
-                       <?php
-                          if($fetch['images'] == ''){
-                             echo '<img src="images/default-avatar.png">';
-                          }else{
-                             echo '<img src="uploaded_img/'.$fetch['images'].'">';
-                          }
-                          if(isset($message)){
-                             foreach($message as $message){
-                                echo '<div class="message">'.$message.'</div>';
-                             }
-                          }
-                       ?>
-                  <div class="flex">
-                    <div class="inputBox">
-                  <form>
+                    <form>
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
