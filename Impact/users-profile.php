@@ -466,28 +466,42 @@
                   <!-- Settings Form -->
                   <form>
 
-                    <div class="row mb-3">
-                    <div class="container">
-                    <table class="table table-bordered table-striped">
-                      <tr>
-                        <th>Nama Pemohon</th>
-                          <th>Email</th>
-                          <th>No.HP</th>
-                          <th>Properti</th>
-                          <th>Instansi</th>
-                          <th>Status</th>
-                      </tr>
-                      <tr>
-                        <td>Fany Pradita</td>
-                          <td>perhutani@gmail.com</td>
-                          <td>087654232163</td>
-                          <td>Graha Wana Java Pusdikbang SDM Perhutani</td>
-                          <td>CV.Teknologi kurniatama</td>
-                          <td>proses</td>
-                      </tr>
-                    </table>
-                      </div>
-                    </div>
+                  <div class="container">
+		<center><h2>Membuat Laporan PDF Dengan PHP dan MySQLi</h2></center>
+		<br>
+		<div class="float-right">
+			<a href="user_pdf.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp PRINT</a>
+			<br>
+			<br>
+		</div>
+ 
+		<table class="table table-bordered">
+			<thead>				
+				<tr>
+					<th style="text-align: center;">Nomor</th>
+					<th style="text-align: center;">Nama</th>
+					<th style="text-align: center;">Alamat</th>					
+					<th style="text-align: center;">Email</th>					
+				</tr>				
+			</thead>
+			<tbody>
+				<?php
+				$no=1;
+				$data = mysqli_query($koneksi,"SELECT  * FROM tbl_aset");
+				while($d = mysqli_fetch_array($data)){
+					?>
+					<tr>
+						<td><?php echo $no++; ?></td>
+						<td><?php echo $d['karyawan_nama'] ?></td>
+						<td><?php echo $d['karyawan_alamat'] ?></td>						
+						<td><?php echo $d['karyawan_email'] ?></td>										
+					</tr>
+					<?php
+				}
+				?>				
+			</tbody>
+		</table>
+	</div>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Ingin pengajuan lagi?</button>
