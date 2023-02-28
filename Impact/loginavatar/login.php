@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
    if(mysqli_num_rows($select) > 0){
       $row = mysqli_fetch_assoc($select);
       $_SESSION['id'] = $row['id'];
-      header('location:users-profile.php');
+      header('location:update.php');
    }else{
       $message[] = 'incorrect email or password!';
    }

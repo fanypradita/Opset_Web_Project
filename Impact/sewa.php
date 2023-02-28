@@ -188,6 +188,55 @@
             <li>Sewa Aset</li>
           </ol>
           <br>
+<?php
+//memanggil file berisi fungsi2 yang sering dipakai
+require "config.php";
+
+//jumlah data per halaman
+$jmlDataPerHal = 3;
+?>
+<!--
+          //cari jumlah data
+if (isset($_POST['cari'])){
+	$cari=$_POST['cari'];
+	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
+						  nama_aset like '%$cari%' or
+						  kategori_aset like '%$cari%'";
+}else{
+	$sql="select * from tbl_aset";		
+}
+$qry = mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
+$jmlData = mysqli_num_rows($qry);
+
+$jmlHal = ceil($jmlData / $jmlDataPerHal);
+if (isset($_GET['hal'])){
+	$halAktif=$_GET['hal'];
+}else{
+	$halAktif=1;
+}
+
+$awalData=($jmlDataPerHal * $halAktif)-$jmlDataPerHal;
+
+//Jika tabel data kosong
+$kosong=false;
+if (!$jmlData){
+	$kosong=true;
+}
+//data berdasar pencarian atau tidak
+if (isset($_POST['cari'])){
+	$cari=$_POST['cari'];
+	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
+						  nama_aset like '%$cari%' or
+						  kategori_aset like '%$cari%'
+						  limit $awalData,$jmlDataPerHal";
+}else{
+	$sql="select * from tbl_aset limit $awalData,$jmlDataPerHal";		
+}
+//Ambil data untuk ditampilkan
+$hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
+
+?>-->
+
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
               
@@ -208,7 +257,8 @@
                   <input   class="form-control me-4" type="text" class="text-dark" placeholder="Lokasi">
                 </form>
               </div>
-              <button class="btn btn-outline-success " type="submit" id="tombol">Search</button>
+              <input class="form-control mr-sm-2" name="cari" type="text" placeholder="Kata Kunci" aria-label="Search" autofocus autocomplete="off">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
           </div>
           </form>
@@ -379,6 +429,8 @@
         </div><!-- End blog posts list -->
 
         <div class="blog-pagination">
+          
+          <!--
           <ul class="justify-content-center">
             <li class="page-item disabled">
               <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -389,7 +441,7 @@
             <li class="page-item">
               <a class="page-link" href="#">Next</a>
             </li>
-          </ul>
+          </ul>-->
         </div><!-- End blog pagination -->
 
       </div>

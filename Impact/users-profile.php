@@ -280,13 +280,85 @@
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+                  <?php
 
+                  include 'config.php';
+                  session_start();
+                  $id = $_SESSION['id'];
+                  
+                  if(isset($_POST['update_profile'])){
+                  
+                     $update_nama = mysqli_real_escape_string($conn, $_POST['update_nama']);
+                     $update_email = mysqli_real_escape_string($conn, $_POST['update_email']);
+                  
+                     mysqli_query($conn, "UPDATE `tbl_admin` SET nama = '$update_nama', email = '$update_email' WHERE id = '$id'");
+                  
+                     $old_pass = $_POST['old_pass'];
+                     $update_password = mysqli_real_escape_string($conn, md5($_POST['update_password']));
+                     $new_pass = mysqli_real_escape_string($conn, md5($_POST['new_pass']));
+                     $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm_password']));
+                  
+                     if(!empty($update_password) || !empty($new_password) || !empty($confirm_password)){
+                        if($update_password != $old_pass){
+                           $message[] = 'old password not matched!confirm password not matched!';
+                        }elseif($new_pass != $confirm_password){
+                           $message[] = 'old password not matched!';
+                        }else{
+                           mysqli_query($conn, "UPDATE `tbl_admin` SET password = '$confirm_password' WHERE id = '$id'");
+                           $message[] = 'password updated successfully!';
+                        }
+                     }
+                  
+                     $update_image = $_FILES['update_image']['name'];
+                     $update_image_size = $_FILES['update_image']['size'];
+                     $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
+                     $update_image_folder = 'uploaded_img/'.$update_image;
+                  
+                     if(!empty($update_image)){
+                        if($update_images_size > 2000000){
+                           $message[] = 'image is too large';
+                        }else{
+                           $images_update_query = mysqli_query($conn, "UPDATE `tbl_admin` SET image = '$update_images' WHERE id = '$id'");
+                           if($images_update_query){
+                              move_uploaded_file($update_images_tmp_name, $update_images_folder);
+                           }
+                           $message[] = 'image updated succssfully!';
+                        }
+                     }
+                  
+                  }
+                  
+                  ?>
                   <!-- Profile Edit Form -->
+                  <div class="update-profile">
+
+                    <?php
+                       $select = mysqli_query($conn, "SELECT * FROM tbl_admin WHERE id = '$id'") or die('query failed');
+                       if(mysqli_num_rows($select) > 0){
+                          $fetch = mysqli_fetch_assoc($select);
+                       }
+                    ?>
+                 
+                    <form action="" method="post" enctype="multipart/form-data">
+                       <?php
+                          if($fetch['images'] == ''){
+                             echo '<img src="images/default-avatar.png">';
+                          }else{
+                             echo '<img src="uploaded_img/'.$fetch['images'].'">';
+                          }
+                          if(isset($message)){
+                             foreach($message as $message){
+                                echo '<div class="message">'.$message.'</div>';
+                             }
+                          }
+                       ?>
+                  <div class="flex">
+                    <div class="inputBox">
                   <form>
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="assets/img/profile-img.jpg" alt="Profile">
+                        <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box">
                         <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -295,9 +367,9 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">nama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input type="text" name="update_nama" value="<?php echo $fetch['nama']; ?>" class="box">
                       </div>
                     </div>
 
@@ -346,9 +418,12 @@
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+            <input type="email" name="update_email" value="<?php echo $fetch['email']; ?>" class="box">
                       </div>
                     </div>
+                        </div>
+                        </div>
+                        </div>
 <!--
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
@@ -466,25 +541,28 @@
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
                   <form>
-
+<div class="inputBox">
+            <input type="hidden" name="old_pass" value="<?php echo $fetch['password']; ?>">
+            
+         
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
+            <input type="password" name="update_password" placeholder="enter previous password" class="box">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+            <input type="password" name="new_pass" placeholder="enter new password" class="box">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+            <input type="password" name="confirm_password" placeholder="confirm new password" class="box">
                       </div>
                     </div>
 
@@ -496,6 +574,7 @@
                 </div>
 
               </div><!-- End Bordered Tabs -->
+                        </div>
 
             </div>
           </div>
