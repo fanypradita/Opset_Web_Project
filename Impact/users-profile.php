@@ -381,11 +381,11 @@
                         <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
                       </div>
                     </div>
-                  -->
+                
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
-                    </div>
+                    </div>-->
                   </form><!-- End Profile Edit Form -->
 
                 </div>
@@ -396,41 +396,45 @@
                   <form>
 
                   <div class="container">
-		<center><h2>Membuat Laporan PDF Dengan PHP dan MySQLi</h2></center>
+		<center><h2>Pengajuan</h2></center>
 		<br>
 		<div class="float-right">
-			<a href="user_pdf.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp PRINT</a>
+			<a href="user_pdf.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp Print pdf</a>
+			<a href="user_pdf.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp Print excel</a>
 			<br>
 			<br>
 		</div>
- 
-		<table class="table table-bordered">
-			<thead>				
-				<tr>
-					<th style="text-align: center;">Nomor</th>
-					<th style="text-align: center;">Nama</th>
-					<th style="text-align: center;">Alamat</th>					
-					<th style="text-align: center;">Email</th>					
-				</tr>				
-			</thead>
-			<tbody>
-				<?php
-				$no=1;
-				$data = mysqli_query($koneksi,"SELECT  * FROM tbl_aset");
-				while($d = mysqli_fetch_array($data)){
-					?>
-					<tr>
-						<td><?php echo $no++; ?></td>
-						<td><?php echo $d['karyawan_nama'] ?></td>
-						<td><?php echo $d['karyawan_alamat'] ?></td>						
-						<td><?php echo $d['karyawan_email'] ?></td>										
-					</tr>
-					<?php
-				}
-				?>				
-			</tbody>
-		</table>
-	</div>
+ <!-- Cetak data dengan tampilan tabel -->
+ <table class="table table-hover">
+	<thead class="thead-light">
+	<tr>
+		<th>No.</th>
+		<th>Nama Pemohon</th>
+        <th>No.HP</th>
+		<th>No.KTP</th>
+		<th>Kecamatan</th>
+		<th>Desa</th>
+		<th>Rak</th>
+        <th>Baris</th>
+		<th>Bandel</th>
+		<th>Opsi</th>
+	</tr>
+	</thead>
+	<tbody>
+			<tr>
+				<td><?php echo $no?></td>
+				<td><?php echo $row["id"]?></td>
+				<td><?php echo $row["nh"]?></td>
+				<td><?php echo $row["jns"]?></td>
+				<td><?php echo $row["kec"]?></td>
+                <td><?php echo $row["kel"]?></td>
+                <td><?php echo $row["rak"]?></td>
+                <td><?php echo $row["bar"]?></td>
+				<td><?php echo $row["ban"]?></td>
+			</tr>
+		
+	</tbody>
+	</table>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Ingin pengajuan lagi?</button>

@@ -205,7 +205,7 @@ if (isset($_POST['cari'])){
 }else{
 	$sql="select * from tbl_aset";		
 }
-$qry = mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
+$qry = mysqli_query($conn,$sql) or die(mysqli_error($conn));
 $jmlData = mysqli_num_rows($qry);
 
 $jmlHal = ceil($jmlData / $jmlDataPerHal);
@@ -233,10 +233,9 @@ if (isset($_POST['cari'])){
 	$sql="select * from tbl_aset limit $awalData,$jmlDataPerHal";		
 }
 //Ambil data untuk ditampilkan
-$hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
+$hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
 ?>
-
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
               
@@ -262,6 +261,30 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
 
           </div>
           </form>
+       <?php   
+    if ($kosong){
+      ?>
+		<tr><th colspan="6">
+			<div class="alert alert-info alert-dismissible fade show text-center">
+			<!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+			Data tidak ada
+			</div>
+		</th></tr>
+
+		<?php
+	}else{	
+		if($awalData==0){
+			$no=$awalData+1;
+		}else{
+			$no=$awalData;
+		}
+		while($row=mysqli_fetch_assoc($hasil)){
+			?>	
+      <?php 
+			$no++;
+		}
+	}
+	?>
         </nav>
     </div><!-- End Breadcrumbs -->
 
