@@ -188,13 +188,7 @@
             <li>Sewa Aset</li>
           </ol>
           <br>
-<?php
-//memanggil file berisi fungsi2 yang sering dipakai
-require "config.php";
 
-//jumlah data per halaman
-$jmlDataPerHal = 3;
-?>
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
               
@@ -234,10 +228,10 @@ $jmlDataPerHal = 3;
             <article>
               
               <div class="post-img">
-                <a href="blog-details.php"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
+                <a href="blog-details.html"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
@@ -260,10 +254,10 @@ $jmlDataPerHal = 3;
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.php">TANAH STRATEGIS</a>
+                <a href="sewa-details.php">TANAH STRATEGIS</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Tanah Kavling</p>
               </h2>
@@ -286,10 +280,10 @@ $jmlDataPerHal = 3;
             <article>
 
               <div class="post-img">
-                <a href="blog-details.php"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
@@ -312,10 +306,10 @@ $jmlDataPerHal = 3;
             <article>
 
               <div class="post-img">
-                <a href="blog-details.php"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">APARTEMENT MODERN</a>
+                <a href="sewa-details.php">APARTEMENT MODERN</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Apartement</p>
               </h2>
@@ -338,10 +332,10 @@ $jmlDataPerHal = 3;
             <article>
 
               <div class="post-img">
-                <a href="blog-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
@@ -364,10 +358,10 @@ $jmlDataPerHal = 3;
             <article>
 
               <div class="post-img">
-                <a href="blog-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
