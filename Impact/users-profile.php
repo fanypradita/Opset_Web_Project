@@ -79,8 +79,8 @@
 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa</a></li>
-              <li><a href="kerjasama.html">Kerjasama Aset</a></li>
+              <li><a href="sewa.php">Sewa</a></li>
+              <li><a href="kerjasama.php">Kerjasama Aset</a></li>
               <li><a href="pengajuan.html">Pengajuan form</a></li>
               <!---
               <li><a href="#">Drop Down 4</a></li>
@@ -116,7 +116,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -234,6 +234,7 @@
                 </li>
 
               </ul>
+
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
@@ -280,13 +281,13 @@
                 </div>
 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
                   <!-- Profile Edit Form -->
-                  <form>
+                  <div class="update-profile">
+                    <form>
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="assets/img/profile-img.jpg" alt="Profile">
+                        <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box">
                         <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -295,9 +296,9 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">nama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input type="text" name="update_nama" value="<?php echo $fetch['nama']; ?>" class="box">
                       </div>
                     </div>
 
@@ -346,9 +347,12 @@
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+            <input type="email" name="update_email" value="<?php echo $fetch['email']; ?>" class="box">
                       </div>
                     </div>
+                        </div>
+                        </div>
+                        </div>
 <!--
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
@@ -391,28 +395,42 @@
                   <!-- Settings Form -->
                   <form>
 
-                    <div class="row mb-3">
-                    <div class="container">
-                    <table class="table table-bordered table-striped">
-                      <tr>
-                        <th>Nama Pemohon</th>
-                          <th>Email</th>
-                          <th>No.HP</th>
-                          <th>Properti</th>
-                          <th>Instansi</th>
-                          <th>Status</th>
-                      </tr>
-                      <tr>
-                        <td>Fany Pradita</td>
-                          <td>perhutani@gmail.com</td>
-                          <td>087654232163</td>
-                          <td>Graha Wana Java Pusdikbang SDM Perhutani</td>
-                          <td>CV.Teknologi kurniatama</td>
-                          <td>proses</td>
-                      </tr>
-                    </table>
-                      </div>
-                    </div>
+                  <div class="container">
+		<center><h2>Membuat Laporan PDF Dengan PHP dan MySQLi</h2></center>
+		<br>
+		<div class="float-right">
+			<a href="user_pdf.php" target="_blank" class="btn btn-success"><i class="fa fa-file-pdf-o"></i> &nbsp PRINT</a>
+			<br>
+			<br>
+		</div>
+ 
+		<table class="table table-bordered">
+			<thead>				
+				<tr>
+					<th style="text-align: center;">Nomor</th>
+					<th style="text-align: center;">Nama</th>
+					<th style="text-align: center;">Alamat</th>					
+					<th style="text-align: center;">Email</th>					
+				</tr>				
+			</thead>
+			<tbody>
+				<?php
+				$no=1;
+				$data = mysqli_query($koneksi,"SELECT  * FROM tbl_aset");
+				while($d = mysqli_fetch_array($data)){
+					?>
+					<tr>
+						<td><?php echo $no++; ?></td>
+						<td><?php echo $d['karyawan_nama'] ?></td>
+						<td><?php echo $d['karyawan_alamat'] ?></td>						
+						<td><?php echo $d['karyawan_email'] ?></td>										
+					</tr>
+					<?php
+				}
+				?>				
+			</tbody>
+		</table>
+	</div>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Ingin pengajuan lagi?</button>
@@ -466,25 +484,28 @@
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
                   <form>
-
+<div class="inputBox">
+            <input type="hidden" name="old_pass" value="<?php echo $fetch['password']; ?>">
+            
+         
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
+            <input type="password" name="update_password" placeholder="enter previous password" class="box">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="newpassword" type="password" class="form-control" id="newPassword">
+            <input type="password" name="new_pass" placeholder="enter new password" class="box">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+            <input type="password" name="confirm_password" placeholder="confirm new password" class="box">
                       </div>
                     </div>
 
@@ -496,6 +517,7 @@
                 </div>
 
               </div><!-- End Bordered Tabs -->
+                        </div>
 
             </div>
           </div>

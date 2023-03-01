@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kerjasama Aset</title>
+  <title>Sewa Aset</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,8 +42,8 @@
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:divrejateng@perhutani.co.id">divrejateng@perhutani.co.id</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>(024) 8413631</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">perhutanidivrejateng@example.com</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+628 8765 0987</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -62,6 +62,7 @@
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <h1>PerhutaniPro<span>.</span></h1>
       </a>
+      
       <nav id="navbar" class="navbar ">
         <ul>
           <li><a href="index.html" href="#hero">Home</a></li>
@@ -75,14 +76,12 @@
           </li>
           <li><a href="index.html#about">Tentang Kami</a></li>
           <li><a href="konsultasi.html">Konsultasi</a></li>
-           <!--
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
+        
+          <!--
           <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Payment Method</a></li>
-           -->
-           <li class="dropdown"><a href="#"><span>Kerjasama Aset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          -->
+          
+          <li class="dropdown"><a href="sewa.php"><span>Sewa Aset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               
               <li class="dropdown"><a href="#"><span>Bangunan</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -118,7 +117,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -128,7 +127,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -159,14 +158,15 @@
   
         </ul>
       </nav><!-- .navbar -->
-
+      
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
     </div>
+    
   </header><!-- End Header -->
   <!-- End Header -->
-
+ 
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -175,8 +175,8 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>Kerjasama Aset</h2>
-              <p>Pemanfaatan BMN oleh pihak lain dalam jangka waktu tertentu dalam rangka peningkatan penerimaan negara bukan pajak dan sumber pembiayaan lainnya.</p>
+              <h2>Sewa Aset</h2>
+              <p>Sewa Bangunan dan Tanah Dengan Harga Murah, Proses Mudah, insyallah Berkah.</p>
             </div>
           </div>
         </div>
@@ -185,11 +185,61 @@
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Kerjasama Aset</li>
+            <li>Sewa Aset</li>
           </ol>
           <br>
+<?php
+//memanggil file berisi fungsi2 yang sering dipakai
+require "config.php";
+
+//jumlah data per halaman
+$jmlDataPerHal = 3;
+
+
+          //cari jumlah data
+if (isset($_POST['cari'])){
+	$cari=$_POST['cari'];
+	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
+						  nama_aset like '%$cari%' or
+						  kategori_aset like '%$cari%'";
+}else{
+	$sql="select * from tbl_aset";		
+}
+$qry = mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
+$jmlData = mysqli_num_rows($qry);
+
+$jmlHal = ceil($jmlData / $jmlDataPerHal);
+if (isset($_GET['hal'])){
+	$halAktif=$_GET['hal'];
+}else{
+	$halAktif=1;
+}
+
+$awalData=($jmlDataPerHal * $halAktif)-$jmlDataPerHal;
+
+//Jika tabel data kosong
+$kosong=false;
+if (!$jmlData){
+	$kosong=true;
+}
+//data berdasar pencarian atau tidak
+if (isset($_POST['cari'])){
+	$cari=$_POST['cari'];
+	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
+						  nama_aset like '%$cari%' or
+						  kategori_aset like '%$cari%'
+						  limit $awalData,$jmlDataPerHal";
+}else{
+	$sql="select * from tbl_aset limit $awalData,$jmlDataPerHal";		
+}
+//Ambil data untuk ditampilkan
+$hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
+
+?>
+
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
+              
               <select id="inputState" class="form-select">
                 <option selected>Jenis properti</option>
                 <option>Tanah</option>
@@ -199,27 +249,7 @@
                 <option>Unit Apartement</option>
                 
               </select>
-            <!---  
-              <select id="inputState" class="form-select">
-                <option value="#">Pilih Properti</option>
-                <optgroup label="Bangunan">
-                  <option value="1">Rumah</option>
-                  <option value="2">Kost</option>
-                  <option value="3">Apartement</option>
-                  <option value="4">Gedung</option>
-                  <option value="5">Ruko</option>
-                  <option value="6">Asrama</option>
-                </optgroup>
-                <optgroup label="Tanah">
-                  <option value="7">Tanah Kavling</option>
-                  <option value="8">Tanah Sawah</option>
-                  <option value="9">Lapangan Golf</option>
-                  <option value="10">Tanah Industri</option>
-                  <option value="11">Tanah Bangunan</option>
-                  <option value="12">Tanah Kosong</option>
-                </optgroup>
-              </select>
-            -->
+              
             </div>
             <div class="d-flex align-items-start me-4">
               <div class=" sidebar-item search-form me-4">
@@ -227,10 +257,12 @@
                   <input   class="form-control me-4" type="text" class="text-dark" placeholder="Lokasi">
                 </form>
               </div>
-              <button class="btn btn-outline-success " type="submit" id="tombol">Search</button>
+              <input class="form-control mr-sm-2" name="cari" type="text" placeholder="Kata Kunci" aria-label="Search" autofocus autocomplete="off">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
-        </div>
-      </nav>
+          </div>
+          </form>
+        </nav>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Blog Section ======= -->
@@ -241,78 +273,23 @@
 
           <div class="col-xl-4 col-md-6">
             <article>
-
+              
               <div class="post-img">
-                <img src="assets/img/blog/Wananjava.jpg" alt="" class="img-fluid">
+                <a href="blog-details.html"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
               </div>
-
-              <p class="post-category">Gedung</p>
-
               <h2 class="title">
-                <a href="blog-details.html">Graha Wanajava</a>
-                <p class="post-category">Kartoharjo, Kec. Kartoharjo, Kota Madiun, Jawa Timur</p>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Admin</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jan 1, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6">
-            <article>
-
-              <div class="post-img">
-                <img src="assets/img/blog/Tanah.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Tanah</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Lahan 13 Hektar</a>
-                <p class="post-category"> Jl. Bulusan Tembalang Kota Semarang</p>
-              </h2>
-
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-2.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Admin</p>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Jun 5, 2022</time>
-                  </p>
-                </div>
-              </div>
-
-            </article>
-          </div><!-- End post list item -->
-
-          <div class="col-xl-4 col-md-6">
-            <article>
-
-              <div class="post-img">
-                <img src="assets/img/blog/Forest Cafe.jpg" alt="" class="img-fluid">
-              </div>
-
-              <p class="post-category">Gedung</p>
-
-              <h2 class="title">
-                <a href="blog-details.html">Forest Cafe & d’Arboretum</a>
-                <p class="post-category"> Jl. Rimba Kaya Kartoharjo Kota Madiun</p>
+                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
               </h2>
 
               <div class="d-flex align-items-center">
                 <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author-list">Admin</p>
+                  <p class="post-author-list">Saepul</p>
+                  <h class="post-author-list">Admin</h>
                   <p class="post-date">
-                    <time datetime="2022-01-01">Jun 22, 2022</time>
+                    <time datetime="2022-01-01">Feb 20, 2023</time>
                   </p>
                 </div>
               </div>
@@ -324,22 +301,21 @@
             <article>
 
               <div class="post-img">
-                <img src="assets/img/blog/blog-4.jpg" alt="" class="img-fluid">
+                <a href="blog-details.html"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
               </div>
-
-              <p class="post-category">Bangunan</p>
-
               <h2 class="title">
-                <a href="blog-details.html">Bangunan 3 Lantai</a>
-                <p class="post-category"> Jl. Sendangguwo Selatan No.1 Kota Semarang</p>
+                <a href="blog-details.html">TANAH STRATEGIS</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Tanah Kavling</p>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-4.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author-list">Admin</p>
+                  <p class="post-author-list">Najib</p>
+                  <h class="post-author-list">Admin</h>
                   <p class="post-date">
-                    <time datetime="2022-01-01">Jun 30, 2022</time>
+                    <time datetime="2022-01-01">Feb 20, 2023</time>
                   </p>
                 </div>
               </div>
@@ -351,23 +327,21 @@
             <article>
 
               <div class="post-img">
-                <img src="assets/img/blog/blog-5.jpg" alt="" class="img-fluid">
+                <a href="blog-details.html"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
               </div>
-
-              <p class="post-category">Tanah</p>
-
               <h2 class="title">
-                <a href="blog-details.html">Accusamus quaerat aliquam qui debitis facilis consequatu
-                </a>
-                <p class="post-category"> Jl. Lamper Kidul Pedurungan Kota Semarang</p>
+                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-5.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author-list">Denis Peterson</p>
+                  <p class="post-author-list">Saepul</p>
+                  <h class="post-author-list">Admin</h>
                   <p class="post-date">
-                    <time datetime="2022-01-01">Jan 30, 2022</time>
+                    <time datetime="2022-01-01">Feb 20, 2023</time>
                   </p>
                 </div>
               </div>
@@ -379,25 +353,75 @@
             <article>
 
               <div class="post-img">
-                <img src="assets/img/blog/blog-6.jpg" alt="" class="img-fluid">
+                <a href="blog-details.html"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
               </div>
-
-              <p class="post-category">Gedung</p>
-
               <h2 class="title">
-                <a href="blog-details.html">Distinctio provident quibusdam numquam aperiam aut</a>
-                <p class="post-category"> Jl. Gajah Raya Selatan No.2 Kota Semarang</p>
+                <a href="blog-details.html">APARTEMENT MODERN</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Apartement</p>
               </h2>
 
               <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-6.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
                 <div class="post-meta">
-                  <p class="post-author-list">Mika Lendon</p>
+                  <p class="post-author-list">Saepul</p>
+                  <h class="post-author-list">Admin</h>
                   <p class="post-date">
-                    <time datetime="2022-01-01">Feb 14, 2022</time>
+                    <time datetime="2022-01-01">Feb 20, 2023</time>
                   </p>
                 </div>
               </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="blog-details.html"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author-list">Saepul</p>
+                  <h class="post-author-list">Admin</h>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Feb 20, 2023</time>
+                  </p>
+                </div>
+              </div>
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="blog-details.html"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
+              </h2>
+
+              <div class="d-flex align-items-center">
+                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
+                <div class="post-meta">
+                  <p class="post-author-list">Saepul</p>
+                  <h class="post-author-list">Admin</h>
+                  <p class="post-date">
+                    <time datetime="2022-01-01">Feb 20, 2023</time>
+                  </p>
+                </div>
 
             </article>
           </div><!-- End post list item -->
@@ -405,16 +429,19 @@
         </div><!-- End blog posts list -->
 
         <div class="blog-pagination">
-          <ul class="justify-content-center">            <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
-          </li>
-          <li><a href="#">1</a></li>
-          <li class="active"><a href="#">2</a></li>
-          <li><a href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-          </li>
-          </ul>
+          
+          <!--
+          <ul class="justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link" href="#" tabindex="-1">Previous</a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li class="active"><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>-->
         </div><!-- End blog pagination -->
 
       </div>
@@ -429,9 +456,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Perhutani Opset</span>
+            <span>Perhutani Property</span>
           </a>
-          <p>Perhutani adalah Badan Usaha Milik Negara berbentuk Perusahaan Umum (Perum) yang memiliki tugas dan wewenang untuk mengelola sumberdaya hutan negara di pulau Jawa dan Madura.</p>
+          <p>Situs yang menyediakan berbagai pilihan properti dengan fasilitas yang bervariatif, selain itu kami juga memiliki berbagai aset dengan lokasi yang strategis sehingga sangat efektif untuk menunjang berbagai kegiatan bisnis.</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -441,37 +468,35 @@
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Publikasi</h4>
+          <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Pengumuman</a></li>
-            <li><a href="#">Publikasi Media</a></li>
-            <li><a href="#">Press Release</a></li>
-            <li><a href="#">Suara Rimba</a></li>
-            <li><a href="#">Duta Rimba</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">Tentang Kami</a></li>
+            <li><a href="konsultasi.html">Konsultasi</a></li>
+            <li><a href="sewa.html">Sewa Aset</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Unit Bisnis</h4>
+          <h4>Sewa properti</h4>
           <ul>
-            <li><a href="#">Kayu</a></li>
-            <li><a href="#">Non Kayu</a></li>
-            <li><a href="#">Herbal</a></li>
-            <li><a href="#">Agroforestri</a></li>
-            <li><a href="#">Ekowisata</a></li>
-            <li><a href="#">Biomasa</a></li>
-            <li><a href="#">Solusi Berbasis Alam</a></li>
+            <li><a href="#">Tanah</a></li>
+            <li><a href="#">Rumah</a></li>
+            <li><a href="#">Ruko</a></li>
+            <li><a href="#">Gedung</a></li>
+            <li><a href="#">Unit Apartement</a></li>
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
           <h4>Contact Us</h4>
           <p>
-            Jl. Pahlawan No.15-17, Mugassari <br>
-            Kec. Semarang Sel., Kota Semarang<br>
-            Indonesia <br><br>
-            <strong>Phone:</strong> (024) 8413631<br>
-            <strong>Email:</strong> divrejateng@perhutani.co.id<br>
+            A108 Adam Street <br>
+            New York, NY 535022<br>
+            United States <br><br>
+            <strong>Phone:</strong> +1 5589 55488 55<br>
+            <strong>Email:</strong> info@example.com<br>
           </p>
 
         </div>
@@ -481,13 +506,14 @@
 
     <div class="container mt-4">
       <div class="copyright">
-        &copy; Copyright <strong><span>Magang</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 
@@ -510,6 +536,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  
 </body>
 
 </html>

@@ -75,8 +75,8 @@
 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa Aset</a></li>
-              <li><a href="kerjasama.html">Kerjasama Aset</a></li>
+              <li><a href="sewa.php">Sewa Aset</a></li>
+              <li><a href="kerjasama.php">Kerjasama Aset</a></li>
               <li><a href="pengajuan.html">Pengajuan form</a></li>
               <!---
               <li><a href="#">Drop Down 4</a></li>
@@ -110,7 +110,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -120,7 +120,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -435,6 +435,9 @@
             <div class="sidebar">
 
               <!-- ======= FORM PENGAJUAN ========-->
+            <?php
+            require "config.php";
+            ?>
               <div class="reply-form">
 
                 <h4>Form Pengajuan</h4>
@@ -443,24 +446,24 @@
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">Nama</label>
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
+                      <input name="name" type="text" class="form-control" placeholder="Your Name*" name="nama" id="nama" required>
                     </div>
                     <br>
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">Gmail</label>
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                      <input name="email" type="text" class="form-control" placeholder="Your Email*" name="email"  id="email" >
                     </div>
                   </div>
                   <br>
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">No.HP</label>
-                      <input name="name" type="text" class="form-control" placeholder="NO. HP*">
+                      <input name="name" type="text" class="form-control" placeholder="NO. HP*" name="nohp" id="nohp" >
                     </div>
                     <br>
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">No.KTP</label>
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                      <input name="email" type="text" class="form-control" placeholder="NO. KTP*" name="noktp"  id="noktp">
                     </div>
                     </div>
                   <br>
@@ -479,7 +482,7 @@
                   <div class="row">
                     <div class="col form-group">
                       <label for="inputEmail4">Nama Instansi</label>
-                      <textarea name="comment" class="form-control" placeholder="Instansimu*"></textarea>
+                      <input name="email" type="text" class="form-control" placeholder="Instansimu*" name="ins"  id="ins">
                     </div>
                   </div>
                   <br>
