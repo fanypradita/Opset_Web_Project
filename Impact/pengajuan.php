@@ -60,7 +60,7 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>Perhutani Property<span>.</span></h1>
+        <h1>Perhutani Pro<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
         <ul>
@@ -133,79 +133,71 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
-    <br></br>
+    <br>
     
     <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row gx-lg-0 gy-4">
-
-          <div class="col-lg-4">
-
-            <div class="info-container d-flex flex-column align-items-center justify-content-center">
-              <div>
-                <img src="assets/img/log.png" style="width:230px; height:80px;">
-              </div><!-- End Info Item -->
-            </div>
-
-          </div>
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <label for="inputEmail4">Nama</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Nama Anda" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <label for="inputEmail4">Email</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Email Anda" required>
-                </div>
-                
-                <div class="col-md-6 form-group">
-                  <label for="inputEmail4">No.Handphone</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="No HP" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <label for="inputEmail4">No KTP</label>
-                  <input type="email" class="form-control" name="email" id="email" placeholder="No KTP" required>
-                </div>                         
-                <div class="col-md-4 form-group">
-                  <label for="inputEmail4">Pilih</label>
-                  <select id="email" class="form-control">
-                    <option selected>Choose...</option>
-                    <option>Instansi</option>
-                    <option>Organisasi</option>
-                    <option>Perorangan</option>
-                  </select>                
-                </div>
-                <div class="col-md-8 form-group">
-                  <label for="inputEmail4">Instansi</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Instansi Anda" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="7" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center" style="padding: 14px 310px;"><button type="submit">Ajukan</button></div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
+    <div style="border:0; padding:10px; width:760px; height:auto;">
+      <form action="action-input-data.php" method="POST" name="form-input-data">
+          <table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr height="46">
+                      <td width="10%"> </td>
+                      <td width="25%"> </td>
+                      <td width="65%"><font color="orange" size="2">Form Input Data Pengajuan Pemohon</font></td>
+              </tr>
+              <tr height="46">
+                  <td> </td>
+                  <td>ID Pengajuan</td>
+                  <td><input type="text" name="id_pengajuan" size="35" maxlength="6" /></td>
+              </tr>
+              <tr height="46">
+                  <td> </td>
+                  <td>Nama Pemohon</td>
+                  <td><input type="text" name="nama" size="35" maxlength="6" /></td>
+              </tr>
+              <tr height="46">
+                  <td> </td>
+                  <td>Email</td>
+                  <td><input type="text" name="email" size="50" maxlength="30" /></td>
+              </tr>
+              <!--
+              <tr height="46">
+                  <td> </td>
+                  <td>Instansi</td>
+                  <td><select name="jurusan">
+                          <option value="-">- Pilih Jurusan -
+                          <option value="Teknik Komputer">Teknik Komputer
+                          <option value="Teknik Informatika">Teknik Informatika
+                          <option value="Teknik Mesin">Teknik Mesin
+                          <option value="Teknik Elektro">Teknik Elektro
+                          <option value="Komputer Akuntansi">Komputer Akuntansi
+                      </select></td>
+              </tr>-->
+              <tr height="46">
+                  <td> </td>
+                  <td>No.KTP</td>
+                  <td><input type="text" name="no_ktp" size="50" maxlength="30" /></td>
+              </tr>
+              <tr height="46">
+                  <td> </td>
+                  <td>Instansi</td>
+                  <td><input type="text" name="instansi" size="20" maxlength="12" /></td>
+              </tr>
+              <tr height="46">
+                  <td> </td>
+                  <td>No.Telephone</td>
+                  <td><input type="text" name="no_telepon" size="20" maxlength="12" /></td>
+              </tr>
+              <tr height="46">
+                  <td> </td>
+                  <td> </td>
+                  <td><input type="submit" name="Submit" value="Submit">   
+                      <input type="reset" name="reset" value="Cancel"></td>
+              </tr>
+          </table>
+      </form>
       </div>
-    </section><!-- End Contact Section -->
-
-
-
-                <br></br>
-              </main><!-- End #main -->
+      <br>
+               </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">

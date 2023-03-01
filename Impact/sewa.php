@@ -313,7 +313,7 @@
               <p class="post-category">LB : 5x6 M   LT : 7x8 M Tahun : 2013</p>
               </h2>
 
-
+</div>
             </article>
           </div><!-- End post list item -->
 

@@ -276,13 +276,12 @@
 
                 <h3>Lokasi Properti.</h3>
                 <!--Google map-->
-                <div id="map-container-google-2" class="z-depth-1-half map-container" style="height: 300px">
-                  <iframe src="https://maps.google.com/maps?q=chicago&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0"
-                    style="border:0" allowfullscreen></iframe>
-                </div>
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
 
                 <!--Google Maps-->
-                
+                <!--
                 <p>
                   Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
                   Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
@@ -298,7 +297,7 @@
                 <p>
                   Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
                 </p>
-
+          -->
               </div><!-- End post content -->
 
               <div class="meta-bottom">
@@ -422,9 +421,6 @@
 
               </div>End comment #4 -->
 
-              <div class="reply-form">
-
-              </div>
 
             </div><!-- End blog comments -->
 
@@ -455,12 +451,12 @@
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">No.HP</label>
-                      <input name="name" type="text" class="form-control" placeholder="NO. HP*">
+                      <input name="name" type="text" class="form-control" placeholder="NO.HP*">
                     </div>
                     <br>
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">No.KTP</label>
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                      <input name="email" type="text" class="form-control" placeholder="No.KTP*">
                     </div>
                     </div>
                   <br>
@@ -487,8 +483,21 @@
 
                 </form>
 
-              </div>
+              <?php
+              //syntax php untuk simpan ke database
+              if (isset($_POST['simpan'])) {
+                # code...
+                $query=mysql_query("INSERT INTO pengajuan(`nama`, `email`, `no_ktp`, 'instansi', 'no_telepon') VALUES('".$_POST['nama']."','".$_POST['email']."','".$_POST['no_ktp']."','".$_POST['instansi']."','".$_POST['no_telepon']."')");
+                if ($query) {
+                # code...
+                echo "data berhasil disimpan";
+                }else{
+                echo "data gagal disimpan".mysql_error();
+                }
+              }
+              ?>
 
+              </div>
             </div><!-- End blog comments -->
             <br>
             <div class="sidebar">
