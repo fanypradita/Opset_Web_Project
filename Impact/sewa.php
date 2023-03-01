@@ -28,6 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+
   <!-- =======================================================
   * Template Name: Impact - v1.2.0
   * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
@@ -216,6 +217,7 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Blog Section ======= -->
+    <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
@@ -316,7 +318,21 @@
 </div>
             </article>
           </div><!-- End post list item -->
-
+          <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
         </div><!-- End blog posts list -->
 
         <div class="blog-pagination">
