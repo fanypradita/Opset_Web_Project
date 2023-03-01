@@ -194,47 +194,6 @@ require "config.php";
 
 //jumlah data per halaman
 $jmlDataPerHal = 3;
-
-
-          //cari jumlah data
-if (isset($_POST['cari'])){
-	$cari=$_POST['cari'];
-	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
-						  nama_aset like '%$cari%' or
-						  kategori_aset like '%$cari%'";
-}else{
-	$sql="select * from tbl_aset";		
-}
-$qry = mysqli_query($conn,$sql) or die(mysqli_error($conn));
-$jmlData = mysqli_num_rows($qry);
-
-$jmlHal = ceil($jmlData / $jmlDataPerHal);
-if (isset($_GET['hal'])){
-	$halAktif=$_GET['hal'];
-}else{
-	$halAktif=1;
-}
-
-$awalData=($jmlDataPerHal * $halAktif)-$jmlDataPerHal;
-
-//Jika tabel data kosong
-$kosong=false;
-if (!$jmlData){
-	$kosong=true;
-}
-//data berdasar pencarian atau tidak
-if (isset($_POST['cari'])){
-	$cari=$_POST['cari'];
-	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
-						  nama_aset like '%$cari%' or
-						  kategori_aset like '%$cari%'
-						  limit $awalData,$jmlDataPerHal";
-}else{
-	$sql="select * from tbl_aset limit $awalData,$jmlDataPerHal";		
-}
-//Ambil data untuk ditampilkan
-$hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
-
 ?>
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
@@ -261,30 +220,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
 
           </div>
           </form>
-       <?php   
-    if ($kosong){
-      ?>
-		<tr><th colspan="6">
-			<div class="alert alert-info alert-dismissible fade show text-center">
-			<!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-			Data tidak ada
-			</div>
-		</th></tr>
 
-		<?php
-	}else{	
-		if($awalData==0){
-			$no=$awalData+1;
-		}else{
-			$no=$awalData;
-		}
-		while($row=mysqli_fetch_assoc($hasil)){
-			?>	
-      <?php 
-			$no++;
-		}
-	}
-	?>
         </nav>
     </div><!-- End Breadcrumbs -->
 
@@ -298,7 +234,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
             <article>
               
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
+                <a href="blog-details.php"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
                 <a href="blog-details.html">Rumah Estetik Berhantu</a>
@@ -327,7 +263,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
                 <a href="blog-details.html"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">TANAH STRATEGIS</a>
+                <a href="blog-details.php">TANAH STRATEGIS</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Tanah Kavling</p>
               </h2>
@@ -350,7 +286,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
+                <a href="blog-details.php"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
                 <a href="blog-details.html">Rumah Estetik Berhantu</a>
@@ -376,7 +312,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
+                <a href="blog-details.php"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
                 <a href="blog-details.html">APARTEMENT MODERN</a>
@@ -402,7 +338,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+                <a href="blog-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
                 <a href="blog-details.html">Rumah Estetik Berhantu</a>
@@ -428,7 +364,7 @@ $hasil=mysqli_query($conn,$sql) or die(mysqli_error($conn));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+                <a href="blog-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
                 <a href="blog-details.html">Rumah Estetik Berhantu</a>
