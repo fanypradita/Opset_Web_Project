@@ -81,7 +81,7 @@
           <li><a href="#team">Team</a></li>
           -->
           
-          <li class="dropdown"><a href="#"><span>Sewa Aset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="sewa.php"><span>Sewa Aset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               
               <li class="dropdown"><a href="#"><span>Bangunan</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
@@ -117,7 +117,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -127,7 +127,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -194,8 +194,8 @@ require "config.php";
 
 //jumlah data per halaman
 $jmlDataPerHal = 3;
-?>
-<!--
+
+
           //cari jumlah data
 if (isset($_POST['cari'])){
 	$cari=$_POST['cari'];
@@ -235,7 +235,7 @@ if (isset($_POST['cari'])){
 //Ambil data untuk ditampilkan
 $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
 
-?>-->
+?>
 
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">

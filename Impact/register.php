@@ -1,83 +1,113 @@
-<?php
-
+<?php 
+ 
 include 'config.php';
-
-if(isset($_POST['submit'])){
-
-   $nama = mysqli_real_escape_string($conn, $_POST['nama']);
-   $alamat = mysqli_real_escape_string($conn, $_POST['alamat']);
-   $jk = mysqli_real_escape_string($conn, $_POST['jk']);
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $password = mysqli_real_escape_string($conn, md5($_POST['password']));
-   $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
-   $images = $_FILES['images']['name'];
-   $images_size = $_FILES['images']['size'];
-   $images_tmp_name = $_FILES['images']['tmp_name'];
-   $images_folder = 'uploaded_img/'.$images;
-
-   $select = mysqli_query($conn, "SELECT * FROM tbl_admin WHERE email = '$email' AND password = '$password'");
-
-   if(mysqli_num_rows($select) > 0){
-      $message[] = 'user already exist'; 
-   }else{
-      if($password != $cpass){
-         $message[] = 'confirm password not matched!';
-      }elseif($images_size > 2000000){
-         $message[] = 'image size is too large!';
-      }else{
-         $insert = mysqli_query($conn, "INSERT INTO tbl_admin(nama, alamat, jk, email, password, images) VALUES('$nama', '$alamat', '$jk', '$email', '$password', '$images')") or die('query failed');
-
-         if($insert){
-            move_uploaded_file($images_tmp_name, $images_folder);
-            $message[] = 'registered successfully!';
-            header('location:login.php');
-         }else{
-            $message[] = 'registeration failed!';
-         }
-      }
-   }
-
+ 
+error_reporting(0);
+ 
+session_start();
+ 
+if (isset($_SESSION['username'])) {
+    header("Location: login.php");
 }
-
+ 
+if (isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $cpassword = md5($_POST['cpassword']);
+    $nama = $_POST['nama'];
+    $jk = $_POST['jenis_kelamin'];
+    $tgl_lahir = $_POST['tgl_lahir'];
+    $alamat = $_POST['alamat'];
+    $nohp = $_POST['nohp'];
+    $noktp = $_POST['noktp'];
+    $foto = $_POST['foto'];
+ 
+    if ($password == $cpassword) {
+        $sql = "SELECT * FROM tbl_customer WHERE email='$email'";
+        $result = mysqli_query($conn, $sql);
+        if (!$result->num_rows > 0) {
+            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, foto)
+                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$foto')";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "<script>alert('Selamat, registrasi berhasil!')</script>";
+                $username = "";
+                $email = "";
+                $_POST['password'] = "";
+                $_POST['cpassword'] = "";
+                
+            } else {
+                echo "<script>alert('Username Telah Digunakan !.')</script>";
+            }
+        } else {
+            echo "<script>alert('Woops! Email Sudah Terdaftar.')</script>";
+        }
+         
+    } else {
+        echo "<script>alert('Password Tidak Sesuai')</script>";
+    }
+}
+ 
 ?>
-
+ 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" type="text/css" href="style.css">
+ 
+    <title>WebPerhutani</title>
 </head>
 <body>
-   
-<div class="form-container">
+    <div class="container">
+        <form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+            <div class="input-group">
+                <input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Nama Lengkap" name="nama" value="<?php echo $nama; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="date" placeholder="Tanggal lahir" name="tgl_lahir" value="<?php echo $tgl_lahir; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?php echo $jk; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="text box" placeholder="Alamat" name="alamat" value="<?php echo $alamat; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="No. HP" name="nohp" value="<?php echo $nohp; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="text" placeholder="NIK" name="noktp" value="<?php echo $noktp; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+            </div>
+            <p class="login-register-text">Uploud Foto Profil</p>
+            <div class="input-group">
+                <input type="file" placeholder="" name="" value="<?php echo $foto; ?>" required>
+            </div >
+            
+            <div class="input-group">
+                <button name="submit" href="login.php" class="btn">Register</button></a>
 
-   <form action="" method="post" enctype="multipart/form-data">
-      <h3>register now</h3>
-      <?php
-      if(isset($message)){
-         foreach($message as $message){
-            echo '<div class="message">'.$message.'</div>';
-         }
-      }
-      ?>
-      <input type="text" name="nama" placeholder="enter nama" class="box" required>
-      <input type="text" name="alamat" placeholder="enter alamat" class="box" required>
-      <input type="text" name="jk" placeholder="enter jenis kelamin" class="box" required>
-      <input type="email" name="email" placeholder="enter email" class="box" required>
-      <input type="password" name="password" placeholder="enter password" class="box" required>
-      <input type="password" name="cpassword" placeholder="confirm password" class="box" required>
-      <input type="file" name="images" class="box" accept="image/jpg, image/jpeg, image/png">
-      <input type="submit" name="submit" value="register now" class="btn">
-      <p>already have an account? <a href="login.php">login now</a></p>
-   </form>
-
-</div>
-
+            </div>
+            <p class="login-register-text">Anda sudah punya akun? <a href="login.php">Login </a></p>
+        </form>
+    </div>
 </body>
 </html>

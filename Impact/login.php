@@ -1,58 +1,64 @@
-<?php
-
+<?php 
+ 
 include 'config.php';
+ 
+error_reporting(0);
+ 
 session_start();
-
-if(isset($_POST['submit'])){
-
-   $email = mysqli_real_escape_string($conn, $_POST['email']);
-   $password = mysqli_real_escape_string($conn, md5($_POST['password']));
-
-   $select = mysqli_query($conn, "SELECT * FROM `tbl_admin` WHERE email = '$email' AND password = '$password'");
-
-   if(mysqli_num_rows($select) > 0){
-      $row = mysqli_fetch_assoc($select);
-      $_SESSION['id'] = $row['id'];
-      header('location:users-profile.php');
-   }else{
-      $message[] = 'incorrect email or password!';
-   }
-
+ 
+if (isset($_SESSION['username'])) {
+    header("Location:users-profile.html");
 }
+ 
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+ 
+    $sql = "SELECT * FROM tbl_customer WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
+        header("Location:users-profile.html");
+    } else {
+        echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
+    }
+}
+ 
 ?>
-
+ 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>login</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <link rel="stylesheet" type="text/css" href="style.css">
+ 
+    <title>WebPerhutani</title>
 </head>
 <body>
-   
-<div class="form-container">
-
-   <form action="" method="post" enctype="multipart/form-data">
-      <h3>login now</h3>
-      <?php
-      if(isset($message)){
-         foreach($message as $message){
-            echo '<div class="message">'.$message.'</div>';
-         }
-      }
-      ?>
-      <input type="email" name="email" placeholder="enter email" class="box" required>
-      <input type="password" name="password" placeholder="enter password" class="box" required>
-      <input type="submit" name="submit" value="login now" class="btn">
-      <p>don't have an account? <a href="register.php">register now</a></p>
-   </form>
-
-</div>
-
+    
+    <div class="alert alert-warning" role="alert">
+        <?php echo $_SESSION['error']?>
+    </div>
+ 
+    <div class="container">
+        <form action="" method="POST" class="login-email">
+            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
+            <div class="input-group">
+                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+            </div>
+            <div class="input-group">
+                <button name="submit" class="btn">Login</button>
+            </div>
+            <p class="login-register-text">Anda belum punya akun? <a href="register.php">Register</a></p>
+        </form>
+    </div>
 </body>
 </html>
