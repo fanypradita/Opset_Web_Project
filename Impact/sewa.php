@@ -188,37 +188,30 @@
             <li>Sewa Aset</li>
           </ol>
           <br>
-          <?php
-	include 'config.php';
-	?>
-	<div class="container" style="padding-top: 20px; padding-bottom: 20px;">
-		<hr>
+<!--
+          <form class="d-flex align-items-start me-2" role="search">
+            <div class="col-md-4 me-2">
+              
+              <select id="inputState" class="form-select">
+                <option selected>Jenis properti</option>
+                <option>Tanah</option>
+                <option>Rumah</option>
+                <option>Ruko</option>
+                <option>Gedung</option>
+                <option>Unit Apartement</option>
+                
+              </select>
+              
+            </div>-->
+            <div class="d-flex align-items-start me-4">
 
+              <input class="form-control mr-sm-2" name="cari" type="text" placeholder="Kata Kunci" aria-label="Search" autofocus autocomplete="off">
+              <br>  
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
-				<form role="form" action="index.php" method="get">
-					<div class="form-group">
-						<label>Cari :</label>
-						<input type="text" name="cari" placeholder="nama aset">
-						<input type="text" name="cari2" placeholder="alamat">
-						<input type="text" name="cari3" placeholder="kategori aset">
-					</div>
+          </div>
+          </form>
 
-				<input type="submit" name="simpan" value="Search" placeholder="kategori aset">
-				</form>
-
-
-				<?php
-				if(isset($_POST['cari'])){
-					$cari = $_POST['cari'];
-					echo "<b>Hasil pencarian : ".$cari."</b>";
-				}
-				?>
-
-				<table class="table table-striped">
-					<tr>
-			</div>
-		</div>
-	</div>
         </nav>
     </div><!-- End Breadcrumbs -->
 
@@ -232,7 +225,7 @@
             <article>
               
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
                 <a href="sewa-details.php">Rumah Estetik Berhantu</a>
@@ -240,20 +233,6 @@
               <p class="post-category">Rumah</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <!--
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
--->
-                <div class="post-meta">
-                  <!--
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
--->
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -270,16 +249,6 @@
               <p class="post-category">Tanah Kavling</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Najib</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -296,16 +265,6 @@
               <p class="post-category">Rumah</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -322,16 +281,6 @@
               <p class="post-category">Apartement</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -348,16 +297,6 @@
               <p class="post-category">Rumah</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -371,52 +310,11 @@
               <h2 class="title">
                 <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
-              <p class="post-category">Rumah</p>
+              <p class="post-category">LB : 5x6 M   LT : 7x8 M Tahun : 2013</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
 
             </article>
-            
-					<?php
-					if(isset($_GET['simpan'])){
-						$cari = $_GET['cari'];
-            $cari2 = $_GET['cari2'];
-            $cari3 = $_GET['cari3'];
-            $gabung = "";
-
-            if ($cari != "") {
-              $gabung .= "AND nama_aset like '%".$cari."%'";
-            }
-            if ($cari2 != "") {
-              $gabung .= "AND alamat like '%".$cari2."%'";
-            }
-            if ($cari3 != "") {
-              $gabung .= "AND kategori_aset like '%".$cari3."%'";
-            }
-            $gabung = "WHERE " .ltrim($gabung, "AND ");
-						$data = mysql_query("select * from opset $gabung");
-
-
-					while($d = mysql_fetch_array($data)){
-					?>
-					<tr>
-						<td><?php echo $d['nama_aset']; ?></td>
-						<td><?php echo $d['alamat']; ?></td>
-						<td><?php echo $d['kategori_aset']; ?></td>
-					</tr>
-					<?php }
-					} ?>
-				</table>
-
           </div><!-- End post list item -->
 
         </div><!-- End blog posts list -->
