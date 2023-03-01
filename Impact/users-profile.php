@@ -405,37 +405,20 @@
 			<br>
 		</div>
  <!-- Cetak data dengan tampilan tabel -->
- <table class="table table-hover">
-	<thead class="thead-light">
-	<tr>
-		<th>No.</th>
-		<th>Nama Pemohon</th>
-        <th>No.HP</th>
-		<th>No.KTP</th>
-		<th>Kecamatan</th>
-		<th>Desa</th>
-		<th>Rak</th>
-        <th>Baris</th>
-		<th>Bandel</th>
-		<th>Opsi</th>
-	</tr>
-	</thead>
-	<tbody>
-			<tr>
-				<td><?php echo $no?></td>
-				<td><?php echo $row["id"]?></td>
-				<td><?php echo $row["nh"]?></td>
-				<td><?php echo $row["jns"]?></td>
-				<td><?php echo $row["kec"]?></td>
-                <td><?php echo $row["kel"]?></td>
-                <td><?php echo $row["rak"]?></td>
-                <td><?php echo $row["bar"]?></td>
-				<td><?php echo $row["ban"]?></td>
-			</tr>
-		
-	</tbody>
-	</table>
-
+ <div class="table-responsive">
+          <table id="" class="table table-bordered table-striped ">
+      <thead>
+          <th width="5%">No</th>
+          <th>Nama Pemohon</th>
+          <th>Email</th>
+          <th>No KTP</th>
+          <th>Instansi</th>
+          <th>No HP</th>
+          <th class="text-center">Status</th>
+          
+      </thead>
+      
+        
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Ingin pengajuan lagi?</button>
                     </div>
