@@ -312,9 +312,7 @@
 
               </div>End comment #4 -->
 
-              <div class="reply-form">
-
-              </div>
+        
 
             </div><!-- End blog comments -->
 

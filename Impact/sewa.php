@@ -218,17 +218,7 @@
 
     <!-- ======= Blog Section ======= -->
         <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
-    <?php
-    include('config.php');
-    if (isset($_POST["page"])) { $page  = $_POST["page"]; } else { $page=1; };  
-    $start_from = ($page-1) * $limit;  
-      
-    $sql = "SELECT * FROM opset ORDER BY kode_aset ASC LIMIT $start_from, $limit";  
-    $rs_result = mysqli_query($conn, $sql); 
-    ?>
-    <?php  
-    while ($row = mysqli_fetch_assoc($rs_result)) {
-    ?>
+ 
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
