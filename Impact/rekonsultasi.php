@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,7 +119,9 @@
 
 
   <main id="main">
-
+<?php
+include("config.php"); // untuk memanggil file config.php
+?>
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="page-header d-flex align-items-center" style="background-image: url('');">
@@ -327,7 +330,7 @@
 
                 <h4>Konsultasi</h4>
                 
-                <form action="simpan-rekonsul.php" method="POST">
+                <form method="POST">
                   <br>
                   <div class="row">
                     <div class="col-md-6 form-group">
@@ -346,9 +349,22 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
                   <br>
-                  <button type="submit" class="btn btn-primary">Kirim</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
 
                 </form>
+                <?php
+                //syntax php untuk simpan ke database
+                if (isset($_POST['simpan'])) {
+                  # code...
+                  $query=mysqli_query("INSERT INTO konsultasi(`nama`, `email`, `pesan`) VALUES('".$_POST['nama']."','".$_POST['email']."','".$_POST['pesan']."')");
+                  if ($query) {
+                  # code...
+                  echo "data berhasil disimpan";
+                  }else{
+                  echo "data gagal disimpan".mysqli_error();
+                  }
+                }
+                ?>
 
               </div>
 
