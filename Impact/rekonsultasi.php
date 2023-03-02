@@ -335,7 +335,7 @@ include("config.php"); // untuk memanggil file config.php
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">Nama</label>
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
+                      <input name="nama" type="text" class="form-control" placeholder="Your Name*">
                     </div>
                     <br>
                     <div class="col-md-6 form-group">
@@ -346,10 +346,12 @@ include("config.php"); // untuk memanggil file config.php
                   <br>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="pesan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
                   <br>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <tr>
+                  <td colspan="2"><input type="submit" name="simpan" value="Simpan"></td>
+</tr>
 
                 </form>
                 <?php
