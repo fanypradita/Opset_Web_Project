@@ -249,7 +249,7 @@
               <p class="post-category">Gedung</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Graha Wanajava</a>
+                <a href="blog-details.php">Graha Wanajava</a>
                 <p class="post-category">Kartoharjo, Kec. Kartoharjo, Kota Madiun, Jawa Timur</p>
               </h2>
 
@@ -276,7 +276,7 @@
               <p class="post-category">Tanah</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Lahan 13 Hektar</a>
+                <a href="blog-details.php">Lahan 13 Hektar</a>
                 <p class="post-category"> Jl. Bulusan Tembalang Kota Semarang</p>
               </h2>
 
@@ -303,7 +303,7 @@
               <p class="post-category">Gedung</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Forest Cafe & d’Arboretum</a>
+                <a href="blog-details.php">Forest Cafe & d’Arboretum</a>
                 <p class="post-category"> Jl. Rimba Kaya Kartoharjo Kota Madiun</p>
               </h2>
 
@@ -330,7 +330,7 @@
               <p class="post-category">Bangunan</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Bangunan 3 Lantai</a>
+                <a href="blog-details.php">Bangunan 3 Lantai</a>
                 <p class="post-category"> Jl. Sendangguwo Selatan No.1 Kota Semarang</p>
               </h2>
 
@@ -357,7 +357,7 @@
               <p class="post-category">Tanah</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Accusamus quaerat aliquam qui debitis facilis consequatu
+                <a href="blog-details.php">Accusamus quaerat aliquam qui debitis facilis consequatu
                 </a>
                 <p class="post-category"> Jl. Lamper Kidul Pedurungan Kota Semarang</p>
               </h2>
@@ -385,7 +385,7 @@
               <p class="post-category">Gedung</p>
 
               <h2 class="title">
-                <a href="blog-details.html">Distinctio provident quibusdam numquam aperiam aut</a>
+                <a href="blog-details.php">Distinctio provident quibusdam numquam aperiam aut</a>
                 <p class="post-category"> Jl. Gajah Raya Selatan No.2 Kota Semarang</p>
               </h2>
 

@@ -28,6 +28,7 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+
   <!-- =======================================================
   * Template Name: Impact - v1.2.0
   * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
@@ -188,55 +189,7 @@
             <li>Sewa Aset</li>
           </ol>
           <br>
-<?php
-//memanggil file berisi fungsi2 yang sering dipakai
-require "config.php";
-
-//jumlah data per halaman
-$jmlDataPerHal = 3;
-
-
-          //cari jumlah data
-if (isset($_POST['cari'])){
-	$cari=$_POST['cari'];
-	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
-						  nama_aset like '%$cari%' or
-						  kategori_aset like '%$cari%'";
-}else{
-	$sql="select * from tbl_aset";		
-}
-$qry = mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
-$jmlData = mysqli_num_rows($qry);
-
-$jmlHal = ceil($jmlData / $jmlDataPerHal);
-if (isset($_GET['hal'])){
-	$halAktif=$_GET['hal'];
-}else{
-	$halAktif=1;
-}
-
-$awalData=($jmlDataPerHal * $halAktif)-$jmlDataPerHal;
-
-//Jika tabel data kosong
-$kosong=false;
-if (!$jmlData){
-	$kosong=true;
-}
-//data berdasar pencarian atau tidak
-if (isset($_POST['cari'])){
-	$cari=$_POST['cari'];
-	$sql="select * from tbl_aset where kode_aset like'%$cari%' or
-						  nama_aset like '%$cari%' or
-						  kategori_aset like '%$cari%'
-						  limit $awalData,$jmlDataPerHal";
-}else{
-	$sql="select * from tbl_aset limit $awalData,$jmlDataPerHal";		
-}
-//Ambil data untuk ditampilkan
-$hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
-
-?>
-
+<!--
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
               
@@ -250,22 +203,32 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
                 
               </select>
               
-            </div>
+            </div>-->
             <div class="d-flex align-items-start me-4">
-              <div class=" sidebar-item search-form me-4">
-                <form action="" class="mt-3">
-                  <input   class="form-control me-4" type="text" class="text-dark" placeholder="Lokasi">
-                </form>
-              </div>
+
               <input class="form-control mr-sm-2" name="cari" type="text" placeholder="Kata Kunci" aria-label="Search" autofocus autocomplete="off">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              <br>  
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
           </div>
           </form>
+
         </nav>
     </div><!-- End Breadcrumbs -->
 
     <!-- ======= Blog Section ======= -->
+        <script type="text/javascript" charset="utf8" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.0.3.js"></script>
+    <?php
+    include('config.php');
+    if (isset($_POST["page"])) { $page  = $_POST["page"]; } else { $page=1; };  
+    $start_from = ($page-1) * $limit;  
+      
+    $sql = "SELECT * FROM opset ORDER BY kode_aset ASC LIMIT $start_from, $limit";  
+    $rs_result = mysqli_query($conn, $sql); 
+    ?>
+    <?php  
+    while ($row = mysqli_fetch_assoc($rs_result)) {
+    ?>
     <section id="blog" class="blog">
       <div class="container" data-aos="fade-up">
 
@@ -275,24 +238,14 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
             <article>
               
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -301,24 +254,14 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">TANAH STRATEGIS</a>
+                <a href="sewa-details.php">TANAH STRATEGIS</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Tanah Kavling</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Najib</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -327,24 +270,14 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -353,24 +286,14 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">APARTEMENT MODERN</a>
+                <a href="sewa-details.php">APARTEMENT MODERN</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Apartement</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -379,24 +302,14 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
               <p class="post-category">Rumah</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-              </div>
 
             </article>
           </div><!-- End post list item -->
@@ -405,27 +318,32 @@ $hasil=mysqli_query($koneksi,$sql) or die(mysqli_error($koneksi));
             <article>
 
               <div class="post-img">
-                <a href="blog-details.html"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+                <a href="sewa-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
               </div>
               <h2 class="title">
-                <a href="blog-details.html">Rumah Estetik Berhantu</a>
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
                 <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
-              <p class="post-category">Rumah</p>
+              <p class="post-category">LB : 5x6 M   LT : 7x8 M Tahun : 2013</p>
               </h2>
 
-              <div class="d-flex align-items-center">
-                <img src="assets/img/blog/blog-author-3.jpg" alt="" class="img-fluid post-author-img flex-shrink-0">
-                <div class="post-meta">
-                  <p class="post-author-list">Saepul</p>
-                  <h class="post-author-list">Admin</h>
-                  <p class="post-date">
-                    <time datetime="2022-01-01">Feb 20, 2023</time>
-                  </p>
-                </div>
-
+</div>
             </article>
           </div><!-- End post list item -->
-
+          <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active">
+      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
         </div><!-- End blog posts list -->
 
         <div class="blog-pagination">

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Impact Bootstrap Template - Blog Details</title>
+  <title>Detail Sewa</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -42,8 +42,8 @@
   <section id="topbar" class="topbar d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        <i class="bi bi-envelope d-flex align-items-center"><a href="divrejateng@perhutani.co.id">divrejateng@perhutani.co.id</a></i>
+        <i class="bi bi-phone d-flex align-items-center ms-4"><span>(024) 8413631</span></i>
       </div>
       <div class="social-links d-none d-md-flex align-items-center">
         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -54,7 +54,6 @@
     </div>
   </section><!-- End Top Bar -->
 
-  
   <header id="header" class="header d-flex align-items-center">
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
@@ -65,7 +64,7 @@
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="reindex.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <!--
           <li><a href="#about">Tentang Kami</a></li>
           <li><a href="#services">Services</a></li>
@@ -73,35 +72,83 @@
           <li><a href="#team">Team</a></li>
           <li><a href="blog.html">Properti</a></li>
           -->
-<!--
+
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa</a></li>
+              <li><a href="sewa.html">Sewa Aset</a></li>
               <li><a href="kerjasama.html">Kerjasama Aset</a></li>
               <li><a href="pengajuan.html">Pengajuan form</a></li>
-              
+              <!---
               <li><a href="#">Drop Down 4</a></li>
-              
+              -->
             </ul>
           </li>
-        -->
-          <li class="dropdown"><a href="reinfo.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="info.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="reinfo.html">Frequently Asked Questions</a></li>
-              <li><a href="redaftar.html">Tata cara pendaftaran</a></li>
-              <li><a href="rebayar.html">Metode Pembayaran</a></li>
+              <li><a href="info.html">Frequently Asked Questions</a></li>
+              <li><a href="daftar.html">Tata cara pendaftaran</a></li>
+              <li><a href="bayarr.html">Metode Pembayaran</a></li>
             </ul>
           </li>
           <!--
           <li><a href="#contact">Contact</a></li>
           -->
-          <li><a href="reindex.html">Tentang Kami</a></li>
-          <li><a href="rekonsultasi.php">Konsultasi</a></li>
-          <li>
-          <div class="d-grid gap-2 d-md-block">
-            <button class="btn btn-secondary btn-lg" type="button" ><a href="login.php">Login</button></a>
-          </div>
-        </li>
+          <li><a href="index.html#about">Tentang Kami</a></li>
+          <li><a href="konsultasi.html">Konsultasi</a></li>
+          <li class="nav-item dropdown pe-3">
+
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
+            </a><!-- End Profile Iamge Icon -->
+  
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6>Fany Pradita</h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                  <i class="bi bi-gear"></i>
+                  <span>Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                  <i class="bi bi-question-circle"></i>
+                  <span>Need Help?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="login.php">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
           </ul>
         </ul>
        
@@ -116,6 +163,8 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
+
+
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -124,8 +173,8 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>Cara Mendaftar</h2>
-              <p>Halaman ini berisi tentang Tahapan mendaftarkan diri anda menjadi pemohon.</p>
+              <h2>Graha Wana Java</h2>
+              <p>Kartoharjo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63117.</p>
             </div>
           </div>
         </div>
@@ -133,8 +182,8 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="reindex.html">Home</a></li>
-            <li>Cara Daftar</li>
+            <li><a href="index.html">Home</a></li>
+            <li>Detail Sewa</li>
           </ol>
         </div>
       </nav>
@@ -146,37 +195,110 @@
 
         <div class="row g-5">
 
-          <div class="col-lg-8">
+          <div style="width:60%" class="col-lg-8">
 
             <article class="blog-details">
 
               <div class="post-img">
-                <img style="width: 100%;" src="assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                <img src="assets/img/blog/Wananjava.jpg" alt="" class="img-fluid">
               </div>
 
-              <h2 class="title">Daftarkan diri Anda segera dan bergabung bersama kami Perhutani Property.</h2>
+              <h2 class="title">Graha Wana Java Pusdikbang SDM Perhutani</h2>
 
               <div class="meta-top">
                 <ul>
-                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">John Doe</a></li>
+                  <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Saepul</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
-                  </ul>
-         <br>
-         <p style="text-align: justify;"><span style="font-size: medium;">1. Masuk ke website Perhutani Property</span><br>
-          <p style="text-align: justify;"><span style="font-size: medium;">2. Lalu pilih Login pada pojok kanan atas </span><br>
-          <!--
-          <span style="font-size: medium;">a. Pembayaran Finpay (Telkom 021) dapat dilakukan setiap hari pada pukul 08:00 s/d 22:00 WIB</span><br>
-          <span style="font-size: medium;">b. Transfer via Virtual Acccount (VA) melalui bank yang sama dapat dilakukan pada:</span><br>
-          <span style="font-size: medium;">&nbsp; &nbsp; &nbsp; &nbsp;i.&nbsp;&nbsp;&nbsp; Senin - Jumat pada pukul 08:00 s/d 21:00 WIB</span><br>
-          <span style="font-size: medium;">&nbsp; &nbsp; &nbsp;ii.&nbsp;&nbsp;&nbsp; Sabtu, Minggu dan Libur Nasional pada pukul 08:00 s/d 16:00 WIB</span><br>
-          <span style="font-size: medium;">3. Pembayaran melalui Finpay (Telkom 021) dapat dilakukan melalui:</span></p>
+                </ul>
+              </div><!-- End meta top -->
+
+              <div class="content">
+                <div class="row"><div class="col">
+                  <div class="border-radius overflow-hidden">
+                    <table class="table table-striped">
+                      <colgroup><col width="35%"> 
+                        <col width="65%">
+                      </colgroup> 
+                        <tbody>
+                          <tr>
+                            <td class="font-weight-semibold">
+                          Harga
+                          </td> 
+                          <td>
+                          Rp 15.000.000<br></td></tr> 
+                            <td class="font-weight-semibold">
+                            Kategori
+                            </td> 
+                            <td>
+                            Gedung
+                            </td>
+                          </tr> 
+                          <tr>
+                            <td class="font-weight-semibold">
+                          Alamat
+                          </td> 
+                          <td>
+                          Jl. Kali Besar Timur 27, Kota Jakarta Barat, DKI Jakarta<br>
+                          <a href="#peta-aset" data-hash="" data-hash-offset="0" data-hash-offset-lg="100" class="text-2">(Peta Lokasi)</a></td></tr> 
+                          <tr>
+                            <td class="font-weight-semibold">
+                  Luas Tanah
+                </td> <td>
+                  1.835 m<sup>2</sup></td></tr> <tr><td class="font-weight-semibold">
+                  Luas Bangunan
+                </td> <td>
+                  2.044 m<sup>2</sup></td></tr></tbody></table></div></div></div>
+                  <br>
+                  <h5>
+                    Deskripsi
+                  </h5>
+                  <br>
+                <p>
+                  Graha Wana Java Pusdikbang SDM Perhutani yang berada di Kartoharjo Kota Madiun yang dikelola Perhutani Forestry Institute sangat cocok sebagai tempat untuk melangsungkan berbagai macam acara formal seperti pertemuan, workshop, seminar, dan rapat. Selain itu, gedung ini juga bisa menjadi salah satu pilihan terbaik untuk melaksanakan family gathering atau resepsi pernikahan.
+                </p>
+
+                <p>
+                  Karena acara-acara tersebut sangat tidak efektif dan efisien diadakan di tempat dengan luas space yang terbatas, masa menyewa gedung menjadi solusinya.
+                </p>
+                <h5>
+                  Fasilitas Umum
+                </h5>
+                <blockquote>
+                  <p>
+                    Perhutani Forestry Institute mengelola beberapa aset yang kemudian dikomersialisasi dan dapat dinikmati oleh semua masyarakat.
+                  </p>
+                </blockquote>
+
+                <p>
+                  Gedung pertemuan Pusdikbang SDM yang bernama Grha Wana Java mampu menampung sekitar 700 orang, dilengkapi dengan tempat parkir kendaraan yang luas, sound system, meja kursi, panggung (stage), ac dan hot spot (wi-fi).
+                </p>
+
+                <h3>Lokasi Properti.</h3>
+                <!--Google map-->
+        <div class="mb-3">
+          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+        </div><!-- End Google Maps -->
+
+                <!--Google Maps-->
+                <!--
+                <p>
+                  Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
+                  Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
+                  Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
+                </p>
+                <img src="assets/img/blog/Nikah.jpg" class="img-fluid" alt="">
+
+                <h3>Rute Perjalanan.</h3>
+                <p>
+                  Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
+                  Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
+                </p>
+                <p>
+                  Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
+                </p>
           -->
-              
-                        </section>
-                                  
-               
-              <!--
+              </div><!-- End post content -->
 
               <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
@@ -190,10 +312,10 @@
                   <li><a href="#">Tips</a></li>
                   <li><a href="#">Marketing</a></li>
                 </ul>
-              </div> End meta bottom 
+              </div><!-- End meta bottom -->
 
-            </article> End blog post 
-
+            </article><!-- End blog post -->
+<!--
             <div class="post-author d-flex align-items-center">
               <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
               <div>
@@ -208,11 +330,8 @@
                 </p>
               </div>
             </div> End post author -->
-<!--
             <div class="comments">
-
-              <h4 class="comments-count">8 Comments</h4>
-
+<!--
               <div id="comment-1" class="comment">
                 <div class="d-flex">
                   <div class="comment-img"><img src="assets/img/blog/comments-1.jpg" alt=""></div>
@@ -225,7 +344,7 @@
                     </p>
                   </div>
                 </div>
-              </div> End comment #1 
+              </div>
 
               <div id="comment-2" class="comment">
                 <div class="d-flex">
@@ -267,11 +386,11 @@
                       </div>
                     </div>
 
-                  </div> End comment reply #2
+                  </div>
 
-                </div> End comment reply #1
+                </div>
 
-              </div> End comment #2
+              </div>
 
               <div id="comment-3" class="comment">
                 <div class="d-flex">
@@ -286,7 +405,7 @@
                   </div>
                 </div>
 
-              </div> End comment #3 
+              </div>
 
               <div id="comment-4" class="comment">
                 <div class="d-flex">
@@ -300,53 +419,111 @@
                   </div>
                 </div>
 
-              </div> End comment #4 -->
-<!--
-              <div class="reply-form">
+              </div>End comment #4 -->
 
-                <h4>Leave a Reply</h4>
-                <p>Your email address will not be published. Required fields are marked * </p>
-                <form action="">
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="Your Website">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-                  <button type="submit" class="btn btn-primary">Post Comment</button>
 
-                </form>
-
-              </div>
-
-            </div> End blog comments 
+            </div><!-- End blog comments -->
 
           </div>
 
-          <div class="col-lg-4">
+          <div style="    width: 40%;" class="col-lg-4">
 
             <div class="sidebar">
 
-              <div class="sidebar-item search-form">
-                <h3 class="sidebar-title">Search</h3>
-                <form action="" class="mt-3">
-                  <input type="text">
-                  <button type="submit"><i class="bi bi-search"></i></button>
+              <!-- ======= FORM PENGAJUAN ========-->
+              <div class="reply-form">
+
+                <h4>Form Pengajuan</h4>
+                <form action="">
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="inputEmail4">Nama</label>
+                      <input name="name" type="text" class="form-control" placeholder="Your Name*" required>
+                    </div>
+                    <br>
+                    <div class="col-md-6 form-group">
+                      <label for="inputEmail4">Gmail</label>
+                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <label for="inputEmail4">No.HP</label>
+                      <input name="name" type="text" class="form-control" placeholder="NO.HP*">
+                    </div>
+                    <br>
+                    <div class="col-md-6 form-group">
+                      <label for="inputEmail4">No.KTP</label>
+                      <input name="email" type="text" class="form-control" placeholder="No.KTP*">
+                    </div>
+                    </div>
+                  <br>
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Instansi</label>
+                      <select class="form-control">
+                        <option>Pilih</option>
+                        <option>Perusahaan</option>
+                        <option>Perorangan</option>
+                        <option>Organisasi</option>
+                      </select>
+                    </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Nama Instansi</label>
+                      <textarea name="comment" class="form-control" placeholder="Instansimu*"></textarea>
+                    </div>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Ajukan permohonan</button>
+
                 </form>
-              </div> End sidebar search formn-->
-<!--
+
+              <?php
+              //syntax php untuk simpan ke database
+              if (isset($_POST['simpan'])) {
+                # code...
+                $query=mysql_query("INSERT INTO pengajuan(`nama`, `email`, `no_ktp`, 'instansi', 'no_telepon') VALUES('".$_POST['nama']."','".$_POST['email']."','".$_POST['no_ktp']."','".$_POST['instansi']."','".$_POST['no_telepon']."')");
+                if ($query) {
+                # code...
+                echo "data berhasil disimpan";
+                }else{
+                echo "data gagal disimpan".mysql_error();
+                }
+              }
+              ?>
+
+              </div>
+            </div><!-- End blog comments -->
+            <br>
+            <div class="sidebar">
+
+              <!-- ======= FORM PENGAJUAN ========-->
+              <div class="reply-form">
+
+                <div class="card-body"><h3 class="text-color-dark font-weight-semibold text-5 d-block mt-1 mb-2">Kenapa PerhutaniPro?</h3>
+                  <hr> <h5 class="font-weight-bold text-4 pb-1 mb-1">
+                    <i class="icon-check icons text-color-primary"></i> &nbsp; Milik Negara</h5> 
+                    <p class="text-3-5 text-color-dark mb-4">Resmi, aman, transparan, dan akuntabel karena semua aset dikelola langsung oleh negara.</p> 
+                    <h5 class="font-weight-bold text-4 pb-1 mb-1">
+                      <i class="icon-check icons text-color-primary"></i> &nbsp; Mudah</h5> <p class="text-3-5 text-color-dark mb-4">Proses efisien dengan prosedur yang jelas, transparan dan mudah untuk mitra.</p> 
+                      <h5 class="font-weight-bold text-4 pb-1 mb-1">
+                        <i class="icon-check icons text-color-primary"></i> &nbsp; Profesional</h5> 
+                        <p class="text-3-5 text-color-dark mb-4">Memiliki berbagai layanan konsultasi properti dari profesional yang tersertifikasi.</p> 
+                        <h5 class="font-weight-bold text-4 pb-1 mb-1"><i class="icon-check icons text-color-primary"></i> &nbsp; Fleksibel</h5> 
+                        <p class="text-3-5 text-color-dark mb-0">Program kerja sama pemanfaatan properti dapat disesuaikan dengan kebutuhan bisnis Anda.</p>
+                </div>
+                
+              </div>
+
+            </div><!-- End blog comments -->
+          </div>
+
+                <!---
               <div class="sidebar-item categories">
                 <h3 class="sidebar-title">Categories</h3>
                 <ul class="mt-3">
@@ -357,7 +534,7 @@
                   <li><a href="#">Creative <span>(8)</span></a></li>
                   <li><a href="#">Educaion <span>(14)</span></a></li>
                 </ul>
-              </div> End sidebar categories
+              </div>
 
               <div class="sidebar-item recent-posts">
                 <h3 class="sidebar-title">Recent Posts</h3>
@@ -370,7 +547,7 @@
                       <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
                       <time datetime="2020-01-01">Jan 1, 2020</time>
                     </div>
-                  </div> End recent post item
+                  </div>
 
                   <div class="post-item">
                     <img src="assets/img/blog/blog-recent-2.jpg" alt="">
@@ -378,7 +555,7 @@
                       <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
                       <time datetime="2020-01-01">Jan 1, 2020</time>
                     </div>
-                  </div> End recent post item
+                  </div> 
 
                   <div class="post-item">
                     <img src="assets/img/blog/blog-recent-3.jpg" alt="">
@@ -386,7 +563,7 @@
                       <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
                       <time datetime="2020-01-01">Jan 1, 2020</time>
                     </div>
-                  </div> End recent post item
+                  </div>
 
                   <div class="post-item">
                     <img src="assets/img/blog/blog-recent-4.jpg" alt="">
@@ -394,7 +571,7 @@
                       <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
                       <time datetime="2020-01-01">Jan 1, 2020</time>
                     </div>
-                  </div> End recent post item
+                  </div>
 
                   <div class="post-item">
                     <img src="assets/img/blog/blog-recent-5.jpg" alt="">
@@ -402,12 +579,12 @@
                       <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
                       <time datetime="2020-01-01">Jan 1, 2020</time>
                     </div>
-                  </div> End recent post item
+                  </div>
 
                 </div>
 
-              </div> End sidebar recent posts-->
-<!--
+              </div>
+
               <div class="sidebar-item tags">
                 <h3 class="sidebar-title">Tags</h3>
                 <ul class="mt-3">
@@ -423,110 +600,6 @@
                   <li><a href="#">Tips</a></li>
                   <li><a href="#">Marketing</a></li>
                 </ul>
-              </div> End sidebar tags
-
-            </div> End Blog Sidebar 
-
-          </div>
-        </div>
-
-      </div>
-    </section>End Blog Details Section -->
-    <!-- ======= F.A.Q Section ======= -->
-   
- <!-- ======= Frequently Asked Questions Section ======= 
-    <section href="#FAQ" id="faq" class="faq">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="content px-xl-5">
-              <h3>Frequently Asked <strong>Questions</strong></h3>
-              <p>
-                Setiap warga Negara Indonesia dan/atau badan hukum Indonesia sebagaimana diatur dalam Undang-Undang Republik Indonesia Nomor 14 Tahun 2008 tentang Keterbukaan Informasi Publik.
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-8">
-
-            <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                    <span class="num">1.</span>
-                    Apa Itu Perhutani Property?
-                  </button>
-                </h3>
-                <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Perhutani Property adalah salah satu bidang usaha yang dimiliki oleh Perhutani yang berfokus pada peminjaman Aset Perhutani berupa Tanah dan Gedung.
-                  </div>
-                </div>
-              </div> 
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
-                    <span class="num">2.</span>
-                    Bagaimana cara saya mendaftarkan diri?
-                  </button>
-                </h3>
-                <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    <p>1. Buat akun untuk melanjutkan pendaftaran pada menu “Masuk ke Akun”.</p>
-                    <p>2. Setelah sudah buat akun, selanjutnya kamu perlu melengkapi data-data lebih lanjut dengan cara klik “Lihat Profil”, lalu lengkapi seluruh data pada menu Nomor NIK, Nama dan Instansi.</p>
-                    <p>3. Terakhir, akun anda sudah tersimpan.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
-                    <span class="num">3.</span>
-                    Bagaimana cara saya melakukan pembayaran?
-                  </button>
-                </h3>
-                <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Pembayaran hanya bisa dilakukan via online dan tidak menerima cardless
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4">
-                    <span class="num">4.</span>
-                    Bagaimana cara saya memperpanjang masa pinjaman/sewa?
-                  </button>
-                </h3>
-                <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-                  </div>
-                </div>
-              </div>
-
-              <div class="accordion-item">
-                <h3 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5">
-                    <span class="num">5.</span>
-                    Jika saya mempunyai pertanyaan lebih lanjut, bagaimana saya dapat menghubungi?
-                  </button>
-                </h3>
-                <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                  <div class="accordion-body">
-                    <div _ngcontent-jib-c64="" class="content-collapse text-justify">                  <p>Anda dapat menghubungi kami melalui 3 cara, yaitu:</p>
-                      <ol>
-                        <li>Email ke humas@perhutani.co.id,</li>
-                        <li>Telephon ke nomor Cs Perhutani (021) 7805730,</li>
-                        <li>Bisa datang ke Kantor Perhutani terdekat.</li>
-                      </ol>
-                </div>
               </div>
 
             </div>
@@ -535,12 +608,7 @@
         </div>
 
       </div>
-    </section>End Frequently Asked Questions Section -->
-
-<!-- ======= TATA CARA PENDAFTARAN ======= -->
-
-<!-- ======= METODE PEMBAYARAN ======= -->
-
+    </section> End Blog Details Section -->
 
   </main><!-- End #main -->
 
@@ -551,9 +619,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Perhutani Property.</span>
+            <span>Impact</span>
           </a>
-          <p>Situs yang menyediakan berbagai pilihan properti dengan fasilitas yang bervariatif , selain itu kami juga memiliki berbagai aset dengan lokasi yang strategis sehingga sangat efektif untuk menunjang berbagai kegiatan bisnis.</p>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
