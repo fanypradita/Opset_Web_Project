@@ -1,32 +1,46 @@
 <?php
-//cek button    
-    if ($_POST['Submit'] == "Submit") {
 
-include('config.php');
+$nama = $email = $pesan = "";
 
-    $nama               = $_POST['nama'];
-    $email              = $_POST['email'];
-    $no_ktp             = $_POST['pesan'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $nama = test_input($_POST["nama"]);
+  $email = test_input($_POST["email"]);
+  $pesan = test_input($_POST["pesan"]);
 
-    //validasi data data kosong
-    if (empty($_POST['nama'])||empty($_POST['email'])||empty($_POST['pesan'])) {
-        ?>
-            <script language="JavaScript">
-                alert('Data Harap Dilengkapi!');
-                document.location='download-script-form-input-data.php';
-            </script>
-        <?php
-    
-    //Masukan data ke Table
-    $sql_simpan = mysqli_query ($conn,"INSERT into konsultasi (nama, email, pesan) VALUES ('$nama', '$email', '$pesan')");
-    if($sql_simpan) {
-        echo "Data berhasil disimpan";
-       } else {
-        echo "Data gagal disimpan";
-       }
-     }
-    }
+  // connect to MySQL database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "db_perhutanii";
+
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+  // check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+
+  // insert data into database
+  $sql = "INSERT INTO konsultasi (nama, email, pesan) VALUES ('$nama', '$email', '$pesan')";
+
+  if (mysqli_query($conn, $sql)) {
+    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+    // header("location:konsultasi.html");
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
+
+  mysqli_close($conn);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
 // mengalihkan ke halaman index.php
-header("location:konsultasi.html");
+
+
 ?>
-       ?>
