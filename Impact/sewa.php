@@ -204,13 +204,13 @@
               </select>
               
             </div>-->
-            <!-- <div class="d-flex align-items-start me-4">
+            <div class="d-flex align-items-start me-4">
 
               <input class="form-control mr-sm-2" name="cari" type="text" placeholder="Kata Kunci" aria-label="Search" autofocus autocomplete="off">
               <br>  
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 
-          </div> -->
+          </div>
           </form>
 
         </nav>
@@ -224,93 +224,103 @@
 
         <div class="row gy-4 posts-list">
 
-        <div class="row">
-            
-        <?php
-          // connect to the MySQL database
-          $host = "localhost";
-          $username = "root";
-          $password = "";
-          $dbname = "db_perhutanii";
-          $conn = mysqli_connect($host, $username, $password, $dbname);
-
-          // check if the connection is successful
-          if (!$conn) {
-            die("Connection failed: " . mysqli_connect_error());
-          }
-
-          // process the search query
-          if (isset($_GET["search"])) {
-            $search_query = $_GET["search"];
-            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
-          } else {
-            $sql = "SELECT * FROM opset";
-          }
-
-          // retrieve data from the MySQL database with pagination
-          $items_per_page = 6;
-          if (isset($_GET["page"])) {
-            $current_page = $_GET["page"];
-          } else {
-            $current_page = 1;
-          }
-          $offset = ($current_page - 1) * $items_per_page;
-          $sql .= " LIMIT $offset, $items_per_page";
-
-          $result = mysqli_query($conn, $sql);
-
-          // generate HTML code for the search bar
-          echo '<form class="form-inline mb-4" method="get">';
-          echo '<div class="input-group">';
-          echo '<input type="text" class="form-control" name="search" placeholder="Search">';
-          echo '<div class="input-group-append">';
-          echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
-          echo '</div>';
-          echo '</div>';
-          echo '</form>';
-
-          // generate HTML code for each item in the loop
-          echo '<div class="row">';
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="col-xl-4 col-md-6">';
-            echo '<article>';
-            echo '<div class="post-img">';
-            echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-            echo '</div>';
-            echo '<h2 class="title">';
-            echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
-            echo '<p class="post-category">' . $row["alamat"] . '</p>';
-            echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-            echo '</h2>';
-            echo '</article>';
-            echo '</div>';
-          }
-          echo '</div>';
-
-          // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM opset";
-          $result = mysqli_query($conn, $sql);
-          $row = mysqli_fetch_assoc($result);
-          $total_items = $row["total_items"];
-          $total_pages = ceil($total_items / $items_per_page);
-          ?>
-
-          <?php
-          echo '<ul class="pagination">';
-          for ($i = 1; $i <= $total_pages; $i++) {
-            echo '<li class="page-item ' . ($current_page == $i ? "active" : "") . '">';
-            echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
-            echo '</li>';
-          }
-          echo '</ul>';
-
-          // close the MySQL database connection
-          mysqli_close($conn);
-          ?>
+          <div class="col-xl-4 col-md-6">
+            <article>
+              
+              <div class="post-img">
+                <a href="sewa-details.php"><img src="assets/img/blog/rm1.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
+              </h2>
 
 
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="sewa-details.php"><img src="assets/img/blog/tnh1.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="sewa-details.php">TANAH STRATEGIS</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Tanah Kavling</p>
+              </h2>
+
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="sewa-details.php"><img src="assets/img/blog/rm3.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
+              </h2>
+
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="sewa-details.php"> <img src="assets/img/blog/apt1.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="sewa-details.php">APARTEMENT MODERN</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Apartement</p>
+              </h2>
+
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="sewa-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">Rumah</p>
+              </h2>
+
+
+            </article>
+          </div><!-- End post list item -->
+
+          <div class="col-xl-4 col-md-6">
+            <article>
+
+              <div class="post-img">
+                <a href="sewa-details.php"><img src="assets/img/blog/rm4.jpeg" alt="" class="img-fluid"></a>
+              </div>
+              <h2 class="title">
+                <a href="sewa-details.php">Rumah Estetik Berhantu</a>
+                <p class="post-category"> Jl. Sendirian No.1 Kota Semarang</p>
+              <p class="post-category">LB : 5x6 M   LT : 7x8 M Tahun : 2013</p>
+              </h2>
+
+</div>
+            </article>
+          </div><!-- End post list item -->
           <nav aria-label="...">
-  <!-- <ul class="pagination">
+  <ul class="pagination">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
@@ -322,7 +332,7 @@
     <li class="page-item">
       <a class="page-link" href="#">Next</a>
     </li>
-  </ul> -->
+  </ul>
 </nav>
         </div><!-- End blog posts list -->
 
