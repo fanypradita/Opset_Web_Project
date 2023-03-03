@@ -376,12 +376,13 @@
               <div class="reply-form">
 
                 <h4>Konsultasi</h4>
-                <form action="simpan-konsul.php" method="POST">
+                
+                <form method="POST">
                   <br>
                   <div class="row">
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">Nama</label>
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
+                      <input name="nama" type="text" class="form-control" placeholder="Your Name*">
                     </div>
                     <br>
                     <div class="col-md-6 form-group">
@@ -392,12 +393,55 @@
                   <br>
                   <div class="form-group">
                     <label for="exampleFormControlTextarea1">Message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea name="pesan" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
                   <br>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <tr>
+                  <td colspan="2"><input type="submit" name="simpan" value="Simpan"></td>
+                </tr>
 
                 </form>
+                <?php
+
+                $nama = $email = $pesan = "";
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  $nama = test_input($_POST["nama"]);
+                  $email = test_input($_POST["email"]);
+                  $pesan = test_input($_POST["pesan"]);
+
+                  // connect to MySQL database
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "db_perhutanii";
+
+                  $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                  // check connection
+                  if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                  }
+
+                  // insert data into database
+                  $sql = "INSERT INTO konsultasi (nama, email, pesan) VALUES ('$nama', '$email', '$pesan')";
+
+                  if (mysqli_query($conn, $sql)) {
+                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+                  } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                  }
+
+                  mysqli_close($conn);
+                }
+
+                function test_input($data) {
+                  $data = trim($data);
+                  $data = stripslashes($data);
+                  $data = htmlspecialchars($data);
+                  return $data;
+                }
+                ?>
 
               </div>
 
