@@ -74,8 +74,8 @@
           -->
           <li class="dropdown"><a href="#"><span>Properti</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa</a></li>
-              <li><a href="kerjasama.html">Kerjasama Aset</a></li>
+              <li><a href="sewa.php">Sewa</a></li>
+              <li><a href="kerjasama.php">Kerjasama Aset</a></li>
               <!--
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
@@ -92,7 +92,7 @@
           <li><a href="#contact">Contact</a></li>
           -->
           <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="konsultasi.html">Konsultasi</a></li>
+          <li><a href="konsultasi.php">Konsultasi</a></li>
           </ul>
         </ul>
       </nav><!-- .navbar -->
@@ -195,6 +195,51 @@
               </tr>
           </table>
       </form>
+      <?php
+
+                $nama = $email = $no_telepon = $no_ktp = $instansi = "";
+
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                  $id_pengajuan = test_input($_POST["id_pengajuan"]);                  
+                  $nama = test_input($_POST["nama"]);
+                  $email = test_input($_POST["email"]);
+                  $no_telepon = test_input($_POST["no_telepon"]);
+                  $no_ktp = test_input($_POST["no_ktp"]);
+                  $instansi = test_input($_POST["instansi"]);
+
+
+                  // connect to MySQL database
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "db_perhutanii";
+
+                  $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                  // check connection
+                  if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                  }
+
+                  // insert data into database
+                  $sql = "INSERT INTO pengajuan (id_pengajuan, nama, email, no_telepon, no_ktp, instansi) VALUES ('$id_pengajuan', '$nama', '$email', '$no_telepon', '$no_ktp', '$instansi')";
+
+                  if (mysqli_query($conn, $sql)) {
+                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+                  } else {
+                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                  }
+
+                  mysqli_close($conn);
+                }
+
+                function test_input($data) {
+                  $data = trim($data);
+                  $data = stripslashes($data);
+                  $data = htmlspecialchars($data);
+                  return $data;
+                }
+                ?>
       </div>
       <br>
                </main><!-- End #main -->
