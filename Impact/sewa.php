@@ -295,14 +295,32 @@
           $total_pages = ceil($total_items / $items_per_page);
           ?>
 
+
+          <div class="pagination">
+            <?php if ($current_page > 1) : ?>
+              <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>
+            <?php endif; ?>
+            <ul class="pagination-list">
+              <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
+                <li class="page-item <?php echo ($current_page == $i) ? 'active' : ''; ?>">
+                  <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                </li>
+              <?php endfor; ?>
+            </ul>
+            <?php if ($current_page < $total_pages) : ?>
+              <a href="?page=<?php echo $current_page + 1; ?>" class="page-link">Next &raquo;</a>
+            <?php endif; ?>
+          </div>
+          
           <?php
-          echo '<ul class="pagination">';
-          for ($i = 1; $i <= $total_pages; $i++) {
-            echo '<li class="page-item ' . ($current_page == $i ? "active" : "") . '">';
-            echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
-            echo '</li>';
-          }
-          echo '</ul>';
+          
+          // echo '<ul class="pagination">';
+          // for ($i = 1; $i <= $total_pages; $i++) {
+          //   echo '<li class="page-item ' . ($current_page == $i ? "active" : "") . '">';
+          //   echo '<a class="page-link" href="?page=' . $i . '">' . $i . '</a>';
+          //   echo '</li>';
+          // }
+          // echo '</ul>';
 
           // close the MySQL database connection
           mysqli_close($conn);

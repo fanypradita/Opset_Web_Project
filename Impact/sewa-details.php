@@ -27,6 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  
 
   <!-- =======================================================
   * Template Name: Impact - v1.2.0
@@ -198,10 +199,36 @@
           <div style="width:60%" class="col-lg-8">
 
             <article class="blog-details">
-
-              <div class="post-img">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/img/blog/Wananjava.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img/blog/Nikah.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="assets/img/blog/rm1.jpeg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+              <!-- <div class="post-img">
+                
                 <img src="assets/img/blog/Wananjava.jpg" alt="" class="img-fluid">
-              </div>
+              </div> -->
 
               <h2 class="title">Graha Wana Java Pusdikbang SDM Perhutani</h2>
 
@@ -276,9 +303,62 @@
 
                 <h3>Lokasi Properti.</h3>
                 <!--Google map-->
-        <div class="mb-3">
-          <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-        </div><!-- End Google Maps -->
+                <p>lokasi anda saat ini: <span id="lokasi"></span></p>
+                <script type="text/javascript">   
+    var marker;
+    function initialize(){
+        // Variabel untuk menyimpan informasi lokasi
+        var infoWindow = new google.maps.InfoWindow;
+        //  Variabel berisi properti tipe peta
+        var mapOptions = {
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        } 
+        // Pembuatan peta
+        var peta = new google.maps.Map(document.getElementById('googleMap'), mapOptions);      
+		// Variabel untuk menyimpan batas kordinat
+        var bounds = new google.maps.LatLngBounds();
+        // Pengambilan data dari database MySQL
+        <?php
+		// Sesuaikan dengan konfigurasi koneksi Anda
+			$host 	  = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname   = "db_perhutanii";
+			$db 	  = new mysqli($host,$username,$password,$dbname);
+			
+			$query = $db->query("SELECT * FROM lokasi ORDER BY nama_lokasi ASC");
+			while ($row = $query->fetch_assoc()) {
+				$nama = $row["nama_lokasi"];
+				$lat  = $row["latitude"];
+				$long = $row["longitude"];
+				echo "addMarker($lat, $long, '$nama');\n";
+			}
+        ?> 
+        // Proses membuat marker 
+        function addMarker(lat, lng, info){
+            var lokasi = new google.maps.LatLng(lat, lng);
+            bounds.extend(lokasi);
+            var marker = new google.maps.Marker({
+                map: peta,
+                position: lokasi
+            });       
+            peta.fitBounds(bounds);
+            bindInfoWindow(marker, peta, infoWindow, info);
+         }
+        // Menampilkan informasi pada masing-masing marker yang diklik
+        function bindInfoWindow(marker, peta, infoWindow, html){
+            google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(html);
+            infoWindow.open(peta, marker);
+          });
+        }
+    }
+</script>
+                <div class="mb-3">
+                  
+  <div id="googleMap" style="width:1100px;height:500px;"></div>
+                  <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
+                </div><!-- End Google Maps -->
 
                 <!--Google Maps-->
                 <!--

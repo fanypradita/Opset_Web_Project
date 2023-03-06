@@ -405,7 +405,8 @@
         </div><!-- End blog posts list -->
 
         <div class="blog-pagination">
-          <ul class="justify-content-center">            <li class="page-item disabled">
+          <ul class="justify-content-center">            
+            <li class="page-item disabled">
             <a class="page-link" href="#" tabindex="-1">Previous</a>
           </li>
           <li><a href="#">1</a></li>
