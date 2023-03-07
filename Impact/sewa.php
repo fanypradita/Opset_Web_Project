@@ -188,7 +188,7 @@
             <li><a href="index.html">Home</a></li>
             <li>Sewa Aset</li>
           </ol>
-          <br>
+          
 <!--
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
@@ -262,7 +262,7 @@
           // generate HTML code for the search bar
           echo '<form class="form-inline mb-4" method="get">';
           echo '<div class="input-group">';
-          echo '<input type="text" class="form-control" name="search" placeholder="Search">';
+          echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
           echo '<div class="input-group-append">';
           echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
           echo '</div>';
@@ -270,9 +270,9 @@
           echo '</form>';
 
           // generate HTML code for each item in the loop
-          echo '<div class="row">';
+          echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="col-xl-4 col-md-6">';
+            echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
             echo '<article>';
             echo '<div class="post-img">';
             echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
@@ -295,22 +295,26 @@
           $total_pages = ceil($total_items / $items_per_page);
           ?>
 
-
+<div class="pagination justify-content-center">
           <div class="pagination">
             <?php if ($current_page > 1) : ?>
-              <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>
-            <?php endif; ?>
-            <ul class="pagination-list">
+              <div class="page-item">
+                <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>
+              </div>
+              <?php endif; ?>
               <?php for ($i = 1; $i <= $total_pages; $i++) : ?>
-                <li class="page-item <?php echo ($current_page == $i) ? 'active' : ''; ?>">
+                <div class="page-item <?php echo ($current_page == $i) ? 'active' : ''; ?>">
                   <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                </li>
+              </div>
               <?php endfor; ?>
-            </ul>
+              
             <?php if ($current_page < $total_pages) : ?>
-              <a href="?page=<?php echo $current_page + 1; ?>" class="page-link">Next &raquo;</a>
-            <?php endif; ?>
+              <div class=page-item>
+                <a href="?page=<?php echo $current_page + 1; ?>" class="page-link">Next &raquo;</a>
+              </div>
+              <?php endif; ?>
           </div>
+            </div>
           
           <?php
           

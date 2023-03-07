@@ -283,7 +283,127 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <!-- Profile Edit Form -->
                   <div class="update-profile">
-                    <form>
+                  <?php
+session_start();
+          include 'config.php';
+          
+          $npk = $_SESSION['npk'];
+
+          if(isset($_POST['update_profile'])){
+
+            $update_nama = mysqli_real_escape_string($conn, $_POST['update_nama']);
+            $update_email = mysqli_real_escape_string($conn, $_POST['update_email']);
+
+            mysqli_query($conn, "UPDATE `user` SET nama = '$update_nama', email = '$update_email' WHERE npk = '$npk'");
+
+            $old_pass = $_POST['old_pass'];
+            $update_password = mysqli_real_escape_string($conn, md5($_POST['update_password']));
+            $new_pass = mysqli_real_escape_string($conn, md5($_POST['new_pass']));
+            $confirm_password = mysqli_real_escape_string($conn, md5($_POST['confirm_password']));
+
+            if(!empty($update_password) || !empty($new_password) || !empty($confirm_password)){
+                if($update_password != $old_pass){
+                  $message[] = 'old password not matched!confirm password not matched!';
+                }elseif($new_pass != $confirm_password){
+                  $message[] = 'old password not matched!';
+                }else{
+                  mysqli_query($conn, "UPDATE `user` SET password = '$confirm_password' WHERE npk = '$npk'");
+                  $message[] = 'password updated successfully!';
+                }
+            }
+
+            $update_image = $_FILES['update_image']['name'];
+            $update_image_size = $_FILES['update_image']['size'];
+            $update_image_tmp_name = $_FILES['update_image']['tmp_name'];
+            $update_image_folder = 'uploaded_img/'.$update_image;
+
+            if(!empty($update_image)){
+                if($update_images_size > 2000000){
+                  $message[] = 'image is too large';
+                }else{
+                  $images_update_query = mysqli_query($conn, "UPDATE `user` SET image = '$update_images' WHERE npk = '$npk'");
+                  if($images_update_query){
+                      move_uploaded_file($update_images_tmp_name, $update_images_folder);
+                  }
+                  $message[] = 'image updated succssfully!';
+                }
+            }
+
+          }
+
+          ?>
+
+            <?php
+                $select = mysqli_query($conn, "SELECT * FROM user WHERE npk = '$npk'") or die('query failed');
+                if(mysqli_num_rows($select) > 0){
+                  $fetch = mysqli_fetch_assoc($select);
+                }
+            ?>
+
+            <form action="" method="post" enctype="multipart/form-data">
+                <?php
+                  if($fetch['images'] == ''){
+                      echo '<img src="images/default-avatar.png">';
+                  }else{
+                      echo '<img src="uploaded_img/'.$fetch['images'].'">';
+                  }
+                  if(isset($message)){
+                      foreach($message as $message){
+                        echo '<div class="message">'.$message.'</div>';
+                      }
+                  }
+                ?>
+      <div class="row mb-3">
+
+          <div class="row mb-3">
+            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama</label>
+              <div class="col-md-8 col-lg-9">
+                <input type="text" name="update_nama" value="<?php echo $fetch['nama']; ?>" class="box">
+              </div>
+          </div>
+          <!--  -->
+          <div class="row mb-3">
+            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email</label>
+              <div class="col-md-8 col-lg-9">
+                <input  type="email" name="update_image" value="<?php echo $fetch['email']; ?>" class="box">
+              </div>
+          </div>
+          <!--  -->
+          <div class="row mb-3">
+            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Foto</label>
+              <div class="col-md-8 col-lg-9">
+                <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box">
+              </div>
+          </div>
+          <!--  -->
+          <div class="row mb-3">
+            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Old Password</label>
+              <div class="col-md-8 col-lg-9">
+            <input type="password" name="update_password" placeholder="enter previous password" class="box">
+              </div>
+          </div>
+          <!--  -->
+          <div class="row mb-3">
+            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+              <div class="col-md-8 col-lg-9">
+              <input type="password" name="new_pass" placeholder="enter new password" class="box">
+              </div>
+          </div>
+          <!--  -->
+          <div class="row mb-3">
+            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Konfirmasi Password</label>
+              <div class="col-md-8 col-lg-9">
+            <input type="password" name="confirm_password" placeholder="confirm new password" class="box">
+              </div>
+          </div>
+          <!--  -->
+          
+      <input type="submit" value="update profile" name="update_profile" class="btn">
+      <a href="login.php" class="delete-btn">go back</a>
+                </div>
+                </div>
+
+                    <!-- <form>
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
@@ -352,7 +472,7 @@
                     </div>
                         </div>
                         </div>
-                        </div>
+                        </div> -->
 <!--
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
