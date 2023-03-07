@@ -36,6 +36,7 @@ if (isset($_POST['submit'])) {
                 $email = "";
                 $_POST['password'] = "";
                 $_POST['cpassword'] = "";
+                echo '<script> window.location = "login.php"</script>';
                 
             } else {
                 echo "<script>alert('Username Telah Digunakan !.')</script>";
