@@ -1,3 +1,7 @@
+<?php
+session_start();
+include "config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -175,7 +179,7 @@
       <nav>
         <div class="container">
           <ol>
-            <li><a href="index.php">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li>User</li>
             <li>profile</li>
           </ol>
@@ -191,7 +195,7 @@
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
               <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <h2>Fany Pradita</h2>
+              <h2><?php echo $_SESSION['username']; ?></h2>
               <h3>CV.Teknologi kurniatama</h3>
               <!--
               <div class="social-links mt-2">
