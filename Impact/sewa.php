@@ -261,7 +261,7 @@
 
           // generate HTML code for the search bar
           echo '<form class="form-inline mb-4" method="get">';
-          echo '<div class="input-group">';
+          echo '<div class="input-group" style="width: 97.5%;">';
           echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
           echo '<div class="input-group-append">';
           echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';

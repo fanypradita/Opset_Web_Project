@@ -220,12 +220,14 @@
                       <div class="col-lg-8">
                         <div class="card-body">
                           <h4 class="card-title mb-1 text-4 font-weight-bold">Feasibility Study</h4> 
+                          <br>
                   <p style="font-size:14px" class="card-text mb-2">Analisa kelayakan atas suatu proposal rencana pengembangan bisnis terhadap aset. Cakupan kajian meliputi kelaikan aspek legal, teknis, pasar, ekonomi dan keuangan.</p></div></div></div></div>
                   <div class="card mb-4">
                     <div class="row g-0">
                       <div class="col-lg-8">
                         <div class="card-body">
                           <h4 class="card-title mb-1 text-4 font-weight-bold">Highest and Best Use Analysis</h4> 
+                          <br>
                           <p style="font-size:14px" class="card-text mb-2">Analisa opsi peruntukan tertinggi dan terbaik atas pengembangan suatu aset yang under utilized. Produk ini digunakan dalam hal pemilik aset belum dapat menentukan opsi pengembangan yang paling tepat, paling sesuai dan menguntungkan terhadap aset tersebut.</p></div></div> <div class="col-lg-4">
                     <img src="https://aesia.kemenkeu.go.id/api/v1/user_files/uploads/konsultasi-jenis-layanan-2.jpg" alt="..." class="img-fluid p-relative left-1 rounded-end"></div></div></div>
                     <div class="card mb-4">
@@ -235,6 +237,7 @@
                           <div class="col-lg-8">
                             <div class="card-body">
                               <h4 class="card-title mb-1 text-4 font-weight-bold">Concept Development</h4> 
+                              <br>
                       <p style="font-size:14px" class="card-text mb-2">Analisa atas aset berupa kawasan. Kajian ini dilakukan dalam rangka pemetaan/ zonasi sekaligus mengidentifikasi opsi pengembangan aset yang paling sesuai atas masing – masing zonasi pada suatu kawasan tersebut.</p></div></div></div></div>
                   </div><!-- End post content -->
 
@@ -359,9 +362,6 @@
 
               </div>End comment #4 -->
 
-              <div class="reply-form">
-
-              </div>
 
             </div><!-- End blog comments -->
 
