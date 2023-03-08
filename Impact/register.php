@@ -100,7 +100,8 @@ if (isset($_POST['submit'])) {
             </div>
             <p class="login-register-text">Uploud Foto Profil</p>
             <div class="input-group">
-                <input type="file" placeholder="" name="" value="<?php echo $foto; ?>" required>
+            <form action="" method="post" enctype="multipart/form-data">
+		<input type="file" name="file">
             </div >
             
             <div class="input-group">

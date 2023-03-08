@@ -1,7 +1,13 @@
-<?php
+<?php  
 session_start();
 include "config.php";
-?>
+$result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username = username");
+
+    if($user_data = mysqli_fetch_array($result)) {         
+        echo "<tr>";
+        
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,9 +89,11 @@ include "config.php";
 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.php">Sewa</a></li>
+              <li><a href="sewa.php">Sewa Aset</a></li>
               <li><a href="kerjasama.php">Kerjasama Aset</a></li>
+              <!---
               <li><a href="pengajuan.html">Pengajuan form</a></li>
+              -->
               <!---
               <li><a href="#">Drop Down 4</a></li>
               -->
@@ -102,66 +110,69 @@ include "config.php";
           <li><a href="#contact">Contact</a></li>
           -->
           <li><a href="index.html#about">Tentang Kami</a></li>
-          <li><a href="konsultasi.html">Konsultasi</a></li>
- 
-        <li class="nav-item dropdown pe-3">
+          <li><a href="konsultasi.php">Konsultasi</a></li>
+          <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="logout.php">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+              <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
+            </a><!-- End Profile Iamge Icon -->
+  
+            <ul class="dropdown-menu ">
+              
+                <li class="dropdown-header">
+                <h6>Fany Pradita</h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+                  <i class="bi bi-person"></i>
+                  <span>My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+                  <i class="bi bi-gear"></i>
+                  <span>Account Settingss</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                  <i class="bi bi-question-circle"></i>
+                  <span>Need Help?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="logout.php">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span>Sign Out</span>
+                </a>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
+          </ul>
+        </ul>
+       
       </ul>
     </nav><!-- End Icons Navigation -->
 
+      </nav><!-- .navbar -->
   </header><!-- End Header -->
 
   
@@ -194,9 +205,9 @@ include "config.php";
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <img src="<?php echo "<img src='gambar/".$user_data['foto'].""; ?>" alt="Profile" class="rounded-circle">
               <h2><?php echo $_SESSION['username']; ?></h2>
-              <h3>CV.Teknologi kurniatama</h3>
+
               <!--
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -248,42 +259,41 @@ include "config.php";
                   <h5 class="card-title">Profile Details</h5>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-3 col-md-4 label "><h3>Nama Lengkap</h3></div>
+                    <p><?php echo $user_data['nama'];?></p></div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label"><h3>Alamat</h3></div>
+                    <p><?php echo $user_data['alamat'];?></p>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Company</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                    <div class="col-lg-3 col-md-4 label"><h3>Jenis Kelamin</h3></div>
+                   <p> <?php echo $user_data['jk'];?></p>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-3 col-md-4 label"><h3>Nomer HP</h3></div>
+                    <p> <?php echo $user_data['nohp'];?></p>
+
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Country</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
+                    <div class="col-lg-3 col-md-4 label"><h3>Tanggal Lahir</h3></div>
+                    <p> <?php echo $user_data['tgl_lahir'];?></p>
+
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Address</div>
-                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                    <div class="col-lg-3 col-md-4 label"><h3>Nomer KTP</h3></div>
+                    <p> <?php echo $user_data['noktp'];?></p>
+
                   </div>
 
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Phone</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                  <div class="col-lg-3 col-md-4 label"><h3>Email</h3></div>
+                    <p> <?php echo $user_data['email'];?></p>
+
                   </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
-                  </div>
-
-                </div>
-
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                   <!-- Profile Edit Form -->
                   <div class="update-profile">
