@@ -3,7 +3,7 @@
  * Opset Page Controller
  * @category  Controller
  */
-class OpsetController extends SecureController{
+class OpsetController extends BaseController{
 	function __construct(){
 		parent::__construct();
 		$this->tablename = "opset";
@@ -18,31 +18,34 @@ class OpsetController extends SecureController{
 		$request = $this->request;
 		$db = $this->GetModel();
 		$tablename = $this->tablename;
-		$fields = array("kode_aset", 
+		$fields = array("id_aset", 
+			"kode_aset", 
 			"nama_aset", 
 			"alamat", 
 			"luas_bangunan", 
-			"luas_tanah", 
 			"tahun_bangunan", 
+			"luas_tanah", 
 			"kategori_aset", 
-			"keterangan");
+			"keterangan", 
+			"images");
 		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
 			$text = trim($request->search); 
 			$search_condition = "(
+				opset.id_aset LIKE ? OR 
 				opset.kode_aset LIKE ? OR 
 				opset.nama_aset LIKE ? OR 
 				opset.alamat LIKE ? OR 
 				opset.luas_bangunan LIKE ? OR 
-				opset.luas_tanah LIKE ? OR 
 				opset.tahun_bangunan LIKE ? OR 
+				opset.luas_tanah LIKE ? OR 
 				opset.kategori_aset LIKE ? OR 
 				opset.keterangan LIKE ? OR 
 				opset.images LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -55,7 +58,7 @@ class OpsetController extends SecureController{
 			$db->orderBy($orderby, $ordertype);
 		}
 		else{
-			$db->orderBy("opset.kode_aset", ORDER_TYPE);
+			$db->orderBy("opset.id_aset", ORDER_TYPE);
 		}
 		if($fieldname){
 			$db->where($fieldname , $fieldvalue); //filter by a single field name
@@ -93,12 +96,13 @@ class OpsetController extends SecureController{
 		$db = $this->GetModel();
 		$rec_id = $this->rec_id = urldecode($rec_id);
 		$tablename = $this->tablename;
-		$fields = array("kode_aset", 
+		$fields = array("id_aset", 
+			"kode_aset", 
 			"nama_aset", 
 			"alamat", 
 			"luas_bangunan", 
-			"luas_tanah", 
 			"tahun_bangunan", 
+			"luas_tanah", 
 			"kategori_aset", 
 			"keterangan", 
 			"images");
@@ -106,7 +110,7 @@ class OpsetController extends SecureController{
 			$db->where($rec_id, urldecode($value)); //select record based on field name
 		}
 		else{
-			$db->where("opset.kode_aset", $rec_id);; //select record based on primary key
+			$db->where("opset.id_aset", $rec_id);; //select record based on primary key
 		}
 		$record = $db->getOne($tablename, $fields );
 		if($record){
@@ -138,15 +142,15 @@ class OpsetController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("kode_aset","nama_aset","alamat","luas_bangunan","luas_tanah","tahun_bangunan","kategori_aset","keterangan","images");
+			$fields = $this->fields = array("kode_aset","nama_aset","alamat","luas_bangunan","tahun_bangunan","luas_tanah","kategori_aset","keterangan","images");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'kode_aset' => 'required',
 				'nama_aset' => 'required',
 				'alamat' => 'required',
 				'luas_bangunan' => 'required',
-				'luas_tanah' => 'required',
 				'tahun_bangunan' => 'required|numeric',
+				'luas_tanah' => 'required',
 				'kategori_aset' => 'required',
 				'keterangan' => 'required',
 				'images' => 'required',
@@ -156,8 +160,8 @@ class OpsetController extends SecureController{
 				'nama_aset' => 'sanitize_string',
 				'alamat' => 'sanitize_string',
 				'luas_bangunan' => 'sanitize_string',
-				'luas_tanah' => 'sanitize_string',
 				'tahun_bangunan' => 'sanitize_string',
+				'luas_tanah' => 'sanitize_string',
 				'kategori_aset' => 'sanitize_string',
 				'keterangan' => 'sanitize_string',
 				'images' => 'sanitize_string',
@@ -190,7 +194,7 @@ class OpsetController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("kode_aset","nama_aset","alamat","luas_bangunan","luas_tanah","tahun_bangunan","kategori_aset","keterangan","images");
+		$fields = $this->fields = array("id_aset","kode_aset","nama_aset","alamat","luas_bangunan","tahun_bangunan","luas_tanah","kategori_aset","keterangan","images");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -198,8 +202,8 @@ class OpsetController extends SecureController{
 				'nama_aset' => 'required',
 				'alamat' => 'required',
 				'luas_bangunan' => 'required',
-				'luas_tanah' => 'required',
 				'tahun_bangunan' => 'required|numeric',
+				'luas_tanah' => 'required',
 				'kategori_aset' => 'required',
 				'keterangan' => 'required',
 				'images' => 'required',
@@ -209,15 +213,15 @@ class OpsetController extends SecureController{
 				'nama_aset' => 'sanitize_string',
 				'alamat' => 'sanitize_string',
 				'luas_bangunan' => 'sanitize_string',
-				'luas_tanah' => 'sanitize_string',
 				'tahun_bangunan' => 'sanitize_string',
+				'luas_tanah' => 'sanitize_string',
 				'kategori_aset' => 'sanitize_string',
 				'keterangan' => 'sanitize_string',
 				'images' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
-				$db->where("opset.kode_aset", $rec_id);;
+				$db->where("opset.id_aset", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount(); //number of affected rows. 0 = no record field updated
 				if($bool && $numRows){
@@ -238,7 +242,7 @@ class OpsetController extends SecureController{
 				}
 			}
 		}
-		$db->where("opset.kode_aset", $rec_id);;
+		$db->where("opset.id_aset", $rec_id);;
 		$data = $db->getOne($tablename, $fields);
 		$page_title = $this->view->page_title = "Edit  Opset";
 		if(!$data){
@@ -257,7 +261,7 @@ class OpsetController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("kode_aset","nama_aset","alamat","luas_bangunan","luas_tanah","tahun_bangunan","kategori_aset","keterangan","images");
+		$fields = $this->fields = array("id_aset","kode_aset","nama_aset","alamat","luas_bangunan","tahun_bangunan","luas_tanah","kategori_aset","keterangan","images");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -270,8 +274,8 @@ class OpsetController extends SecureController{
 				'nama_aset' => 'required',
 				'alamat' => 'required',
 				'luas_bangunan' => 'required',
-				'luas_tanah' => 'required',
 				'tahun_bangunan' => 'required|numeric',
+				'luas_tanah' => 'required',
 				'kategori_aset' => 'required',
 				'keterangan' => 'required',
 				'images' => 'required',
@@ -281,8 +285,8 @@ class OpsetController extends SecureController{
 				'nama_aset' => 'sanitize_string',
 				'alamat' => 'sanitize_string',
 				'luas_bangunan' => 'sanitize_string',
-				'luas_tanah' => 'sanitize_string',
 				'tahun_bangunan' => 'sanitize_string',
+				'luas_tanah' => 'sanitize_string',
 				'kategori_aset' => 'sanitize_string',
 				'keterangan' => 'sanitize_string',
 				'images' => 'sanitize_string',
@@ -290,7 +294,7 @@ class OpsetController extends SecureController{
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
-				$db->where("opset.kode_aset", $rec_id);;
+				$db->where("opset.id_aset", $rec_id);;
 				$bool = $db->update($tablename, $modeldata);
 				$numRows = $db->getRowCount();
 				if($bool && $numRows){
@@ -330,7 +334,7 @@ class OpsetController extends SecureController{
 		$this->rec_id = $rec_id;
 		//form multiple delete, split record id separated by comma into array
 		$arr_rec_id = array_map('trim', explode(",", $rec_id));
-		$db->where("opset.kode_aset", $arr_rec_id, "in");
+		$db->where("opset.id_aset", $arr_rec_id, "in");
 		$bool = $db->delete($tablename);
 		if($bool){
 			$this->set_flash_msg("Record deleted successfully", "success");

@@ -34,7 +34,7 @@ class SharedController extends BaseController{
      */
 	function getcount_jumlahopset(){
 		$db = $this->GetModel();
-		$sqltext = "SELECT COUNT(*) AS num FROM opset";
+		$sqltext = "SELECT COUNT(*) AS num FROM tbl_opset";
 		$queryparams = null;
 		$val = $db->rawQueryValue($sqltext, $queryparams);
 		
@@ -73,10 +73,10 @@ class SharedController extends BaseController{
 		);
 		
 		//set query result for dataset 1
-		$sqltext = "SELECT  COUNT(p.email) AS count_of_email, p.status FROM pengajuan AS p GROUP BY p.status";
+		$sqltext = "SELECT  COUNT(p.nama) AS count_of_nama, p.status FROM pengajuan AS p GROUP BY p.status";
 		$queryparams = null;
 		$dataset1 = $db->rawQuery($sqltext, $queryparams);
-		$dataset_data =  array_column($dataset1, 'count_of_email');
+		$dataset_data =  array_column($dataset1, 'count_of_nama');
 		$dataset_labels =  array_column($dataset1, 'status');
 		$chart_data["labels"] = array_unique(array_merge($chart_data["labels"], $dataset_labels));
 		$chart_data["datasets"][] = $dataset_data;
@@ -97,7 +97,7 @@ class SharedController extends BaseController{
 		);
 		
 		//set query result for dataset 1
-		$sqltext = "SELECT  COUNT(o.nama_aset) AS count_of_nama_aset, o.kategori_aset FROM opset AS o GROUP BY o.kategori_aset";
+		$sqltext = "SELECT  COUNT(a.nama_aset) AS count_of_nama_aset, a.kategori_aset FROM tbl_opset AS a GROUP BY a.kategori_aset";
 		$queryparams = null;
 		$dataset1 = $db->rawQuery($sqltext, $queryparams);
 		$dataset_data =  array_column($dataset1, 'count_of_nama_aset');

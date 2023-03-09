@@ -24,8 +24,9 @@ class PengajuanController extends SecureController{
 			"no_ktp", 
 			"instansi", 
 			"no_telepon", 
+			"tanggal", 
 			"status");
-		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
+		$pagination = $this->get_pagination(10); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
 			$text = trim($request->search); 
@@ -36,10 +37,11 @@ class PengajuanController extends SecureController{
 				pengajuan.no_ktp LIKE ? OR 
 				pengajuan.instansi LIKE ? OR 
 				pengajuan.no_telepon LIKE ? OR 
+				pengajuan.tanggal LIKE ? OR 
 				pengajuan.status LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -96,7 +98,8 @@ class PengajuanController extends SecureController{
 			"no_ktp", 
 			"instansi", 
 			"no_telepon", 
-			"status");
+			"status", 
+			"tanggal");
 		if($value){
 			$db->where($rec_id, urldecode($value)); //select record based on field name
 		}
@@ -133,7 +136,7 @@ class PengajuanController extends SecureController{
 			$tablename = $this->tablename;
 			$request = $this->request;
 			//fillable fields
-			$fields = $this->fields = array("nama","email","no_ktp","instansi","no_telepon");
+			$fields = $this->fields = array("nama","email","no_ktp","instansi","no_telepon","status","tanggal");
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
 				'nama' => 'required',
@@ -141,6 +144,8 @@ class PengajuanController extends SecureController{
 				'no_ktp' => 'required|numeric',
 				'instansi' => 'required',
 				'no_telepon' => 'required|numeric',
+				'status' => 'required',
+				'tanggal' => 'required',
 			);
 			$this->sanitize_array = array(
 				'nama' => 'sanitize_string',
@@ -148,6 +153,8 @@ class PengajuanController extends SecureController{
 				'no_ktp' => 'sanitize_string',
 				'instansi' => 'sanitize_string',
 				'no_telepon' => 'sanitize_string',
+				'status' => 'sanitize_string',
+				'tanggal' => 'sanitize_string',
 			);
 			$this->filter_vals = true; //set whether to remove empty fields
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -177,7 +184,7 @@ class PengajuanController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		 //editable fields
-		$fields = $this->fields = array("id_pengajuan","nama","email","no_ktp","instansi","no_telepon","status");
+		$fields = $this->fields = array("id_pengajuan","nama","email","no_ktp","instansi","no_telepon","status","tanggal");
 		if($formdata){
 			$postdata = $this->format_request_data($formdata);
 			$this->rules_array = array(
@@ -187,6 +194,7 @@ class PengajuanController extends SecureController{
 				'instansi' => 'required',
 				'no_telepon' => 'required|numeric',
 				'status' => 'required',
+				'tanggal' => 'required',
 			);
 			$this->sanitize_array = array(
 				'nama' => 'sanitize_string',
@@ -195,6 +203,7 @@ class PengajuanController extends SecureController{
 				'instansi' => 'sanitize_string',
 				'no_telepon' => 'sanitize_string',
 				'status' => 'sanitize_string',
+				'tanggal' => 'sanitize_string',
 			);
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
 			if($this->validated()){
@@ -238,7 +247,7 @@ class PengajuanController extends SecureController{
 		$this->rec_id = $rec_id;
 		$tablename = $this->tablename;
 		//editable fields
-		$fields = $this->fields = array("id_pengajuan","nama","email","no_ktp","instansi","no_telepon","status");
+		$fields = $this->fields = array("id_pengajuan","nama","email","no_ktp","instansi","no_telepon","status","tanggal");
 		$page_error = null;
 		if($formdata){
 			$postdata = array();
@@ -253,6 +262,7 @@ class PengajuanController extends SecureController{
 				'instansi' => 'required',
 				'no_telepon' => 'required|numeric',
 				'status' => 'required',
+				'tanggal' => 'required',
 			);
 			$this->sanitize_array = array(
 				'nama' => 'sanitize_string',
@@ -261,6 +271,7 @@ class PengajuanController extends SecureController{
 				'instansi' => 'sanitize_string',
 				'no_telepon' => 'sanitize_string',
 				'status' => 'sanitize_string',
+				'tanggal' => 'sanitize_string',
 			);
 			$this->filter_rules = true; //filter validation rules by excluding fields not in the formdata
 			$modeldata = $this->modeldata = $this->validate_form($postdata);
@@ -332,8 +343,9 @@ class PengajuanController extends SecureController{
 			"no_ktp", 
 			"instansi", 
 			"no_telepon", 
-			"status");
-		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
+			"status", 
+			"tanggal");
+		$pagination = $this->get_pagination(10); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
 			$text = trim($request->search); 
@@ -344,10 +356,11 @@ class PengajuanController extends SecureController{
 				pengajuan.no_ktp LIKE ? OR 
 				pengajuan.instansi LIKE ? OR 
 				pengajuan.no_telepon LIKE ? OR 
-				pengajuan.status LIKE ?
+				pengajuan.status LIKE ? OR 
+				pengajuan.tanggal LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -403,8 +416,9 @@ class PengajuanController extends SecureController{
 			"no_ktp", 
 			"instansi", 
 			"no_telepon", 
-			"status");
-		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
+			"status", 
+			"tanggal");
+		$pagination = $this->get_pagination(10); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
 			$text = trim($request->search); 
@@ -415,10 +429,11 @@ class PengajuanController extends SecureController{
 				pengajuan.no_ktp LIKE ? OR 
 				pengajuan.instansi LIKE ? OR 
 				pengajuan.no_telepon LIKE ? OR 
-				pengajuan.status LIKE ?
+				pengajuan.status LIKE ? OR 
+				pengajuan.tanggal LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -474,8 +489,9 @@ class PengajuanController extends SecureController{
 			"no_ktp", 
 			"instansi", 
 			"no_telepon", 
-			"status");
-		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
+			"status", 
+			"tanggal");
+		$pagination = $this->get_pagination(10); // get current pagination e.g array(page_number, page_limit)
 		//search table record
 		if(!empty($request->search)){
 			$text = trim($request->search); 
@@ -486,10 +502,11 @@ class PengajuanController extends SecureController{
 				pengajuan.no_ktp LIKE ? OR 
 				pengajuan.instansi LIKE ? OR 
 				pengajuan.no_telepon LIKE ? OR 
-				pengajuan.status LIKE ?
+				pengajuan.status LIKE ? OR 
+				pengajuan.tanggal LIKE ?
 			)";
 			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
+				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
 			);
 			//setting search conditions
 			$db->where($search_condition, $search_params);
@@ -528,76 +545,5 @@ class PengajuanController extends SecureController{
 		$this->view->report_paper_size = "A4";
 		$this->view->report_orientation = "portrait";
 		$this->render_view("pengajuan/tolak.php", $data); //render the full page
-	}
-	/**
-     * List page records
-     * @param $fieldname (filter record by a field) 
-     * @param $fieldvalue (filter field value)
-     * @return BaseView
-     */
-	function null($fieldname = null , $fieldvalue = null){
-		$request = $this->request;
-		$db = $this->GetModel();
-		$tablename = $this->tablename;
-		$fields = array("id_pengajuan", 
-			"nama", 
-			"email", 
-			"no_ktp", 
-			"instansi", 
-			"no_telepon", 
-			"status");
-		$pagination = $this->get_pagination(MAX_RECORD_COUNT); // get current pagination e.g array(page_number, page_limit)
-		//search table record
-		if(!empty($request->search)){
-			$text = trim($request->search); 
-			$search_condition = "(
-				pengajuan.id_pengajuan LIKE ? OR 
-				pengajuan.nama LIKE ? OR 
-				pengajuan.email LIKE ? OR 
-				pengajuan.no_ktp LIKE ? OR 
-				pengajuan.instansi LIKE ? OR 
-				pengajuan.no_telepon LIKE ? OR 
-				pengajuan.status LIKE ?
-			)";
-			$search_params = array(
-				"%$text%","%$text%","%$text%","%$text%","%$text%","%$text%","%$text%"
-			);
-			//setting search conditions
-			$db->where($search_condition, $search_params);
-			 //template to use when ajax search
-			$this->view->search_template = "pengajuan/search.php";
-		}
-		if(!empty($request->orderby)){
-			$orderby = $request->orderby;
-			$ordertype = (!empty($request->ordertype) ? $request->ordertype : ORDER_TYPE);
-			$db->orderBy($orderby, $ordertype);
-		}
-		else{
-			$db->orderBy("pengajuan.id_pengajuan", ORDER_TYPE);
-		}
-		if($fieldname){
-			$db->where($fieldname , $fieldvalue); //filter by a single field name
-		}
-		$tc = $db->withTotalCount();
-		$records = $db->get($tablename, $pagination, $fields);
-		$records_count = count($records);
-		$total_records = intval($tc->totalCount);
-		$page_limit = $pagination[1];
-		$total_pages = ceil($total_records / $page_limit);
-		$data = new stdClass;
-		$data->records = $records;
-		$data->record_count = $records_count;
-		$data->total_records = $total_records;
-		$data->total_page = $total_pages;
-		if($db->getLastError()){
-			$this->set_page_error();
-		}
-		$page_title = $this->view->page_title = "Pengajuan";
-		$this->view->report_filename = date('Y-m-d') . '-' . $page_title;
-		$this->view->report_title = $page_title;
-		$this->view->report_layout = "report_layout.php";
-		$this->view->report_paper_size = "A4";
-		$this->view->report_orientation = "portrait";
-		$this->render_view("pengajuan/null.php", $data); //render the full page
 	}
 }
