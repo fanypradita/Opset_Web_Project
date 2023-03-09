@@ -328,78 +328,8 @@ if (isset($_GET["kode_aset"])) {
                   Gedung pertemuan Pusdikbang SDM yang bernama Grha Wana Java mampu menampung sekitar 700 orang, dilengkapi dengan tempat parkir kendaraan yang luas, sound system, meja kursi, panggung (stage), ac dan hot spot (wi-fi).
                 </p>
 
-                <h3>Lokasi Properti.</h3>
-                <!--Google map-->
-                <p>lokasi anda saat ini: <span id="lokasi"></span></p>
-                <script type="text/javascript">
-                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
-                <div id="map"></div>
-                <?php
-                  $longitude = $row["longitude"];
-                  $latitude = $row["latitude"];
-                ?>
-
-   
-    var marker;
-    function initialize(){
-        // Variabel untuk menyimpan informasi lokasi
-        var infoWindow = new google.maps.InfoWindow;
-        //  Variabel berisi properti tipe peta
-        var mapOptions = {
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        } 
-        // Pembuatan peta
-        var peta = new google.maps.Map(document.getElementById('googleMap'), mapOptions);      
-		// Variabel untuk menyimpan batas kordinat
-        var bounds = new google.maps.LatLngBounds();
-        // Pengambilan data dari database MySQL
-
-
-        // Proses membuat marker 
-        function addMarker(lat, lng, info){
-            var lokasi = new google.maps.LatLng(lat, lng);
-            bounds.extend(lokasi);
-            var marker = new google.maps.Marker({
-                map: peta,
-                position: lokasi
-            });       
-            peta.fitBounds(bounds);
-            bindInfoWindow(marker, peta, infoWindow, info);
-         }
-        // Menampilkan informasi pada masing-masing marker yang diklik
-        function bindInfoWindow(marker, peta, infoWindow, html){
-            google.maps.event.addListener(marker, 'click', function() {
-            infoWindow.setContent(html);
-            infoWindow.open(peta, marker);
-          });
-        }
-    }
-</script>
-                <div class="mb-3">
-                  
-  <div id="googleMap" style="width:1100px;height:500px;"></div>
-                  <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-                </div><!-- End Google Maps -->
-
-                <!--Google Maps-->
-                <!--
-                <p>
-                  Officiis animi maxime nulla quo et harum eum quis a. Sit hic in qui quos fugit ut rerum atque. Optio provident dolores atque voluptatem rem excepturi molestiae qui. Voluptatem laborum omnis ullam quibusdam perspiciatis nulla nostrum. Voluptatum est libero eum nesciunt aliquid qui.
-                  Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
-                  Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
-                </p>
-                <img src="assets/img/blog/Nikah.jpg" class="img-fluid" alt="">
-
-                <h3>Rute Perjalanan.</h3>
-                <p>
-                  Rerum ea est assumenda pariatur quasi et quam. Facilis nam porro amet nostrum. In assumenda quia quae a id praesentium. Quos deleniti libero sed occaecati aut porro autem. Consectetur sed excepturi sint non placeat quia repellat incidunt labore. Autem facilis hic dolorum dolores vel.
-                  Consectetur quasi id et optio praesentium aut asperiores eaque aut. Explicabo omnis quibusdam esse. Ex libero illum iusto totam et ut aut blanditiis. Veritatis numquam ut illum ut a quam vitae.
-                </p>
-                <p>
-                  Alias quia non aliquid. Eos et ea velit. Voluptatem maxime enim omnis ipsa voluptas incidunt. Nulla sit eaque mollitia nisi asperiores est veniam.
-                </p>
-          -->
-              </div><!-- End post content -->
+                <h3>Lokasi Properti</h3>
+                <?php echo $row["map_url"]; ?>
 
               <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
