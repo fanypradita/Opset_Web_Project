@@ -331,7 +331,15 @@ if (isset($_GET["kode_aset"])) {
                 <h3>Lokasi Properti.</h3>
                 <!--Google map-->
                 <p>lokasi anda saat ini: <span id="lokasi"></span></p>
-                <script type="text/javascript">   
+                <script type="text/javascript">
+                <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+                <div id="map"></div>
+                <?php
+                  $longitude = $row["longitude"];
+                  $latitude = $row["latitude"];
+                ?>
+
+   
     var marker;
     function initialize(){
         // Variabel untuk menyimpan informasi lokasi
