@@ -1,7 +1,8 @@
 <?php  
 session_start();
 include "config.php";
-$result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username = username");
+$username   = $_SESSION['username'];
+$result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username ='$username'");
 
     if($user_data = mysqli_fetch_array($result)) {         
         echo "<tr>";
@@ -205,8 +206,10 @@ $result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username = usern
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="<?php echo "<img src='gambar/".$user_data['foto'].""; ?>" alt="Profile" class="rounded-circle">
-              <h2><?php echo $_SESSION['username']; ?></h2>
+           
+   <img src="img/<?php echo $user_data['foto']; ?>" width="50" height="80" />
+
+             <h2><?php echo $_SESSION['username']; ?></h2>
 
               <!--
               <div class="social-links mt-2">
