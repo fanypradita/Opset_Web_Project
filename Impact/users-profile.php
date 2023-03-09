@@ -207,7 +207,7 @@ $result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username ='$user
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
            
-   <img src="img/<?php echo $user_data['foto']; ?>" width="50" height="80" />
+   <img src="img/<?php echo $user_data['foto']; ?>" width="100" height="100" />
 
              <h2><?php echo $_SESSION['username']; ?></h2>
 
@@ -298,6 +298,7 @@ $result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username ='$user
 
                   </div>
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+
                   <!-- Profile Edit Form -->
                   <div class="update-profile">
                     <form>
@@ -315,7 +316,7 @@ $result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username ='$user
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">nama</label>
                       <div class="col-md-8 col-lg-9">
-                        <input type="text" name="update_nama" value="<?php echo $fetch['nama']; ?>" class="box">
+                        <input type="text" name="update_nama" value="<?php echo $user_data['nama']; ?>" class="box">
                       </div>
                     </div>
 
@@ -327,50 +328,50 @@ $result = mysqli_query($conn, "SELECT * FROM tbl_customer WHERE username ='$user
                     </div>
 
                     <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                        <input name="company" type="text" class="form-control" id="company" value="<?php echo $user_data['alamat']; ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Jeni Kelamin</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                        <input name="job" type="text" class="form-control" id="Job" value="<?php echo $user_data['jk']; ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Tanggal lahir</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="USA">
+                        <input name="country" type="text" class="form-control" id="Country" value="<?php echo $user_data['tgl_lahir']; ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Nomer HP</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                        <input name="address" type="text" class="form-control" id="Address" value="<?php echo $user_data['nohp']; ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Nomer KTP</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                        <input name="phone" type="text" class="form-control" id="Phone" value="<?php echo $user_data['noktp']; ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-            <input type="email" name="update_email" value="<?php echo $fetch['email']; ?>" class="box">
+                    <input type="email" name="update_email" value="<?php echo $user_data['email']; ?>" class="box">
                       </div>
-                    </div>
-                        </div>
-                        </div>
-                        </div>
-<!--
+                      </br>
+                      </br>
+                      <div class="d-grid gap-2 d-md-block">
+                     <button class="btn btn-warning btn-lg" type="button" >UPDATE</button></a>
+                      </div><!--
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                       <div class="col-md-8 col-lg-9">
