@@ -250,7 +250,7 @@ if (isset($_GET["kode_aset"])) {
           </button> -->
               <div class="post-img">
                 
-              <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid">'; ?>
+              <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
                 
               </div>
 
