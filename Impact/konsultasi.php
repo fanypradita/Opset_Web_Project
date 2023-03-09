@@ -75,8 +75,8 @@
 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa Aset</a></li>
-              <li><a href="kerjasama.html">Kerjasama Aset</a></li>
+              <li><a href="sewa.php">Sewa Aset</a></li>
+              <li><a href="kerjasama.php">Kerjasama Aset</a></li>
               <!---
               <li><a href="#">Drop Down 4</a></li>
               -->
@@ -93,7 +93,7 @@
           <li><a href="#contact">Contact</a></li>
           -->
           <li><a href="index.html#about">Tentang Kami</a></li>
-          <li><a href="konsultasi.html">Konsultasi</a></li>
+          <li><a href="konsultasi.php">Konsultasi</a></li>
           <li class="nav-item dropdown pe-3">
 
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
@@ -109,7 +109,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
                   <span>My Profile</span>
                 </a>
@@ -119,7 +119,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-gear"></i>
                   <span>Account Settings</span>
                 </a>
@@ -568,9 +568,9 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-info">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span>Impact</span>
+          <span>Perhutani Property.</span>
           </a>
-          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <p>Situs yang menyediakan berbagai pilihan properti dengan fasilitas yang bervariatif , selain itu kami juga memiliki berbagai aset dengan lokasi yang strategis sehingga sangat efektif untuk menunjang berbagai kegiatan bisnis.</p>
           <div class="social-links d-flex mt-4">
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
