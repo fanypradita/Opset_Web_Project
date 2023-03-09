@@ -165,6 +165,30 @@
   </header><!-- End Header -->
   <!-- End Header -->
 
+  <?php
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_perhutanii";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// check connection
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+
+
+if (isset($_GET["kode_aset"])) {
+  $kode_aset = $_GET["kode_aset"];
+  $sql = "SELECT * FROM opset WHERE kode_aset = $kode_aset";
+  $result = mysqli_query($conn, $sql);
+  $row = mysqli_fetch_assoc($result);
+}
+
+  ?>
+
 
   <main id="main">
 
@@ -199,38 +223,41 @@
           <div style="width:60%" class="col-lg-8">
 
             <article class="blog-details">
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="assets/img/blog/Wananjava.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="assets/img/blog/Nikah.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="assets/img/blog/rm1.jpeg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-              <!-- <div class="post-img">
+                    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="assets/img/blog/Wananjava.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/img/blog/Nikah.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="assets/img/blog/rm1.jpeg" class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button> -->
+              <div class="post-img">
                 
-                <img src="assets/img/blog/Wananjava.jpg" alt="" class="img-fluid">
-              </div> -->
+              <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid">'; ?>
+                
+              </div>
 
-              <h2 class="title">Graha Wana Java Pusdikbang SDM Perhutani</h2>
+              <h2 class="title">
+              <?php echo $row["nama_aset"]; ?>
+
+              </h2>
 
               <div class="meta-top">
                 <ul>
@@ -258,7 +285,7 @@
                             Kategori
                             </td> 
                             <td>
-                            Gedung
+                            <?php echo $row["kategori_aset"]; ?>
                             </td>
                           </tr> 
                           <tr>
@@ -266,16 +293,16 @@
                           Alamat
                           </td> 
                           <td>
-                          Jl. Kali Besar Timur 27, Kota Jakarta Barat, DKI Jakarta<br>
+                          <?php echo $row["alamat"]; ?><br>
                           <a href="#peta-aset" data-hash="" data-hash-offset="0" data-hash-offset-lg="100" class="text-2">(Peta Lokasi)</a></td></tr> 
                           <tr>
                             <td class="font-weight-semibold">
                   Luas Tanah
                 </td> <td>
-                  1.835 m<sup>2</sup></td></tr> <tr><td class="font-weight-semibold">
+                <?php echo $row["luas_tanah"]; ?> m<sup>2</sup></td></tr> <tr><td class="font-weight-semibold">
                   Luas Bangunan
                 </td> <td>
-                  2.044 m<sup>2</sup></td></tr></tbody></table></div></div></div>
+                <?php echo $row["luas_bangunan"]; ?> m<sup>2</sup></td></tr></tbody></table></div></div></div>
                   <br>
                   <h5>
                     Deskripsi
@@ -318,22 +345,8 @@
 		// Variabel untuk menyimpan batas kordinat
         var bounds = new google.maps.LatLngBounds();
         // Pengambilan data dari database MySQL
-        <?php
-		// Sesuaikan dengan konfigurasi koneksi Anda
-			$host 	  = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname   = "db_perhutanii";
-			$db 	  = new mysqli($host,$username,$password,$dbname);
-			
-			$query = $db->query("SELECT * FROM lokasi ORDER BY nama_lokasi ASC");
-			while ($row = $query->fetch_assoc()) {
-				$nama = $row["nama_lokasi"];
-				$lat  = $row["latitude"];
-				$long = $row["longitude"];
-				echo "addMarker($lat, $long, '$nama');\n";
-			}
-        ?> 
+
+
         // Proses membuat marker 
         function addMarker(lat, lng, info){
             var lokasi = new google.maps.LatLng(lat, lng);
@@ -598,6 +611,19 @@
                     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
                   } else {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                  }
+
+                  if (isset($_GET["kode_aset"])) {
+                    $kode_aset = $_GET["kode_aset"];
+                    $sql = "SELECT * FROM opset WHERE kode_aset = $kode_aset";
+                    $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
+          
+                    // display the item's information to the user
+                    echo '<h1>' . $row["nama_aset"] . '</h1>';
+                    echo '<p>' . $row["alamat"] . '</p>';
+                    echo '<p>' . $row["kategori_aset"] . '</p>';
+                    // display other information about the item as needed
                   }
 
                   mysqli_close($conn);

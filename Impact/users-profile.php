@@ -81,7 +81,6 @@
             <ul>
               <li><a href="sewa.php">Sewa</a></li>
               <li><a href="kerjasama.php">Kerjasama Aset</a></li>
-              <li><a href="pengajuan.html">Pengajuan form</a></li>
               <!---
               <li><a href="#">Drop Down 4</a></li>
               -->
@@ -98,7 +97,7 @@
           <li><a href="#contact">Contact</a></li>
           -->
           <li><a href="index.html#about">Tentang Kami</a></li>
-          <li><a href="konsultasi.html">Konsultasi</a></li>
+          <li><a href="konsultasi.php">Konsultasi</a></li>
  
         <li class="nav-item dropdown pe-3">
 
@@ -126,7 +125,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
               </a>
@@ -591,28 +590,25 @@ session_start();
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
                   <form>
-<div class="inputBox">
-            <input type="hidden" name="old_pass" value="<?php echo $fetch['password']; ?>">
-            
-         
+
                     <div class="row mb-3">
                       <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                       <div class="col-md-8 col-lg-9">
-            <input type="password" name="update_password" placeholder="enter previous password" class="box">
+                        <input name="password" type="password" class="form-control" id="currentPassword">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                       <div class="col-md-8 col-lg-9">
-            <input type="password" name="new_pass" placeholder="enter new password" class="box">
+                        <input name="newpassword" type="password" class="form-control" id="newPassword">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                       <div class="col-md-8 col-lg-9">
-            <input type="password" name="confirm_password" placeholder="confirm new password" class="box">
+                        <input name="renewpassword" type="password" class="form-control" id="renewPassword">
                       </div>
                     </div>
 
@@ -624,6 +620,8 @@ session_start();
                 </div>
 
               </div><!-- End Bordered Tabs -->
+
+                        </div>
                         </div>
 
             </div>

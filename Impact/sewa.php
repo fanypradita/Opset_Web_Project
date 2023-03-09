@@ -272,18 +272,32 @@
           // generate HTML code for each item in the loop
           echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
+            // echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
+            // echo '<article>';
+            // echo '<div class="post-img">';
+            // echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            // echo '</div>';
+            // echo '<h2 class="title">';
+            // echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
+            // echo '<p class="post-category">' . $row["alamat"] . '</p>';
+            // echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+            // echo '</h2>';
+            // echo '</article>';
+            // echo '</div>';
+
             echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
             echo '<article>';
             echo '<div class="post-img">';
-            echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            echo '<a href="sewa-details.php?kode_aset=' . $row["kode_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
-            echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
+            echo '<a href="sewa-details.php?kode_aset=' . $row["kode_aset"] . '">' . $row["nama_aset"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '</h2>';
             echo '</article>';
             echo '</div>';
+
           }
           echo '</div>';
 
