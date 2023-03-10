@@ -231,7 +231,7 @@
           $host = "localhost";
           $username = "root";
           $password = "";
-          $dbname = "db_perhutanii";
+          $dbname = "db_perhutani";
           $conn = mysqli_connect($host, $username, $password, $dbname);
 
           // check if the connection is successful
@@ -242,9 +242,9 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
+            $sql = "SELECT * FROM tbl_opset WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
           } else {
-            $sql = "SELECT * FROM opset";
+            $sql = "SELECT * FROM tbl_opset";
           }
 
           // retrieve data from the MySQL database with pagination
@@ -288,10 +288,10 @@
             echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
             echo '<article>';
             echo '<div class="post-img">';
-            echo '<a href="sewa-details.php?kode_aset=' . $row["kode_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
-            echo '<a href="sewa-details.php?kode_aset=' . $row["kode_aset"] . '">' . $row["nama_aset"] . '</a>';
+            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '</h2>';
@@ -302,7 +302,7 @@
           echo '</div>';
 
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM opset";
+          $sql = "SELECT COUNT(*) as total_items FROM tbl_opset";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];

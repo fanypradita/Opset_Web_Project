@@ -170,7 +170,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "db_perhutanii";
+$dbname = "db_perhutani";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -180,9 +180,9 @@ if (!$conn) {
 }
 
 
-if (isset($_GET["kode_aset"])) {
-  $kode_aset = $_GET["kode_aset"];
-  $sql = "SELECT * FROM opset WHERE kode_aset = $kode_aset";
+if (isset($_GET["id_aset"])) {
+  $id_aset = $_GET["id_aset"];
+  $sql = "SELECT * FROM tbl_opset WHERE id_aset = $id_aset";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
 }
@@ -533,7 +533,7 @@ if (isset($_GET["kode_aset"])) {
                   $servername = "localhost";
                   $username = "root";
                   $password = "";
-                  $dbname = "db_perhutanii";
+                  $dbname = "db_perhutani";
 
                   $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -551,9 +551,9 @@ if (isset($_GET["kode_aset"])) {
                     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                   }
 
-                  if (isset($_GET["kode_aset"])) {
-                    $kode_aset = $_GET["kode_aset"];
-                    $sql = "SELECT * FROM opset WHERE kode_aset = $kode_aset";
+                  if (isset($_GET["id_aset"])) {
+                    $id_aset = $_GET["id_aset"];
+                    $sql = "SELECT * FROM tbl_opset WHERE id_aset = $id_aset";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
           
