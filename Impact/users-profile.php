@@ -291,86 +291,58 @@
   </div>
 
   <div class="row mb-3">
-    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Username</label>
     <div class="col-md-8 col-lg-9">
-      <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+      <input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+    <label for="about" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
     <div class="col-md-8 col-lg-9">
-      <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
+                <input type="text" placeholder="Nama Lengkap" name="nama" value="<?php echo $nama; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+    <label for="company" class="col-md-4 col-lg-3 col-form-label">Tanggal lahir</label>
     <div class="col-md-8 col-lg-9">
-      <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                <input type="date" placeholder="Tanggal lahir" name="tgl_lahir" value="<?php echo $tgl_lahir; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
     <div class="col-md-8 col-lg-9">
-      <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
+                <input type="text" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?php echo $jk; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
+    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
     <div class="col-md-8 col-lg-9">
-      <input name="country" type="text" class="form-control" id="Country" value="USA">
+                <input type="text box" placeholder="Alamat" name="alamat" value="<?php echo $alamat; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+    <label for="Address" class="col-md-4 col-lg-3 col-form-label">No.HP</label>
     <div class="col-md-8 col-lg-9">
-      <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                <input type="text" placeholder="No. HP" name="nohp" value="<?php echo $nohp; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
-    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">NIK</label>
     <div class="col-md-8 col-lg-9">
-      <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                <input type="text" placeholder="NIK" name="noktp" value="<?php echo $noktp; ?>" required>
     </div>
   </div>
 
   <div class="row mb-3">
     <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
     <div class="col-md-8 col-lg-9">
-      <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-    <div class="col-md-8 col-lg-9">
-      <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-    <div class="col-md-8 col-lg-9">
-      <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-    <div class="col-md-8 col-lg-9">
-      <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-    <div class="col-md-8 col-lg-9">
-      <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+      <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
     </div>
   </div>
 
@@ -392,6 +364,7 @@
   <div class="text">
     <button type="submit" class="btn btn-primary">Printf Excel</button>
   </div>
+  
   <div class="text-center">
     <button type="submit" class="btn btn-primary">Ingin mengajukan lagi?</button>
   </div>
@@ -448,21 +421,21 @@
   <div class="row mb-3">
     <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
     <div class="col-md-8 col-lg-9">
-      <input name="password" type="password" class="form-control" id="currentPassword">
+            <input type="password" name="update_password" placeholder="enter previous password" class="box">
     </div>
   </div>
 
   <div class="row mb-3">
     <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
     <div class="col-md-8 col-lg-9">
-      <input name="newpassword" type="password" class="form-control" id="newPassword">
+            <input type="password" name="new_pass" placeholder="enter new password" class="box">
     </div>
   </div>
 
   <div class="row mb-3">
     <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
     <div class="col-md-8 col-lg-9">
-      <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+            <input type="password" name="confirm_password" placeholder="confirm new password" class="box">
     </div>
   </div>
 
