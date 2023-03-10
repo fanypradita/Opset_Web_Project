@@ -198,8 +198,11 @@ if (isset($_GET["id_aset"])) {
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>Graha Wana Java</h2>
-              <p>Kartoharjo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63117.</p>
+              <h2>
+              <?php echo $row["nama_aset"]; ?>
+            </h2>
+              <p>
+              <?php echo $row["alamat"]; ?></p>
             </div>
           </div>
         </div>
