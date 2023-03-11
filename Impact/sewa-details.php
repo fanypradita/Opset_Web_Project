@@ -198,6 +198,7 @@ if (isset($_GET["id_aset"])) {
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
+            
               <h2>
               <?php echo $row["nama_aset"]; ?>
             </h2>
@@ -257,6 +258,18 @@ if (isset($_GET["id_aset"])) {
                 
               </div>
 
+              <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Foto
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option2" autocomplete="off"> Video
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="option3" autocomplete="off"> 360 drjt
+              </label>
+            </div>
+            
               <h2 class="title">
               <?php echo $row["nama_aset"]; ?>
 
@@ -266,7 +279,6 @@ if (isset($_GET["id_aset"])) {
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Saepul</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
-                  <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
                 </ul>
               </div><!-- End meta top -->
 
@@ -307,6 +319,13 @@ if (isset($_GET["id_aset"])) {
                 </td> <td>
                 <?php echo $row["luas_bangunan"]; ?> m<sup>2</sup></td></tr></tbody></table></div></div></div>
                   <br>
+                  <div data-v-02404c42="" data-testid="kostBenefitContent" class="detail-kost-benefit-content"><p data-v-02404c42="" class="detail-kost-benefit-title bg-c-text bg-c-text--heading-4">Yang kamu dapatkan di Singgahsini</p> <div data-v-02404c42="" class="detail-kost-benefit-content-wrapper"><div data-v-02404c42="" class="detail-kost-benefit-content-wrapper-img"><img data-v-02404c42="" class="detail-kost-benefit-content-wrapper-img__source" data-src="https://static.mamikos.com/uploads/benefits/PnNWZRTg.png" src="https://static.mamikos.com/uploads/benefits/PnNWZRTg.png" lazy="loaded"></div> <div data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information"><span data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information__title">Bebas Biaya Admin</span> <p data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information__subtitle">
+					Kamu tidak akan dikenakan biaya admin saat melakukan pembayaran di Mamikos.
+				</p></div></div><div data-v-02404c42="" class="detail-kost-benefit-content-wrapper"><div data-v-02404c42="" class="detail-kost-benefit-content-wrapper-img"><img data-v-02404c42="" class="detail-kost-benefit-content-wrapper-img__source" data-src="https://static.mamikos.com/uploads/benefits/jhziUbJG.png" src="https://static.mamikos.com/uploads/benefits/jhziUbJG.png" lazy="loaded"></div> <div data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information"><span data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information__title">Pro Service</span> <p data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information__subtitle">
+					Ditangani secara profesional oleh tim Mamikos. Selama kamu ngekos di sini, ada tim dari Mamikos yang akan merespon saran dan komplainmu.
+				</p></div></div><div data-v-02404c42="" class="detail-kost-benefit-content-wrapper"><div data-v-02404c42="" class="detail-kost-benefit-content-wrapper-img"><img data-v-02404c42="" class="detail-kost-benefit-content-wrapper-img__source" data-src="https://static.mamikos.com/uploads/benefits/f1zVfCGa.png" src="https://static.mamikos.com/uploads/benefits/f1zVfCGa.png" lazy="loaded"></div> <div data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information"><span data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information__title">Dikelola Mamikos, Terjamin Nyaman</span> <p data-v-02404c42="" class="detail-kost-benefit-content-wrapper-information__subtitle">
+					Kos ini operasionalnya dikelola dan distandardisasi oleh Mamikos.
+				</p></div></div></div>
                   <h5>
                     Deskripsi
                   </h5>
@@ -333,6 +352,21 @@ if (isset($_GET["id_aset"])) {
 
                 <h3>Lokasi Properti</h3>
                 <?php echo $row["map_url"]; ?>
+                <div data-v-50d8538c=""><div data-v-47973106="" data-v-50d8538c="" data-testid="detail-kost-landmark-list" class="kost-landmark-list"><div data-v-47973106="" data-testid="kost-landmark-list__tabs" class="kost-landmark-list__tabs"><span data-v-47973106="" role="button" class="bg-c-tag bg-c-tag--active bg-c-tag--md" id="landmark_type_0" data-testid="landmark_type_0"><!----> Tempat Terdekat <!----> <!----></span><span data-v-47973106="" role="button" class="bg-c-tag bg-c-tag--md" id="landmark_type_1" data-testid="landmark_type_1"><!----> Transportasi <!----> <!----></span></div> <div data-v-47973106="" class="kost-landmark-list__items-wrapper"><div data-v-47973106="" data-testid="kost-landmark-list__items" class="kost-landmark-list__items"><div data-v-1b41a5de="" data-v-47973106="" data-testid="landmark-item" role="button" class="landmark-item kost-landmark-list__item kost-landmark-list__item--disable"><div data-v-1b41a5de="" class="landmark-item__item-group"><div data-v-1b41a5de="" class="landmark-item__landmark-icon"><img data-v-1b41a5de="" src="https://mamikos.com/assets/icons/landmark/food_stalls.png" width="24"></div> <div data-v-1b41a5de=""><p data-v-1b41a5de="" class="landmark-item__text-ellipsis bg-c-text bg-c-text--body-2">
+				Rumah Makan Roda Baru
+			</p> <p data-v-1b41a5de="" class="landmark-item__landmark-distance bg-c-text bg-c-text--body-4">
+				1.9 km
+			</p></div></div></div><div data-v-1b41a5de="" data-v-47973106="" data-testid="landmark-item" role="button" class="landmark-item kost-landmark-list__item kost-landmark-list__item--disable"><div data-v-1b41a5de="" class="landmark-item__item-group"><div data-v-1b41a5de="" class="landmark-item__landmark-icon"><img data-v-1b41a5de="" src="https://mamikos.com/assets/icons/landmark/mosque.png" width="24"></div> <div data-v-1b41a5de=""><p data-v-1b41a5de="" class="landmark-item__text-ellipsis bg-c-text bg-c-text--body-2">
+				Masjid Rachmi Hatta
+			</p> <p data-v-1b41a5de="" class="landmark-item__landmark-distance bg-c-text bg-c-text--body-4">
+				3.1 km
+			</p></div></div></div><div data-v-1b41a5de="" data-v-47973106="" data-testid="landmark-item" role="button" class="landmark-item kost-landmark-list__item kost-landmark-list__item--disable"><div data-v-1b41a5de="" class="landmark-item__item-group"><div data-v-1b41a5de="" class="landmark-item__landmark-icon"><img data-v-1b41a5de="" src="https://mamikos.com/assets/icons/landmark/health_center.png" width="24"></div> <div data-v-1b41a5de=""><p data-v-1b41a5de="" class="landmark-item__text-ellipsis bg-c-text bg-c-text--body-2">
+				RSUP Dr. Sitanala Tangerang
+			</p> <p data-v-1b41a5de="" class="landmark-item__landmark-distance bg-c-text bg-c-text--body-4">
+				3.0 km
+			</p></div></div></div></div></div></div> <button data-v-50d8538c="" type="button" class="bg-c-button kost-location__see-more-landmark hide bg-c-button--tertiary bg-c-button--md">
+					Lihat lebih banyak
+				</button></div>
 
               <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
