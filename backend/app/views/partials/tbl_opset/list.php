@@ -338,7 +338,7 @@ $show_pagination = $this->show_pagination;
                                                             <?php
                                                             if($show_pagination == true){
                                                             $pager = new Pagination($total_records, $record_count);
-                                                            // $pager->route = $this->route;
+                                                            $pager->route = $this->route;
                                                             $pager->show_page_count = true;
                                                             $pager->show_record_count = true;
                                                             $pager->show_page_limit =true;
