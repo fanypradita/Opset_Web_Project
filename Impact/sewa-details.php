@@ -261,14 +261,35 @@
                 <p>
                   Karena acara-acara tersebut sangat tidak efektif dan efisien diadakan di tempat dengan luas space yang terbatas, masa menyewa gedung menjadi solusinya.
                 </p>
-                <h5>
-                  Fasilitas Umum
-                </h5>
-                <blockquote>
-                  <p>
-                    Perhutani Forestry Institute mengelola beberapa aset yang kemudian dikomersialisasi dan dapat dinikmati oleh semua masyarakat.
-                  </p>
-                </blockquote>
+                <h3>Fasilitas Umum
+                </h3>
+                      <div data-v-392c48dd="" class="detail-kost-facility-category__item-wrapper bg-c-grid bg-c-grid--vtop bg-c-grid--left ">
+                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="WiFi" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2"> WiFi</p>
+                      </div>
+                    </div> <!---->
+                  </div>
+                </div>
+                <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Kulkas" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2"> Kulkas</p>
+              </div>
+            </div> <!---->
+          </div>
+        </div>
+        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Tamu" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2">R. Tamu</p>
+      </div>
+    </div> <!---->
+  </div>
+</div>
+<div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Makan" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2">
+		R. Makan </p>
+  </div>
+</div> <!---->
+</div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dapur" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2">
+		Dapur
+	</p></div></div> <!----></div></div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="TV" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/PYPCx8CW.png" src="https://static.mamikos.com/uploads/tags/PYPCx8CW.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2">
+		TV
+	</p></div></div> <!----></div></div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="K. Mandi Luar" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/kEs7EQUM.png" src="https://static.mamikos.com/uploads/tags/kEs7EQUM.png" lazy="loaded"></div></div> <div class="bg-c-list-item__main"><!----> <div class="bg-c-list-item__description"> <p data-v-3d87c57a="" class="detail-kost-facility-item__label bg-c-text bg-c-text--body-2">
+		K. Mandi Luar
+	</p></div></div> <!----></div></div></div> <!----></div> <div data-v-05ef02e1="" data-v-7140aae4="" tabindex="-1" role="dialog" class="detail-kost-facilities-modal bg-c-modal bg-c-modal--backdrop bg-c-modal--md bg-c-modal--popup" data-testid="detailPagePublicFacilitiesModal"><!----></div></div> <div data-v-3624d904="" data-v-70417152="" class="detail-kost-parking-facilities"><div data-v-392c48dd="" data-v-3624d904="" data-testid="detailKostFacilityCategory" class="detail-kost-facility-category detail-kost-parking-facilities__content"><span data-v-392c48dd="" role="separator" class="detail-kost-facility-category__divider bg-c-divider"></span> <p data-v-392c48dd="" class="detail-kost-facility-category__title bg-c-text bg-c-text--heading-4">
 
                 <p>
                   Gedung pertemuan Pusdikbang SDM yang bernama Grha Wana Java mampu menampung sekitar 700 orang, dilengkapi dengan tempat parkir kendaraan yang luas, sound system, meja kursi, panggung (stage), ac dan hot spot (wi-fi).
