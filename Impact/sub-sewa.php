@@ -172,6 +172,7 @@
           <ol>
             <li><a href="index.html">Home</a></li>
             <li>Sewa Aset</li>
+            <li>Sub Sewa Aset</li>
           </ol>
           
 <!--
@@ -233,7 +234,7 @@
           }
 
           // retrieve data from the MySQL database with pagination
-          $items_per_page = 6;
+          $items_per_page = 4;
           if (isset($_GET["page"])) {
             $current_page = $_GET["page"];
           } else {
@@ -273,10 +274,10 @@
             echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
             echo '<article>';
             echo '<div class="post-img" style="width:250px; height:250px;">';
-            echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
-            echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
+            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '</h2>';
