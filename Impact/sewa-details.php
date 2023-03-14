@@ -490,11 +490,23 @@ if (isset($_GET["id_aset"])) {
                       <input name="no_telepon" type="number" class="form-control" placeholder="NO.HP*">
                     </div>
                     <br>
-                    <!-- <div class="col-md-6 form-group">
-                      <label for="inputEmail4">No.KTP</label>
-                      <input name="no_ktp" type="number" class="form-control" placeholder="No.KTP*">
-                    </div> -->
+                    <div class="col-md-6 form-group">
+                      <label for="inputEmail4">Perihal</label>
+                      <input name="hal" type="number" class="form-control" placeholder="Sewa/Kerjasama*">
                     </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                    <br>
+                      <label for="date1">Tanggal mulai </label>
+                      <input style="margin-left:12px;" type="date" name="date1" id="date1" class="form-control mr-2" mar>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <label for="date2">sampai </label>
+                      <input style="margin-left:12px;" type="date" name="date2" id="date2" class="form-control mr-2">
+                  </div>
+                    
                   <br>
                   <!-- <div class="row">
                     <div class="col form-group">
