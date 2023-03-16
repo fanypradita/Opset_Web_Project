@@ -257,7 +257,7 @@
           // generate HTML code for each item in the loop
           echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
-            if ($row["kategori_aset"] == "bangunan") {
+            if ($row["kategori_aset"] == "kos") {
               echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
               echo '<article>';
               echo '<div class="post-img" style="width:250px; height:250px;">';
