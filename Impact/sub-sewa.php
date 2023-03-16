@@ -232,7 +232,7 @@
           } else {
             $sql = "SELECT * FROM tbl_opset";
           }
-
+          
           // retrieve data from the MySQL database with pagination
           $items_per_page = 4;
           if (isset($_GET["page"])) {

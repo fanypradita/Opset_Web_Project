@@ -255,13 +255,13 @@ if (isset($_GET["id_aset"])) {
           <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="http://localhost\Opset_Web_Project\backend\uploads\files\ru.jpeg" class="d-block w-100" alt="...">
+    <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost\Opset_Web_Project\backend\uploads\files\2.png" class="d-block w-100" alt="...">
+    <?php echo '<img src=" '. $row["imagess"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost\Opset_Web_Project\backend\uploads\files\3.png" class="d-block w-100" alt="...">
+    <?php echo '<img src=" '. $row["imagesss"] .' " alt="" class="img-fluid" >'; ?>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -513,19 +513,19 @@ if (isset($_GET["id_aset"])) {
                     <br>
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">Perihal</label>
-                      <input name="hal" type="number" class="form-control" placeholder="Sewa/Kerjasama*">
+                      <input name="hal" type="text" class="form-control" placeholder="Sewa/Kerjasama*">
                     </div>
                   </div>
                   <br>
                   <div class="row">
                     <br>
                       <label for="date1">Tanggal mulai </label>
-                      <input style="margin-left:12px;" type="date" name="date1" id="date1" class="form-control mr-2" mar>
+                      <input style="margin-left:12px;" type="date" name="tgl_mulai" id="date1" class="form-control mr-2" mar>
                     </div>
                     <br>
                     <div class="row">
                       <label for="date2">sampai </label>
-                      <input style="margin-left:12px;" type="date" name="date2" id="date2" class="form-control mr-2">
+                      <input style="margin-left:12px;" type="date" name="tgl_akhir" id="date2" class="form-control mr-2">
                   </div>
                     
                   <br>
@@ -540,7 +540,13 @@ if (isset($_GET["id_aset"])) {
                       </select>
                     </div>
                   </div> -->
-                  
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Instansi</label>
+                      <textarea name="jml" class="form-control" placeholder="Perorangan/instansi*"></textarea>
+                    </div>
+                  </div>
+                  <br>
                   <div class="row">
                     <div class="col form-group">
                       <label for="inputEmail4">Nama Instansi</label>
@@ -548,6 +554,13 @@ if (isset($_GET["id_aset"])) {
                     </div>
                   </div>
                   <br>
+                  <!-- <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Status</label>
+                      <textarea name="status" class="form-control" readonly>Proses</textarea>
+                    </div>
+                  </div>
+                  <br> -->
                   <tr>
                   <td colspan="2"><input type="submit" name="simpan" value="Ajukan Permintaan"></td>
                 </tr>
@@ -557,14 +570,17 @@ if (isset($_GET["id_aset"])) {
 
                 <?php
 
-                $nama = $email = $no_telepon = $no_ktp = $instansi = "";
+                $nama = $email = $jml = $instansi = $hal = $tgl_mulai = $tgl_akhir = $no_telepon = "";
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $nama = test_input($_POST["nama"]);
                   $email = test_input($_POST["email"]);
-                  $no_telepon = test_input($_POST["no_telepon"]);
-                  $no_ktp = test_input($_POST["no_ktp"]);
+                  $jml = test_input($_POST["jml"]);
                   $instansi = test_input($_POST["instansi"]);
+                  $hal = test_input($_POST["hal"]);
+                  $tgl_mulai = test_input($_POST["tgl_mulai"]);
+                  $tgl_akhir = test_input($_POST["tgl_akhir"]);
+                  $no_telepon = test_input($_POST["no_telepon"]);
 
 
                   // connect to MySQL database
@@ -581,7 +597,7 @@ if (isset($_GET["id_aset"])) {
                   }
 
                   // insert data into database
-                  $sql = "INSERT INTO pengajuan_1 (nama, email, no_telepon, no_ktp, instansi) VALUES ('$nama', '$email', '$no_telepon', '$no_ktp', '$instansi')";
+                  $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
 
                   if (mysqli_query($conn, $sql)) {
                     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
@@ -591,14 +607,13 @@ if (isset($_GET["id_aset"])) {
 
                   if (isset($_GET["id_aset"])) {
                     $id_aset = $_GET["id_aset"];
-                    $sql = "SELECT * FROM tbl_opset WHERE id_aset = $id_aset";
+                    $sql = "SELECT * FROM pengajuan WHERE id_aset = $id_aset";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
           
                     // display the item's information to the user
-                    echo '<h1>' . $row["nama_aset"] . '</h1>';
-                    echo '<p>' . $row["alamat"] . '</p>';
-                    echo '<p>' . $row["kategori_aset"] . '</p>';
+                    echo '<h1> Pengajuan Anda sedang diproses... </h1>';
+
                     // display other information about the item as needed
                   }
 
