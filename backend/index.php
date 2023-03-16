@@ -105,4 +105,5 @@
 	$page = new Router;
 	$page->init(); // Bootstrap Page with the Current URL
 	
+	?>
 	
