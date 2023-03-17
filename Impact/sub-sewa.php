@@ -228,9 +228,9 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM tbl_opset WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
+            $sql = "SELECT subkategori.sub_aset, tbl_opset.nama_aset FROM subkategori JOIN tbl_opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
           } else {
-            $sql = "SELECT * FROM tbl_opset";
+            $sql = "SELECT subkategori.sub_aset, tbl_opset.nama_aset FROM subkategori JOIN tbl_opset WHERE subkategori.id_aset = tbl_opset.id_aset;";
           }
           
           // retrieve data from the MySQL database with pagination
@@ -277,7 +277,7 @@
             echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
-            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
+            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_aset"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '</h2>';
