@@ -599,11 +599,7 @@ if (isset($_GET["id_aset"])) {
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $nama = test_input($_POST["nama"]);
                   $email = test_input($_POST["email"]);
-<<<<<<< HEAD
-                  $no_telepon = test_input($_POST["no_telepon"]);
-=======
                   $jml = test_input($_POST["jml"]);
->>>>>>> 5fbed234e00e4e96c46235997085baff5f55fd70
                   $instansi = test_input($_POST["instansi"]);
                   $hal = test_input($_POST["hal"]);
                   $tgl_mulai = test_input($_POST["tgl_mulai"]);
@@ -625,11 +621,7 @@ if (isset($_GET["id_aset"])) {
                   }
 
                   // insert data into database
-<<<<<<< HEAD
-                  $sql = "INSERT INTO pengajuan (nama, email, no_telepon,  instansi) VALUES ('$nama', '$email', '$no_telepon',  '$instansi')";
-=======
                   $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
->>>>>>> 5fbed234e00e4e96c46235997085baff5f55fd70
 
                   if (mysqli_query($conn, $sql)) {
                     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
