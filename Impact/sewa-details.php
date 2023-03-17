@@ -343,6 +343,30 @@ if (isset($_GET["id_aset"])) {
                 <h5>
                   Fasilitas Umum
                 </h5>
+                <div data-v-392c48dd="" class="detail-kost-facility-category__item-wrapper bg-c-grid bg-c-grid--vtop bg-c-grid--left ">
+                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dekat Jalan Tol" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" style=”float:left;” />    Dekat Jalan Tol</p>
+                      </div>
+                    </div> <!---->
+                  </div>
+                </div>
+                <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Kulkas" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" style=”float:left;” />    Dekat Area Perbelanjaan</p>
+              </div>
+            </div> <!---->
+          </div>
+        </div>
+        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Tamu" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" style=”float:left;” />    Area Ramai</p>
+      </div>
+    </div> <!---->
+  </div>
+</div>
+<div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Makan" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" style=”float:left;” />    Dekat Mushola</p>
+  </div>
+</div> <!---->
+</div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dapur" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" lstyle=”float:left;” />    Akses Mudah</p>
+</div>
+</div> <!---->
+<div data-v-05ef02e1="" data-v-7140aae4="" tabindex="-1" role="dialog" class="detail-kost-facilities-modal bg-c-modal bg-c-modal--backdrop bg-c-modal--md bg-c-modal--popup" data-testid="detailPagePublicFacilitiesModal"><!----></div></div> <div data-v-3624d904="" data-v-70417152="" class="detail-kost-parking-facilities"><div data-v-392c48dd="" data-v-3624d904="" data-testid="detailKostFacilityCategory" class="detail-kost-facility-category detail-kost-parking-facilities__content"><span data-v-392c48dd="" role="separator" class="detail-kost-facility-category__divider bg-c-divider"></span> <p data-v-392c48dd="" class="detail-kost-facility-category__title bg-c-text bg-c-text--heading-4">
+
                 <blockquote>
                   <p>
                     Perhutani Forestry Institute mengelola beberapa aset yang kemudian dikomersialisasi dan dapat dinikmati oleh semua masyarakat.
