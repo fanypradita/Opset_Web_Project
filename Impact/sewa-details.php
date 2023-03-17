@@ -255,13 +255,13 @@ if (isset($_GET["id_aset"])) {
           <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="http://localhost\Opset_Web_Project\backend\uploads\files\ru.jpeg" class="d-block w-100" alt="...">
+    <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost\Opset_Web_Project\backend\uploads\files\2.png" class="d-block w-100" alt="...">
+    <?php echo '<img src=" '. $row["imagess"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-      <img src="http://localhost\Opset_Web_Project\backend\uploads\files\3.png" class="d-block w-100" alt="...">
+    <?php echo '<img src=" '. $row["imagesss"] .' " alt="" class="img-fluid" >'; ?>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -343,6 +343,30 @@ if (isset($_GET["id_aset"])) {
                 <h5>
                   Fasilitas Umum
                 </h5>
+                <div data-v-392c48dd="" class="detail-kost-facility-category__item-wrapper bg-c-grid bg-c-grid--vtop bg-c-grid--left ">
+                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dekat Jalan Tol" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" style=”float:left;” />    Dekat Jalan Tol</p>
+                      </div>
+                    </div> <!---->
+                  </div>
+                </div>
+                <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Kulkas" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" style=”float:left;” />    Dekat Area Perbelanjaan</p>
+              </div>
+            </div> <!---->
+          </div>
+        </div>
+        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Tamu" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" style=”float:left;” />    Area Ramai</p>
+      </div>
+    </div> <!---->
+  </div>
+</div>
+<div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Makan" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" style=”float:left;” />    Dekat Mushola</p>
+  </div>
+</div> <!---->
+</div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dapur" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" lstyle=”float:left;” />    Akses Mudah</p>
+</div>
+</div> <!---->
+<div data-v-05ef02e1="" data-v-7140aae4="" tabindex="-1" role="dialog" class="detail-kost-facilities-modal bg-c-modal bg-c-modal--backdrop bg-c-modal--md bg-c-modal--popup" data-testid="detailPagePublicFacilitiesModal"><!----></div></div> <div data-v-3624d904="" data-v-70417152="" class="detail-kost-parking-facilities"><div data-v-392c48dd="" data-v-3624d904="" data-testid="detailKostFacilityCategory" class="detail-kost-facility-category detail-kost-parking-facilities__content"><span data-v-392c48dd="" role="separator" class="detail-kost-facility-category__divider bg-c-divider"></span> <p data-v-392c48dd="" class="detail-kost-facility-category__title bg-c-text bg-c-text--heading-4">
+
                 <blockquote>
                   <p>
                     Perhutani Forestry Institute mengelola beberapa aset yang kemudian dikomersialisasi dan dapat dinikmati oleh semua masyarakat.
@@ -513,19 +537,19 @@ if (isset($_GET["id_aset"])) {
                     <br>
                     <div class="col-md-6 form-group">
                       <label for="inputEmail4">Perihal</label>
-                      <input name="hal" type="number" class="form-control" placeholder="Sewa/Kerjasama*">
+                      <input name="hal" type="text" class="form-control" placeholder="Sewa/Kerjasama*">
                     </div>
                   </div>
                   <br>
                   <div class="row">
                     <br>
                       <label for="date1">Tanggal mulai </label>
-                      <input style="margin-left:12px;" type="date" name="date1" id="date1" class="form-control mr-2" mar>
+                      <input style="margin-left:12px;" type="date" name="tgl_mulai" id="date1" class="form-control mr-2" mar>
                     </div>
                     <br>
                     <div class="row">
                       <label for="date2">sampai </label>
-                      <input style="margin-left:12px;" type="date" name="date2" id="date2" class="form-control mr-2">
+                      <input style="margin-left:12px;" type="date" name="tgl_akhir" id="date2" class="form-control mr-2">
                   </div>
                     
                   <br>
@@ -540,7 +564,13 @@ if (isset($_GET["id_aset"])) {
                       </select>
                     </div>
                   </div> -->
-                  
+                  <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Instansi</label>
+                      <textarea name="jml" class="form-control" placeholder="Perorangan/instansi*"></textarea>
+                    </div>
+                  </div>
+                  <br>
                   <div class="row">
                     <div class="col form-group">
                       <label for="inputEmail4">Nama Instansi</label>
@@ -548,6 +578,13 @@ if (isset($_GET["id_aset"])) {
                     </div>
                   </div>
                   <br>
+                  <!-- <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Status</label>
+                      <textarea name="status" class="form-control" readonly>Proses</textarea>
+                    </div>
+                  </div>
+                  <br> -->
                   <tr>
                   <td colspan="2"><input type="submit" name="simpan" value="Ajukan Permintaan"></td>
                 </tr>
@@ -557,13 +594,21 @@ if (isset($_GET["id_aset"])) {
 
                 <?php
 
-                $nama = $email = $no_telepon = $no_ktp = $instansi = "";
+                $nama = $email = $jml = $instansi = $hal = $tgl_mulai = $tgl_akhir = $no_telepon = "";
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   $nama = test_input($_POST["nama"]);
                   $email = test_input($_POST["email"]);
+<<<<<<< HEAD
                   $no_telepon = test_input($_POST["no_telepon"]);
+=======
+                  $jml = test_input($_POST["jml"]);
+>>>>>>> 5fbed234e00e4e96c46235997085baff5f55fd70
                   $instansi = test_input($_POST["instansi"]);
+                  $hal = test_input($_POST["hal"]);
+                  $tgl_mulai = test_input($_POST["tgl_mulai"]);
+                  $tgl_akhir = test_input($_POST["tgl_akhir"]);
+                  $no_telepon = test_input($_POST["no_telepon"]);
 
 
                   // connect to MySQL database
@@ -580,7 +625,11 @@ if (isset($_GET["id_aset"])) {
                   }
 
                   // insert data into database
+<<<<<<< HEAD
                   $sql = "INSERT INTO pengajuan (nama, email, no_telepon,  instansi) VALUES ('$nama', '$email', '$no_telepon',  '$instansi')";
+=======
+                  $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
+>>>>>>> 5fbed234e00e4e96c46235997085baff5f55fd70
 
                   if (mysqli_query($conn, $sql)) {
                     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
@@ -590,14 +639,13 @@ if (isset($_GET["id_aset"])) {
 
                   if (isset($_GET["id_aset"])) {
                     $id_aset = $_GET["id_aset"];
-                    $sql = "SELECT * FROM tbl_opset WHERE id_aset = $id_aset";
+                    $sql = "SELECT * FROM pengajuan WHERE id_aset = $id_aset";
                     $result = mysqli_query($conn, $sql);
                     $row = mysqli_fetch_assoc($result);
           
                     // display the item's information to the user
-                    echo '<h1>' . $row["nama_aset"] . '</h1>';
-                    echo '<p>' . $row["alamat"] . '</p>';
-                    echo '<p>' . $row["kategori_aset"] . '</p>';
+                    echo '<h1> Pengajuan Anda sedang diproses... </h1>';
+
                     // display other information about the item as needed
                   }
 

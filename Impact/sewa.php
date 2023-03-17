@@ -233,7 +233,7 @@
           }
 
           // retrieve data from the MySQL database with pagination
-          $items_per_page = 5;
+          $items_per_page = 4;
           if (isset($_GET["page"])) {
             $current_page = $_GET["page"];
           } else {
@@ -285,6 +285,7 @@
 
 <div class="pagination justify-content-center">
           <div class="pagination">
+
             <?php if ($current_page > 1) : ?>
               <div class="page-item">
                 <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>
