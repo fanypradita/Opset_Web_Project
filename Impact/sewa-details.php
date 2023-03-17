@@ -563,7 +563,6 @@ if (isset($_GET["id_aset"])) {
                   $nama = test_input($_POST["nama"]);
                   $email = test_input($_POST["email"]);
                   $no_telepon = test_input($_POST["no_telepon"]);
-                  $no_ktp = test_input($_POST["no_ktp"]);
                   $instansi = test_input($_POST["instansi"]);
 
 
@@ -581,7 +580,7 @@ if (isset($_GET["id_aset"])) {
                   }
 
                   // insert data into database
-                  $sql = "INSERT INTO pengajuan_1 (nama, email, no_telepon, no_ktp, instansi) VALUES ('$nama', '$email', '$no_telepon', '$no_ktp', '$instansi')";
+                  $sql = "INSERT INTO pengajuan (nama, email, no_telepon,  instansi) VALUES ('$nama', '$email', '$no_telepon',  '$instansi')";
 
                   if (mysqli_query($conn, $sql)) {
                     echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
