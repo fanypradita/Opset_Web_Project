@@ -318,7 +318,7 @@ if (isset($_GET["id_aset"])) {
                           </td> 
                           <td>
                           <?php echo $row["alamat"]; ?><br>
-                          <a href="#peta-aset" data-hash="" data-hash-offset="0" data-hash-offset-lg="100" class="text-2">(Peta Lokasi)</a></td></tr> 
+                          <a href="https://goo.gl/maps/Lqf1x8ACBRLrTV6M9" data-hash="" data-hash-offset="0" data-hash-offset-lg="100" class="text-2">(Peta Lokasi)</a></td></tr> 
                           <tr>
                             <td class="font-weight-semibold">
                   Luas Tanah
