@@ -76,9 +76,10 @@
 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.php">Bangunan</a></li>
-              <li><a href="sewalahan.php">Lahan</a></li>
-              <li><a href="sewakos.php">Kos</a></li>
+            <li><a href="resewak.php">Sport Center</a></li>
+              <li><a href="resewa.php">Bangunan</a></li>
+              <li><a href="resewalahan.php">Lahan</a></li>
+              <li><a href="resewakos.php">Kos</a></li>
               <!---
               <li><a href="#">Drop Down 4</a></li>
               -->
