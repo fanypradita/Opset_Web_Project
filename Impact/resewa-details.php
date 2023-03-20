@@ -57,114 +57,63 @@
 
   <header id="header" class="header d-flex align-items-center">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>PerhutaniPro<span>.</span></h1>
-      </a>
-      <nav id="navbar" class="navbar">
+<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  <a href="reindex.html" class="logo d-flex align-items-center">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- <img src="assets/img/logo.png" alt=""> -->
+    <h1>PerhutaniPro<span>.</span></h1>
+  </a>
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a href="reindex.html">Beranda</a></li>
+      <!--
+      <li><a href="#about">Tentang Kami</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="blog.html">Properti</a></li>
+      -->
+
+      <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <!--
-          <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Properti</a></li>
-          -->
-
-          <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-            <li><a href="resewak.php">Sport Center</a></li>
-              <li><a href="resewa.php">Bangunan</a></li>
-              <li><a href="resewalahan.php">Lahan</a></li>
-              <li><a href="resewakos.php">Kos</a></li>
-              <!---
-              <li><a href="#">Drop Down 4</a></li>
-              -->
-            </ul>
-          </li>
-          <li class="dropdown"><a href="info.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="info.html">Frequently Asked Questions</a></li>
-              <li><a href="daftar.html">Tata cara pendaftaran</a></li>
-              <li><a href="bayarr.html">Metode Pembayaran</a></li>
-            </ul>
-          </li>
-          <!--
-          <li><a href="#contact">Contact</a></li>
-          -->
-          <li><a href="index.html#about">Tentang Kami</a></li>
-          <li><a href="konsultasi.php">Konsultasi</a></li>
-          <li class="nav-item dropdown pe-3">
-
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
-            </a><!-- End Profile Iamge Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li class="dropdown-header">
-                <h6>Fany Pradita</h6>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                  <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="login.php">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
-                </a>
-              </li>
-  
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-  
-          </ul>
+          <li><a href="resewa.php">Sport Center</a></li>
+          <li><a href="resewa.php">Bangunan</a></li>
+          <li><a href="resewalahan.php">Lahan</a></li>
+          <li><a href="resewakos.php">Kos</a></li>
         </ul>
-       
+      </li>
+   
+      <li class="dropdown"><a href="reinfo.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+          <li><a href="reinfo.html">Frequently Asked Questions</a></li>
+          <li><a href="redaftar.html">Tata cara pendaftaran</a></li>
+          <li><a href="rebayar.html">Metode Pembayaran</a></li>
+        </ul>
+      </li>
+      <!--
+      <li><a href="#contact">Contact</a></li>
+      -->
+      <!-- <li><a href="reindex.html">Tentang Kami</a></li> -->
+      <li><a href="rekonsultasi.php">Konsultasi</a></li>
+      <li>
+      <div class="d-grid gap-2 d-md-block">
+        <button class="btn btn-secondary btn-lg" type="button" ><a href="login1.php">Login</button></a>
+      </div>
+    </li>
       </ul>
-    </nav><!-- End Icons Navigation -->
+    </ul>
+   
+  </ul>
+</nav><!-- End Icons Navigation -->
 
-      </nav><!-- .navbar -->
+  </nav><!-- .navbar -->
 
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-    </div>
-  </header><!-- End Header -->
-  <!-- End Header -->
+</div>
+</header><!-- End Header -->
+<!-- End Header -->
 
   <?php
 
@@ -328,9 +277,9 @@ if (isset($_GET["id_aset"])) {
                   Luas Bangunan
                 </td> <td>
                 <?php echo $row["luas_bangunan"]; ?> m<sup>2</sup></td></tr></tbody></table></div></div></div>
-                  <br>
                   
-                  <h5>
+                  
+                  <!-- <h5>
                     Deskripsi
                   </h5>
                   <br>
@@ -340,35 +289,36 @@ if (isset($_GET["id_aset"])) {
 
                 <p>
                   Karena acara-acara tersebut sangat tidak efektif dan efisien diadakan di tempat dengan luas space yang terbatas, masa menyewa gedung menjadi solusinya.
-                </p>
-                <h5>
+                </p> -->
+                <h3>
                   Fasilitas Umum
-                </h5>
+                </h3>
+                <br>
                 <div data-v-392c48dd="" class="detail-kost-facility-category__item-wrapper bg-c-grid bg-c-grid--vtop bg-c-grid--left ">
-                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dekat Jalan Tol" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" style=”float:left;” />    Dekat Jalan Tol</p>
+                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dekat Jalan Tol" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png " style="width:40px; height:40px;" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" style=”float:left;” />    Dekat Jalan Tol</p>
                       </div>
                     </div> <!---->
                   </div>
                 </div>
-                <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Kulkas" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" style=”float:left;” />    Dekat Area Perbelanjaan</p>
+                <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Kulkas" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" style="width:40px; height:40px;" src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" style=”float:left;” />    Dekat Area Perbelanjaan</p>
               </div>
             </div> <!---->
           </div>
         </div>
-        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Tamu" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" style=”float:left;” />    Area Ramai</p>
+        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Tamu" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" style="width:40px; height:40px;" src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" style=”float:left;” />    Area Ramai</p>
       </div>
     </div> <!---->
   </div>
 </div>
-<div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Makan" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" style=”float:left;” />    Dekat Mushola</p>
+<div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Makan" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" style="width:40px; height:40px;" src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" style=”float:left;” />    Dekat Mushola</p>
   </div>
 </div> <!---->
-</div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dapur" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" lstyle=”float:left;” />    Akses Mudah</p>
+</div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dapur" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" style="width:40px; height:40px;" src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" lstyle=”float:left;” />    Akses Mudah</p>
 </div>
 </div> <!---->
 <div data-v-05ef02e1="" data-v-7140aae4="" tabindex="-1" role="dialog" class="detail-kost-facilities-modal bg-c-modal bg-c-modal--backdrop bg-c-modal--md bg-c-modal--popup" data-testid="detailPagePublicFacilitiesModal"><!----></div></div> <div data-v-3624d904="" data-v-70417152="" class="detail-kost-parking-facilities"><div data-v-392c48dd="" data-v-3624d904="" data-testid="detailKostFacilityCategory" class="detail-kost-facility-category detail-kost-parking-facilities__content"><span data-v-392c48dd="" role="separator" class="detail-kost-facility-category__divider bg-c-divider"></span> <p data-v-392c48dd="" class="detail-kost-facility-category__title bg-c-text bg-c-text--heading-4">
 
-                <blockquote>
+                <!-- <blockquote>
                   <p>
                     Perhutani Forestry Institute mengelola beberapa aset yang kemudian dikomersialisasi dan dapat dinikmati oleh semua masyarakat.
                   </p>
@@ -376,7 +326,7 @@ if (isset($_GET["id_aset"])) {
                 <i class="fas fa-cat"></i>
                 <p>
                   Gedung pertemuan Pusdikbang SDM yang bernama Grha Wana Java mampu menampung sekitar 700 orang, dilengkapi dengan tempat parkir kendaraan yang luas, sound system, meja kursi, panggung (stage), ac dan hot spot (wi-fi).
-                </p>
+                </p> -->
 
                 <h3>Lokasi Properti</h3>
                 <?php echo $row["map_url"]; ?>
@@ -514,83 +464,7 @@ if (isset($_GET["id_aset"])) {
 
               <!-- ======= FORM PENGAJUAN ========-->
               <div class="reply-form">
-
-                <h4>Form Pengajuan</h4>
-                <form method="POST">
-                  <br>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <label for="inputEmail4">Nama</label>
-                      <input name="nama" type="text" class="form-control" placeholder="Your Name*" required>
-                    </div>
-                    <br>
-                    <div class="col-md-6 form-group">
-                      <label for="inputEmail4">Gmail</label>
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <label for="inputEmail4">No.HP</label>
-                      <input name="no_telepon" type="number" class="form-control" placeholder="NO.HP*">
-                    </div>
-                    <br>
-                    <div class="col-md-6 form-group">
-                      <label for="inputEmail4">Perihal</label>
-                      <input name="hal" type="text" class="form-control" placeholder="Sewa/Kerjasama*">
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <br>
-                      <label for="date1">Tanggal mulai </label>
-                      <input style="margin-left:12px;" type="date" name="tgl_mulai" id="date1" class="form-control mr-2" mar>
-                    </div>
-                    <br>
-                    <div class="row">
-                      <label for="date2">sampai </label>
-                      <input style="margin-left:12px;" type="date" name="tgl_akhir" id="date2" class="form-control mr-2">
-                  </div>
-                    
-                  <br>
-                  <!-- <div class="row">
-                    <div class="col form-group">
-                      <label for="inputEmail4">Instansi</label>
-                      <select class="form-control">
-                        <option>Pilih</option>
-                        <option>Perusahaan</option>
-                        <option>Perorangan</option>
-                        <option>Organisasi</option>
-                      </select>
-                    </div>
-                  </div> -->
-                  <div class="row">
-                    <div class="col form-group">
-                      <label for="inputEmail4">Instansi</label>
-                      <textarea name="jml" class="form-control" placeholder="Perorangan/instansi*"></textarea>
-                    </div>
-                  </div>
-                  <br>
-                  <div class="row">
-                    <div class="col form-group">
-                      <label for="inputEmail4">Nama Instansi</label>
-                      <textarea name="instansi" class="form-control" placeholder="Instansimu*"></textarea>
-                    </div>
-                  </div>
-                  <br>
-                  <!-- <div class="row">
-                    <div class="col form-group">
-                      <label for="inputEmail4">Status</label>
-                      <textarea name="status" class="form-control" readonly>Proses</textarea>
-                    </div>
-                  </div>
-                  <br> -->
-                  <tr>
-                  <td colspan="2"><input type="submit" name="simpan" value="Ajukan Permintaan"></td>
-                </tr>
-
-
+             
                 </form>
 
                 <?php
