@@ -219,7 +219,7 @@
             echo '<a href="resewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_aset"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-            echo '<button type="submit" name="add_to_cart" value="' . $row["id_aset"] . '" class="btn btn-outline-secondary">Add to cart</button>';
+            echo '<button type="submit" name="add_to_cart" value="' . $row["id_aset"] . '" class="btn btn-outline-secondary" src="recart.php">Add to cart</button>';
             if(isset($_POST["add_to_cart"])){
               $id_aset = $_POST["add_to_cart"];
               $_SESSION["cart"][$id_aset] = true;
