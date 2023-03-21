@@ -206,39 +206,6 @@
           echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
             
-            session_start();
-
-            if (!isset($_SESSION['cart'])) {
-              $_SESSION['cart'] = array();
-            }
-            
-            echo '</div>';
-            if (isset($_POST['add_to_cart'])) {
-              $id_aset = $_POST['add_to_cart'];
-              
-              // check if the item is already in the cart
-              if (isset($_SESSION['cart'][$id_aset])) {
-                $_SESSION['cart'][$id_aset]++;
-              } else {
-                $_SESSION['cart'][$id_aset] = 1;
-              }
-            }
-
-            echo '<table>';
-            echo '<tr><th>Item</th><th>Quantity</th></tr>';
-            
-            foreach ($_SESSION['cart'] as $id_aset => $quantity) {
-              // retrieve the item details from the database
-              $sql = "SELECT * FROM subkategori WHERE id_aset = '$id_aset'";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_assoc($result);
-              
-              // display the item details and quantity
-              echo '<tr>';
-              echo '<td>' . $row['sub_aset'] . '</td>';
-              echo '<td>' . $quantity . '</td>';
-              echo '</tr>';
-            }
             
             echo '</table>';
             
@@ -253,6 +220,12 @@
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '<button type="submit" name="add_to_cart" value="' . $row["id_aset"] . '" class="btn btn-outline-secondary">Add to cart</button>';
+            if(isset($_POST["add_to_cart"])){
+              $id_aset = $_POST["add_to_cart"];
+              $_SESSION["cart"][$id_aset] = true;
+              header("Location: recart.php");
+              exit();
+          }
             echo '</h2>';
             echo '</article>';
             echo '</div>';
