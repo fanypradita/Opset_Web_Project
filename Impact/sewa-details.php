@@ -27,6 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   
 
   <!-- =======================================================
@@ -96,10 +97,8 @@
           -->
           <li><a href="index.html#about">Tentang Kami</a></li>
           <li><a href="konsultasi.php">Konsultasi</a></li>
-          <li class="nav-item dropdown pe-3">
-
+          <li class="nav-item dropdown pe-3"><i class="bi bi-person-circle" style="font-size:25px; color: white;"></i>
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
             </a><!-- End Profile Iamge Icon -->
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -283,13 +282,43 @@ if (isset($_GET["id_aset"])) {
               <?php echo $row["nama_aset"]; ?>
 
               </h2>
-
-              <div class="meta-top">
+              
+    <div class="meta-top">
                 <ul>
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Saepul</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
+                  
+                  <button id="save-btn" type="button" class="btn btn-light" style="margin-left:166px;"><i class="bi bi-heart"></i>&nbsp;&nbsp;Simpan</button>
+                  <script>
+                      $(document).ready(function() {
+                      $('#save-btn').click(function() {
+                        // Retrieve the input values
+                        var nama_aset = $('#nama_aset').val();
+                        var harga = $('#harga').val();
+                        var image = $('#image').val();
+
+                        // Send an AJAX request to add_wishlist.php
+                        $.ajax({
+                          url: 'add_wishlist.php',
+                          type: 'POST',
+                          data: { nama_aset: nama_Aset, harga: harga, image: image },
+                          success: function(response) {
+                            // Display a success message
+                            alert('Item has been added to the wishlist!');
+                          },
+                          error: function(xhr, status, error) {
+                            // Display an error message
+                            alert('Error adding item to the wishlist: ' + error);
+                          }
+                        });
+                      });
+                    });
+                    </script>
+                  &nbsp;&nbsp;
+                  <button type="button" class="btn btn-light" ><i class="bi bi-share"></i>&nbsp;&nbsp;Bagikan</button> 
                 </ul>
               </div><!-- End meta top -->
+             
 
               <div class="content">
                 <div class="row"><div class="col">
@@ -621,24 +650,40 @@ if (isset($_GET["id_aset"])) {
                   }
 
                   // insert data into database
-                  $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
+                  // $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
 
-                  if (mysqli_query($conn, $sql)) {
-                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-                  } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                  }
+                  // if (mysqli_query($conn, $sql)) {
+                  //   echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+                  // } else {
+                  //   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                  // }
 
-                  if (isset($_GET["id_aset"])) {
-                    $id_aset = $_GET["id_aset"];
-                    $sql = "SELECT * FROM pengajuan WHERE id_aset = $id_aset";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_assoc($result);
+                  // if (isset($_GET["id_aset"])) {
+                  //   $id_aset = $_GET["id_aset"];
+                  //   $sql = "SELECT * FROM pengajuan WHERE id_aset = $id_aset";
+                  //   $result = mysqli_query($conn, $sql);
+                  //   $row = mysqli_fetch_assoc($result);
           
-                    // display the item's information to the user
-                    echo '<h1> Pengajuan Anda sedang diproses... </h1>';
+                  //   // display the item's information to the user
+                  //   echo '<h1> Pengajuan Anda sedang diproses... </h1>';
 
-                    // display other information about the item as needed
+                  //   // display other information about the item as needed
+                  // }
+
+                  $email_exists_sql = "SELECT * FROM pengajuan WHERE email='$email'";
+                  $email_exists_result = mysqli_query($conn, $email_exists_sql);
+
+                  if (mysqli_num_rows($email_exists_result) > 0) {
+                    echo "<script type='text/javascript'>alert('You have already submitted a request.')</script>";
+                  } else {
+                    // insert data into database
+                    $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
+
+                    if (mysqli_query($conn, $sql)) {
+                      echo "<script type='text/javascript'>alert('Submitted successfully!')</script>";
+                    } else {
+                      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
                   }
 
                   mysqli_close($conn);

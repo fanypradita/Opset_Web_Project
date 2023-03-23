@@ -225,6 +225,10 @@
                 </li>
 
                 <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#whislist">My wishlist</button>
+                </li>
+
+                <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
                 </li>
 
@@ -369,6 +373,16 @@
     <button type="submit" class="btn btn-primary">Ingin mengajukan lagi?</button>
   </div>
 </form><!-- End settings Form -->
+
+</div>
+
+<div class="tab-pane fade pt-3" id="wishlist">
+
+<!-- Wishlist Form -->
+<form>
+
+
+</form><!-- End wishlist Form -->
 
 </div>
 
