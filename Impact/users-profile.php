@@ -169,7 +169,28 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-  
+  <?php
+                // Koneksi ke database
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "db_perhutani";
+
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                // Mengecek koneksi
+                if (!$conn) {
+                  die("Koneksi gagal: " . mysqli_connect_error());
+                }
+
+                // Query untuk mengambil data terbaru dari tabel user
+                $sql = "SELECT * FROM tbl_customer ORDER BY username DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql);
+
+                // Menampilkan data terbaru
+                if (mysqli_num_rows($result) > 0) {
+                  $row = mysqli_fetch_assoc($result);
+                  ?>
   <main id="main" class="main">
     <div class="breadcrumbs">
       <div class="page-header d-flex align-items-center" style="background-image: url('');">
@@ -198,10 +219,10 @@
 
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <h2>Fany Pradita</h2>
-              <h3>CV.Teknologi kurniatama</h3>
+            
+            <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
+              <h2><?php echo $row["nama"]; ?></h2>
+              <h3>Costumer Perhutani Property</h3>
               <!--
               <div class="social-links mt-2">
                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -252,28 +273,7 @@
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Profile Details</h5>
 
-                                  <?php
-                // Koneksi ke database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "db_perhutani";
-
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-                // Mengecek koneksi
-                if (!$conn) {
-                  die("Koneksi gagal: " . mysqli_connect_error());
-                }
-
-                // Query untuk mengambil data terbaru dari tabel user
-                $sql = "SELECT * FROM tbl_customer ORDER BY username DESC LIMIT 1";
-                $result = mysqli_query($conn, $sql);
-
-                // Menampilkan data terbaru
-                if (mysqli_num_rows($result) > 0) {
-                  $row = mysqli_fetch_assoc($result);
-                  ?>
+            
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama</div>
                     <div class="col-lg-9 col-md-8"><?php echo $row['nama']; ?></div>
@@ -332,47 +332,81 @@
 include 'config.php';
 
 if (isset($_POST['submit'])) {
-    $nama = $_POST['nama'];
-    $jk = $_POST['jk'];
-    $tgl_lahir = $_POST['tgl_lahir'];
-    $alamat = $_POST['alamat'];
-    $nohp = $_POST['nohp'];
-    $noktp = $_POST['noktp'];
-    $nik = $_POST['nik'];
-    $email = $_POST['email'];
+  $nama = $_POST['nama'];
+  $jk = $_POST['jk'];
+  $tgl_lahir = $_POST['tgl_lahir'];
+  $alamat = $_POST['alamat'];
+  $nohp = $_POST['nohp'];
+  $noktp = $_POST['noktp'];
+  $nik = $_POST['nik'];
+  $email = $_POST['email'];
 
-    $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email' WHERE username='$username'";
-    $result = mysqli_query($conn, $query);
+  // Proses foto
+  if ($_FILES['foto']['error'] == 0) {
+      $foto_name = $_FILES['foto']['name'];
+      $foto_size = $_FILES['foto']['size'];
+      $foto_tmp = $_FILES['foto']['tmp_name'];
+      $foto_ext = strtolower(pathinfo($foto_name, PATHINFO_EXTENSION));
+      $extensions = array("jpg", "jpeg", "png");
 
-    if ($result) {
-        echo "<script>alert('Berhasil update profil!')</script>";
-    } else {
-        echo "<script>alert('Gagal update profil!')</script>";
-    }
+      if (in_array($foto_ext, $extensions)) {
+          if ($foto_size < 5000000) {
+              $foto_path = "uploads/customers/" . $foto_name;
+              move_uploaded_file($foto_tmp, $foto_path);
+
+              $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email', foto='$foto_path' WHERE username='$username'";
+              $result = mysqli_query($conn, $query);
+
+              if ($result) {
+                  echo "<script>alert('Berhasil update profil!')</script>";
+              } else {
+                  echo "<script>alert('Gagal update profil!')</script>";
+              }
+          } else {
+              echo "<script>alert('Ukuran file terlalu besar!')</script>";
+          }
+      } else {
+          echo "<script>alert('Ekstensi file tidak didukung!')</script>";
+      }
+  } else {
+      $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email' WHERE username='$username'";
+      $result = mysqli_query($conn, $query);
+
+      if ($result) {
+          echo "<script>alert('Berhasil update profil!')</script>";
+      } else {
+          echo "<script>alert('Gagal update profil!')</script>";
+      }
+  }
 }
 
 $query = "SELECT * FROM tbl_customer WHERE username='$username'";
 $result = mysqli_query($conn, $query);
 $data = mysqli_fetch_assoc($result);
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Edit Profil</title>
-</head>
-<body>
+
     <form action="" method="POST">
+    <div class="row">
+    <label for="foto">Foto:</label>
+        <?php if ($data['foto'] != null) { ?>
+            <img src="<?php echo $data['foto']; ?>" alt="Foto Profil">
+            <br>
+            <button type="button" name="hapus_foto">Hapus Foto</button>
+            <button type="button" name="edit_foto">Edit Foto</button>
+            <br>
+        <?php } else { ?>
+            <input type="file" name="foto" required>
+            <br>
+        <?php } ?>
+    </div>
     <div class="row">
         <label for="nama">Nama:</label>
         <input type="text" name="nama" value="<?php echo $data['nama']; ?>" required>
 </div>
 <div class="row">
-        <label for="jenis_kelamin">Jenis Kelamin:</label>
-        <input type="text" name="jenis_kelamin" value="<?php echo $data['jk']; ?>" required>
+        <label for="jk">Jenis Kelamin:</label>
+        <input type="text" name="jk" value="<?php echo $data['jk']; ?>" required>
 </div>
 <div class="row">
         <label for="tgl_lahir">Tanggal Lahir:</label>
@@ -384,117 +418,91 @@ $data = mysqli_fetch_assoc($result);
 </div>
 <div class="row">
         <label for="nohp">No. HP:</label>
-        <input type="text" name="nohp" value="<?php echo $data['nohp']; ?>" required>
+        <input type="nunmber" name="nohp" value="<?php echo $data['nohp']; ?>" required>
 </div>
 <div class="row">
         <label for="noktp">No.KTP:</label>
-        <input type="text" name="noktp" value="<?php echo $data['noktp']; ?>" required>
+        <input type="number" name="noktp" value="<?php echo $data['noktp']; ?>" required>
 </div>
 <div class="row">
-        <label for="noktp">NIK:</label>
-        <input type="text" name="noktp" value="<?php echo $data['nik']; ?>" required>
+        <label for="nik">NIK:</label>
+        <input type="number" name="nik" value="<?php echo $data['nik']; ?>" required>
 </div>
 <div class="row">
-        <label for="noktp">Email:</label>
-        <input type="text" name="noktp" value="<?php echo $data['email']; ?>" required>
+        <label for="email">Email:</label>
+        <input type="text" name="email" value="<?php echo $data['email']; ?>" required>
 </div>
 <br>
         <button type="submit" name="submit">Update Profil</button>
     </form>
-</body>
-</html>
-
-<!-- <form>
-  <div class="row mb-3">
-    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
-    <div class="col-md-8 col-lg-9">
-      <img src="assets/img/profile-img.jpg" alt="Profile">
-      <div class="pt-2">
-        <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-        <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Username</label>
-    <div class="col-md-8 col-lg-9">
-      <input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="about" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
-    <div class="col-md-8 col-lg-9">
-                <input type="text" placeholder="Nama Lengkap" name="nama" value="<?php echo $nama; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="company" class="col-md-4 col-lg-3 col-form-label">Tanggal lahir</label>
-    <div class="col-md-8 col-lg-9">
-                <input type="date" placeholder="Tanggal lahir" name="tgl_lahir" value="<?php echo $tgl_lahir; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
-    <div class="col-md-8 col-lg-9">
-                <input type="text" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?php echo $jk; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Country" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
-    <div class="col-md-8 col-lg-9">
-                <input type="text box" placeholder="Alamat" name="alamat" value="<?php echo $alamat; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Address" class="col-md-4 col-lg-3 col-form-label">No.HP</label>
-    <div class="col-md-8 col-lg-9">
-                <input type="text" placeholder="No. HP" name="nohp" value="<?php echo $nohp; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Phone" class="col-md-4 col-lg-3 col-form-label">NIK</label>
-    <div class="col-md-8 col-lg-9">
-                <input type="text" placeholder="NIK" name="noktp" value="<?php echo $noktp; ?>" required>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
-    <div class="col-md-8 col-lg-9">
-      <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
-    </div>
-  </div>
-
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-  </div>
-</form> End Profile Edit Form -->
-
 </div> 
-
 
 <div class="tab-pane fade pt-3" id="pengajuan">
 
-<!-- Settings Form -->
 <form>
+ <!-- PHP code to retrieve data from database -->
+<?php
+  // Connect to database
+  $conn = mysqli_connect("localhost", "root", "", "pengajuan");
+  
+  // Check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
+  
+  // Retrieve data from tbl_opset table
+  $sql = "SELECT nama, email, nohp, hal, tgl_mulai, tgl_akhir, nama_instansi, nama_aset FROM pengajuan";
+  $result = mysqli_query($conn, $sql);
+  
+  // Display data in table format
+  echo "<table>
+         <tr>
+           <th>Nama</th>
+           <th>Email</th>
+           <th>No. HP</th>
+           <th>Hal</th>
+           <th>Tgl. Mulai</th>
+           <th>Tgl. Akhir</th>
+           <th>Nama Instansi</th>
+           <th>Nama Aset</th>
+         </tr>";
+         
+  while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr>
+            <td>" . $row['nama'] . "</td>
+            <td>" . $row['email'] . "</td>
+            <td>" . $row['nohp'] . "</td>
+            <td>" . $row['hal'] . "</td>
+            <td>" . $row['tgl_mulai'] . "</td>
+            <td>" . $row['tgl_akhir'] . "</td>
+            <td>" . $row['nama_instansi'] . "</td>
+            <td>" . $row['nama_aset'] . "</td>
+          </tr>";
+  }
+  
+  echo "</table>";
+  
+  // Close database connection
+  mysqli_close($conn);
+?>
+
+</form>
+
+</div>
+
+<!-- <form>
 <div class="text">
     <button type="submit" class="btn btn-primary">Print pdf</button>
   </div>
   <div class="text">
     <button type="submit" class="btn btn-primary">Printf Excel</button>
   </div>
-  
+        </div>
   <div class="text-center">
     <button type="submit" class="btn btn-primary">Ingin mengajukan lagi?</button>
   </div>
-</form><!-- End settings Form -->
+</form> -->
+<!-- End settings Form -->
 
 </div>
 
