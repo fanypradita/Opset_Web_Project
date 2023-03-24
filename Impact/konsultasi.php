@@ -60,11 +60,14 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>PerhutaniPro<span>.</span></h1>
+        <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" style="font-size:15px;">Beranda</a></li>
+          <li><a href="sewa.php" style="font-size:15px;">Sport Center</a></li>
+          <li><a href="sewa.php" style="font-size:15px;">Bangunan</a></li>
+          <li><a href="sewalahan.php" style="font-size:15px;">Lahan</a></li>
           <!--
           <li><a href="#about">Tentang Kami</a></li>
           <li><a href="#services">Services</a></li>
@@ -73,75 +76,75 @@
           <li><a href="blog.html">Properti</a></li>
           -->
 
-          <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <!-- <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.php">Sewa Aset</a></li>
-              <li><a href="kerjasama.php">Kerjasama Aset</a></li>
-              <!---
+              <li><a href="sewa.php">Sport Center</a></li>
+              <li><a href="sewa.php">Bangunan</a></li>
+              <li><a href="sewalahan.php">Lahan</a></li>
+              <li><a href="sewakos.php">Kos</a></li>
               <li><a href="#">Drop Down 4</a></li>
-              -->
             </ul>
-          </li>
-          <li class="dropdown"><a href="info.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li> -->
+
+          <li class="dropdown"><a href="info.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="info.html">Frequently Asked Questions</a></li>
-              <li><a href="daftar.html">Tata cara pendaftaran</a></li>
-              <li><a href="bayarr.html">Metode Pembayaran</a></li>
+              <li><a href="info.html" style="font-size:13px;">Frequently Asked Questions</a></li>
+              <li><a href="daftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
+              <li><a href="bayarr.html" style="font-size:13px;">Metode Pembayaran</a></li>
             </ul>
           </li>
           <!--
           <li><a href="#contact">Contact</a></li>
           -->
-          <li><a href="index.html#about">Tentang Kami</a></li>
-          <li><a href="konsultasi.php">Konsultasi</a></li>
+          <li><a href="konsultasi.php" style="font-size:15px;">Konsultasi</a></li>
           <li class="nav-item dropdown pe-3">
-
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><i class="bi bi-person-circle" style="font-size:25px; color: white;"></i></span>
             </a><!-- End Profile Iamge Icon -->
-  
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li class="dropdown-header">
+<!--
+            <li class="dropdown-header">
                 <h6>Fany Pradita</h6>
               </li>
               <li>
                 <hr class="dropdown-divider">
-              </li>
+              </li> -->
   
-              <li>
+              <!-- <li>
                 <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-person"></i>
-                  <span>My Profile</span>
+                  <span style="font-size:15px;">My Profile</span>
                 </a>
               </li>
               <li>
                 <hr class="dropdown-divider">
-              </li>
+              </li> -->
   
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
                   <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
+                  <span style="font-size:15px;">Account Settings</span>
                 </a>
               </li>
               <li>
                 <hr class="dropdown-divider">
               </li>
   
-              <li>
+              <!-- <li>
                 <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                   <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
+                  <span style="font-size:15px;">Need Help?</span>
                 </a>
               </li>
               <li>
                 <hr class="dropdown-divider">
-              </li>
+              </li> -->
   
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="login.php">
                   <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
+                  <span style="font-size:15px;">Sign Out</span>
                 </a>
               </li>
   
@@ -162,7 +165,6 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
-
 
   <main id="main">
 

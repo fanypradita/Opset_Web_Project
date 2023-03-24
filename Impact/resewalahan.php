@@ -45,11 +45,14 @@
       <a href="reindex.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>PerhutaniPro<span>.</span></h1>
+        <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="reindex.html">Beranda</a></li>
+          <li><a href="reindex.html" style="font-size:15px;">Beranda</a></li>
+          <li><a href="resewa.php" style="font-size:15px;">Sport Center</a></li>
+          <li><a href="resewa.php" style="font-size:15px;">Bangunan</a></li>
+          <li><a href="resewalahan.php" style="font-size:15px;">Lahan</a></li>
           <!--
           <li><a href="#about">Tentang Kami</a></li>
           <li><a href="#services">Services</a></li>
@@ -57,7 +60,7 @@
           <li><a href="#team">Team</a></li>
           <li><a href="blog.html">Properti</a></li>
           -->
-
+<!-- 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <li><a href="resewa.php">Sport Center</a></li>
@@ -65,20 +68,20 @@
               <li><a href="resewalahan.php">Lahan</a></li>
               <li><a href="resewakos.php">Kos</a></li>
             </ul>
-          </li>
+          </li> -->
        
-          <li class="dropdown"><a href="reinfo.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          <li class="dropdown"><a href="reinfo.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="reinfo.html">Frequently Asked Questions</a></li>
-              <li><a href="redaftar.html">Tata cara pendaftaran</a></li>
-              <li><a href="rebayar.html">Metode Pembayaran</a></li>
+              <li><a href="reinfo.html" style="font-size:13px;">Frequently Asked Questions</a></li>
+              <li><a href="redaftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
+              <li><a href="rebayar.html" style="font-size:13px;">Metode Pembayaran</a></li>
             </ul>
           </li>
           <!--
           <li><a href="#contact">Contact</a></li>
           -->
           <!-- <li><a href="reindex.html">Tentang Kami</a></li> -->
-          <li><a href="rekonsultasi.php">Konsultasi</a></li>
+          <li><a href="rekonsultasi.php" style="font-size:15px;">Konsultasi</a></li>
           <li>
           <div class="d-grid gap-2 d-md-block">
             <button class="btn btn-secondary btn-lg" type="button" ><a href="login1.php">Login</button></a>
@@ -98,6 +101,7 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
+
 
  
   <main id="main">

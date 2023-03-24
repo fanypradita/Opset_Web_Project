@@ -61,11 +61,14 @@
       <a href="reindex.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1>PerhutaniPro<span>.</span></h1>
+        <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
       </a>
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="reindex.html">Home</a></li>
+          <li><a href="reindex.html" style="font-size:15px;">Beranda</a></li>
+          <li><a href="resewa.php" style="font-size:15px;">Sport Center</a></li>
+          <li><a href="resewa.php" style="font-size:15px;">Bangunan</a></li>
+          <li><a href="resewalahan.php" style="font-size:15px;">Lahan</a></li>
           <!--
           <li><a href="#about">Tentang Kami</a></li>
           <li><a href="#services">Services</a></li>
@@ -73,33 +76,31 @@
           <li><a href="#team">Team</a></li>
           <li><a href="blog.html">Properti</a></li>
           -->
-<!--
+<!-- 
           <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="sewa.html">Sewa</a></li>
-              <li><a href="kerjasama.html">Kerjasama Aset</a></li>
-              <li><a href="pengajuan.html">Pengajuan form</a></li>
-              
-              <li><a href="#">Drop Down 4</a></li>
-              
+              <li><a href="resewa.php">Sport Center</a></li>
+              <li><a href="resewa.php">Bangunan</a></li>
+              <li><a href="resewalahan.php">Lahan</a></li>
+              <li><a href="resewakos.php">Kos</a></li>
             </ul>
-          </li>
-        -->
-          <li class="dropdown"><a href="reinfo.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+          </li> -->
+       
+          <li class="dropdown"><a href="reinfo.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="reinfo.html">Frequently Asked Questions</a></li>
-              <li><a href="redaftar.html">Tata cara pendaftaran</a></li>
-              <li><a href="rebayar.html">Metode Pembayaran</a></li>
+              <li><a href="reinfo.html" style="font-size:13px;">Frequently Asked Questions</a></li>
+              <li><a href="redaftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
+              <li><a href="rebayar.html" style="font-size:13px;">Metode Pembayaran</a></li>
             </ul>
           </li>
           <!--
           <li><a href="#contact">Contact</a></li>
           -->
-          <li><a href="reindex.html">Tentang Kami</a></li>
-          <li><a href="rekonsultasi.html">Konsultasi</a></li>
+          <!-- <li><a href="reindex.html">Tentang Kami</a></li> -->
+          <li><a href="rekonsultasi.php" style="font-size:15px;">Konsultasi</a></li>
           <li>
           <div class="d-grid gap-2 d-md-block">
-            <button class="btn btn-secondary btn-lg" type="button" ><a href="login.php">Login</button></a>
+            <button class="btn btn-secondary btn-lg" type="button" ><a href="login1.php">Login</button></a>
           </div>
         </li>
           </ul>
@@ -116,6 +117,7 @@
     </div>
   </header><!-- End Header -->
   <!-- End Header -->
+
 
 
   <main id="main">
@@ -356,45 +358,57 @@ include("config.php"); // untuk memanggil file config.php
                 </form>
                 <?php
 
-                $nama = $email = $pesan = "";
+$nama = $email = $pesan = "";
 
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                  $nama = test_input($_POST["nama"]);
-                  $email = test_input($_POST["email"]);
-                  $pesan = test_input($_POST["pesan"]);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $nama = test_input($_POST["nama"]);
+  $email = test_input($_POST["email"]);
+  $pesan = test_input($_POST["pesan"]);
 
-                  // connect to MySQL database
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "db_perhutanii";
+  // connect to MySQL database
+  $servername = "localhost";
+  $username = "root";
+  $password = "";
+  $dbname = "db_perhutanii";
 
-                  $conn = mysqli_connect($servername, $username, $password, $dbname);
+  $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-                  // check connection
-                  if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                  }
+  // check connection
+  if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+  }
 
-                  // insert data into database
-                  $sql = "INSERT INTO konsultasi (nama, email, pesan) VALUES ('$nama', '$email', '$pesan')";
+  // insert data into database
+  $sql = "INSERT INTO konsultasi (nama, email, pesan) VALUES ('$nama', '$email', '$pesan')";
 
-                  if (mysqli_query($conn, $sql)) {
-                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-                  } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                  }
+  if (mysqli_query($conn, $sql)) {
+    // send email to customer service
+    $to = "fanypradita2001@gmail.com";
+    $subject = "New consultation request from $nama";
+    $message = "Nama: $nama\nEmail: $email\nPesan: $pesan";
+    $headers = "From: webmaster@example.com";
 
-                  mysqli_close($conn);
-                }
+    if (mail($to, $subject, $message, $headers)) {
+      echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
+    } else {
+      echo "Failed to send email.";
+    }
+  } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  }
 
-                function test_input($data) {
-                  $data = trim($data);
-                  $data = stripslashes($data);
-                  $data = htmlspecialchars($data);
-                  return $data;
-                }
-                ?>
+  mysqli_close($conn);
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+?>
+
 
               </div>
 

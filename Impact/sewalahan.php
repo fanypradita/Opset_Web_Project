@@ -41,116 +41,114 @@
 
 <header id="header" class="header d-flex align-items-center">
 
-<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-  <a href="index.html" class="logo d-flex align-items-center">
-    <!-- Uncomment the line below if you also wish to use an image logo -->
-    <!-- <img src="assets/img/logo.png" alt=""> -->
-    <h1>PerhutaniPro<span>.</span></h1>
-  </a>
-  <nav id="navbar" class="navbar">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <!--
-      <li><a href="#about">Tentang Kami</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#team">Team</a></li>
-      <li><a href="blog.html">Properti</a></li>
-      -->
-
-      <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
+      </a>
+      <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="sewa.php">Bangunan</a></li>
-          <li><a href="sewa.php">Lahan</a></li>
-          <li><a href="sewa.php">Kos</a></li>
-          <!---
-          <li><a href="pengajuan.html">Pengajuan form</a></li>
+          <li><a href="index.html" style="font-size:15px;">Beranda</a></li>
+          <li><a href="sewa.php" style="font-size:15px;">Sport Center</a></li>
+          <li><a href="sewa.php" style="font-size:15px;">Bangunan</a></li>
+          <li><a href="sewalahan.php" style="font-size:15px;">Lahan</a></li>
+          <!--
+          <li><a href="#about">Tentang Kami</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="blog.html">Properti</a></li>
           -->
-          <!---
-          <li><a href="#">Drop Down 4</a></li>
+
+          <!-- <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="sewa.php">Sport Center</a></li>
+              <li><a href="sewa.php">Bangunan</a></li>
+              <li><a href="sewalahan.php">Lahan</a></li>
+              <li><a href="sewakos.php">Kos</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li> -->
+
+          <li class="dropdown"><a href="info.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="info.html" style="font-size:13px;">Frequently Asked Questions</a></li>
+              <li><a href="daftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
+              <li><a href="bayarr.html" style="font-size:13px;">Metode Pembayaran</a></li>
+            </ul>
+          </li>
+          <!--
+          <li><a href="#contact">Contact</a></li>
           -->
-        </ul>
-      </li>
-      <li class="dropdown"><a href="info.html"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-        <ul>
-          <li><a href="info.html">Frequently Asked Questions</a></li>
-          <li><a href="daftar.html">Tata cara pendaftaran</a></li>
-          <li><a href="bayarr.html">Metode Pembayaran</a></li>
-        </ul>
-      </li>
-      <!--
-      <li><a href="#contact">Contact</a></li>
-      -->
-      <li><a href="index.html#about">Tentang Kami</a></li>
-      <li><a href="konsultasi.php">Konsultasi</a></li>
-      <li class="nav-item dropdown pe-3">
+          <li><a href="konsultasi.php" style="font-size:15px;">Konsultasi</a></li>
+          <li class="nav-item dropdown pe-3">
+            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <span class="d-none d-md-block dropdown-toggle ps-2"><i class="bi bi-person-circle" style="font-size:25px; color: white;"></i></span>
+            </a><!-- End Profile Iamge Icon -->
 
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-          <span class="d-none d-md-block dropdown-toggle ps-2">Akunmu</span>
-        </a><!-- End Profile Iamge Icon -->
-
-        <ul class="dropdown-menu ">
-          
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+<!--
             <li class="dropdown-header">
-            <h6>Fany Pradita</h6>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-              <i class="bi bi-person"></i>
-              <span>My Profile</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-              <i class="bi bi-gear"></i>
-              <span>Account Settings</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-              <i class="bi bi-question-circle"></i>
-              <span>Need Help?</span>
-            </a>
-          </li>
-          <li>
-            <hr class="dropdown-divider">
-          </li>
-
-          <li>
-            <a class="dropdown-item d-flex align-items-center" href="logout.php">
-              <i class="bi bi-box-arrow-right"></i>
-              <span>Sign Out</span>
-            </a>
-          </li>
-
-        </ul><!-- End Profile Dropdown Items -->
-      </li><!-- End Profile Nav -->
-
+                <h6>Fany Pradita</h6>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li> -->
+  
+              <!-- <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+                  <i class="bi bi-person"></i>
+                  <span style="font-size:15px;">My Profile</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li> -->
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+                  <i class="bi bi-gear"></i>
+                  <span style="font-size:15px;">Account Settings</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+  
+              <!-- <li>
+                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                  <i class="bi bi-question-circle"></i>
+                  <span style="font-size:15px;">Need Help?</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li> -->
+  
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="login.php">
+                  <i class="bi bi-box-arrow-right"></i>
+                  <span style="font-size:15px;">Sign Out</span>
+                </a>
+              </li>
+  
+            </ul><!-- End Profile Dropdown Items -->
+          </li><!-- End Profile Nav -->
+  
+          </ul>
+        </ul>
+       
       </ul>
-    </ul>
-   
-  </ul>
-</nav><!-- End Icons Navigation -->
+    </nav><!-- End Icons Navigation -->
 
-  </nav><!-- .navbar -->
+      </nav><!-- .navbar -->
 
-  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-</div>
-</header><!-- End Header -->
+    </div>
+  </header><!-- End Header -->
   <!-- End Header -->
  
   <main id="main">
