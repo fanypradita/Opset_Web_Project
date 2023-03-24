@@ -252,47 +252,159 @@
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                   <h5 class="card-title">Profile Details</h5>
 
+                                  <?php
+                // Koneksi ke database
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "db_perhutani";
+
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                // Mengecek koneksi
+                if (!$conn) {
+                  die("Koneksi gagal: " . mysqli_connect_error());
+                }
+
+                // Query untuk mengambil data terbaru dari tabel user
+                $sql = "SELECT * FROM tbl_customer ORDER BY username DESC LIMIT 1";
+                $result = mysqli_query($conn, $sql);
+
+                // Menampilkan data terbaru
+                if (mysqli_num_rows($result) > 0) {
+                  $row = mysqli_fetch_assoc($result);
+                  ?>
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-3 col-md-4 label ">Nama</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['nama']; ?></div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Company</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                    <div class="col-lg-3 col-md-4 label">Jenis Kelamin</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['jk']; ?></div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-3 col-md-4 label">Tanggal Lahir</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['tgl_lahir']; ?></div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Country</div>
-                    <div class="col-lg-9 col-md-8">USA</div>
+                    <div class="col-lg-3 col-md-4 label">Alamat</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['alamat']; ?></div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Address</div>
-                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                    <div class="col-lg-3 col-md-4 label">No.hp</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['nohp']; ?></div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">No.ktp</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['noktp']; ?></div>
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Phone</div>
-                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                    <div class="col-lg-3 col-md-4 label">NIK</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['nik']; ?></div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                    <div class="col-lg-9 col-md-8"><?php echo $row['email']; ?></div>
                   </div>
+                  <?php
+                } else {
+                  echo "Tidak ada data yang ditemukan.";
+                }
+
+                // Menutup koneksi
+                mysqli_close($conn);
+                ?>
 
                 </div><!--END PROFILE DETAILS-->
                 
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
 <!-- Profile Edit Form -->
-<form>
+<?php
+
+include 'config.php';
+
+if (isset($_POST['submit'])) {
+    $nama = $_POST['nama'];
+    $jk = $_POST['jk'];
+    $tgl_lahir = $_POST['tgl_lahir'];
+    $alamat = $_POST['alamat'];
+    $nohp = $_POST['nohp'];
+    $noktp = $_POST['noktp'];
+    $nik = $_POST['nik'];
+    $email = $_POST['email'];
+
+    $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email' WHERE username='$username'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        echo "<script>alert('Berhasil update profil!')</script>";
+    } else {
+        echo "<script>alert('Gagal update profil!')</script>";
+    }
+}
+
+$query = "SELECT * FROM tbl_customer WHERE username='$username'";
+$result = mysqli_query($conn, $query);
+$data = mysqli_fetch_assoc($result);
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Profil</title>
+</head>
+<body>
+    <form action="" method="POST">
+    <div class="row">
+        <label for="nama">Nama:</label>
+        <input type="text" name="nama" value="<?php echo $data['nama']; ?>" required>
+</div>
+<div class="row">
+        <label for="jenis_kelamin">Jenis Kelamin:</label>
+        <input type="text" name="jenis_kelamin" value="<?php echo $data['jk']; ?>" required>
+</div>
+<div class="row">
+        <label for="tgl_lahir">Tanggal Lahir:</label>
+        <input type="date" name="tgl_lahir" value="<?php echo $data['tgl_lahir']; ?>" required>
+</div>
+<div class="row">
+        <label for="alamat">Alamat:</label>
+        <input type="text" name="alamat" value="<?php echo $data['alamat']; ?>" required>
+</div>
+<div class="row">
+        <label for="nohp">No. HP:</label>
+        <input type="text" name="nohp" value="<?php echo $data['nohp']; ?>" required>
+</div>
+<div class="row">
+        <label for="noktp">No.KTP:</label>
+        <input type="text" name="noktp" value="<?php echo $data['noktp']; ?>" required>
+</div>
+<div class="row">
+        <label for="noktp">NIK:</label>
+        <input type="text" name="noktp" value="<?php echo $data['nik']; ?>" required>
+</div>
+<div class="row">
+        <label for="noktp">Email:</label>
+        <input type="text" name="noktp" value="<?php echo $data['email']; ?>" required>
+</div>
+<br>
+        <button type="submit" name="submit">Update Profil</button>
+    </form>
+</body>
+</html>
+
+<!-- <form>
   <div class="row mb-3">
     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
     <div class="col-md-8 col-lg-9">
@@ -363,9 +475,9 @@
   <div class="text-center">
     <button type="submit" class="btn btn-primary">Save Changes</button>
   </div>
-</form><!-- End Profile Edit Form -->
+</form> End Profile Edit Form -->
 
-</div>
+</div> 
 
 
 <div class="tab-pane fade pt-3" id="pengajuan">
@@ -437,7 +549,7 @@
           // generate HTML code for each item in the loop
           echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
-            if ($row["kategori_aset"] == "bangunan") {
+            if ($row["kategori_aset"] == "bangunan" || $row["kategori_aset"] == "lahan" || $row["kategori_aset"] == "sport center") {
               echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
               echo '<article>';
               echo '<div class="post-img" style="width:250px; height:250px;">';

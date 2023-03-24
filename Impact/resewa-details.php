@@ -262,34 +262,6 @@ if (isset($_GET["id_aset"])) {
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
                 
                 
-                  <button id="save-btn" type="button" class="btn btn-light" style="margin-left:166px;"><i class="bi bi-heart"></i>&nbsp;&nbsp;Simpan</button>
-                  <!-- <script>
-                      $(document).ready(function() {
-                      $('#save-btn').click(function() {
-                        // Retrieve the input values
-                        var nama_aset = $('#nama_aset').val();
-                        var harga = $('#harga').val();
-                        var image = $('#image').val();
-
-                        // Send an AJAX request to add_wishlist.php
-                        $.ajax({
-                          url: 'add_wishlist.php',
-                          type: 'POST',
-                          data: { nama_aset: nama_Aset, harga: harga, image: image },
-                          success: function(response) {
-                            // Display a success message
-                            alert('Item has been added to the wishlist!');
-                          },
-                          error: function(xhr, status, error) {
-                            // Display an error message
-                            alert('Error adding item to the wishlist: ' + error);
-                          }
-                        });
-                      });
-                    });
-                    </script> -->
-                  &nbsp;&nbsp;
-                  <button type="button" class="btn btn-light" ><i class="bi bi-share"></i>&nbsp;&nbsp;Bagikan</button> 
                 
                 </ul>
               </div><!-- End meta top -->
