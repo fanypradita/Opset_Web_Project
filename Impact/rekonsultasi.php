@@ -383,7 +383,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   if (mysqli_query($conn, $sql)) {
     // send email to customer service
-    $to = "fanypradita2001@gmail.com";
+    $to = "customer.service@example.com";
     $subject = "New consultation request from $nama";
     $message = "Nama: $nama\nEmail: $email\nPesan: $pesan";
     $headers = "From: webmaster@example.com";
