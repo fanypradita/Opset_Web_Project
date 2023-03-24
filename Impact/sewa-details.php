@@ -186,6 +186,20 @@ if (isset($_GET["id_aset"])) {
   $row = mysqli_fetch_assoc($result);
 }
 
+if(isset($_POST['save-btn'])) {
+  // Retrieve the id_aset value
+  $id_aset = $_POST['id_aset'];
+
+  // Insert the id_aset value into the wishlist table
+  $sql = "INSERT INTO wishlist (id_aset) VALUES ('$id_aset')";
+  if ($conn->query($sql) === TRUE) {
+    echo "Successfully saved to wishlist!";
+  } else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+  }
+}
+
+
   ?>
 
 
@@ -288,32 +302,22 @@ if (isset($_GET["id_aset"])) {
                   <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">Saepul</a></li>
                   <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2020-01-01">Jan 1, 2022</time></a></li>
                   
-                  <button id="save-btn" type="button" class="btn btn-light" style="margin-left:166px;"><i class="bi bi-heart"></i>&nbsp;&nbsp;Simpan</button>
-                  <script>
-                      $(document).ready(function() {
-                      $('#save-btn').click(function() {
-                        // Retrieve the input values
-                        var nama_aset = $('#nama_aset').val();
-                        var harga = $('#harga').val();
-                        var image = $('#image').val();
+                  <button id="save-btn" type="button" class="btn btn-light" style="margin-left:166px;" data-id-aset=<?php echo $row["id_aset"]; ?>><i class="bi bi-heart"></i>&nbsp;&nbsp;Simpan</button>
+                  
 
-                        // Send an AJAX request to add_wishlist.php
-                        $.ajax({
-                          url: 'add_wishlist.php',
-                          type: 'POST',
-                          data: { nama_aset: nama_Aset, harga: harga, image: image },
-                          success: function(response) {
-                            // Display a success message
-                            alert('Item has been added to the wishlist!');
-                          },
-                          error: function(xhr, status, error) {
-                            // Display an error message
-                            alert('Error adding item to the wishlist: ' + error);
-                          }
+                  
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script>
+                    $(document).ready(function() {
+                      $("#save-btn").click(function() {
+                        var id_aset = $(this).data("id-aset");
+                        $.post("save_to_wishlist.php", { id_aset: id_aset }, function(data) {
+                          alert(data);
                         });
                       });
                     });
-                    </script>
+                  </script>
+                  
                   &nbsp;&nbsp;
                   <button type="button" class="btn btn-light" ><i class="bi bi-share"></i>&nbsp;&nbsp;Bagikan</button> 
                 </ul>

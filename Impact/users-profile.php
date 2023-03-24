@@ -225,7 +225,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#whislist">My wishlist</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wishlist">My wishlist</button>
                 </li>
 
                 <li class="nav-item">
@@ -380,9 +380,80 @@
 
 <!-- Wishlist Form -->
 <form>
+  
+<?php
+          // connect to the MySQL database
+          $host = "localhost";
+          $username = "root";
+          $password = "";
+          $dbname = "db_perhutani";
+          $conn = mysqli_connect($host, $username, $password, $dbname);
 
+          // check if the connection is successful
+          if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+          }
 
-</form><!-- End wishlist Form -->
+          // process the search query
+          if (isset($_GET["search"])) {
+            $search_query = $_GET["search"];
+            $sql = "SELECT * FROM tbl_opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
+          } else {
+            $sql = "SELECT * FROM wishlist AS u INNER JOIN tbl_opset AS i ON u.id_aset = i.id_aset";
+          }
+
+          // retrieve data from the MySQL database with pagination
+          $items_per_page = 4;
+          if (isset($_GET["page"])) {
+            $current_page = $_GET["page"];
+          } else {
+            $current_page = 1;
+          }
+          $offset = ($current_page - 1) * $items_per_page;
+          $sql .= " LIMIT $offset, $items_per_page";
+
+          $result = mysqli_query($conn, $sql);
+
+          // generate HTML code for the search bar
+          echo '<form class="form-inline mb-4" method="get">';
+          echo '<div class="input-group" style="width: 97.5%;">';
+          echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
+          echo '<div class="input-group-append">';
+          echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
+          echo '</div>';
+          echo '</div>';
+          echo '</form>';
+
+          // generate HTML code for each item in the loop
+          echo '<div class="row" style="margin-bottom:20px;">';
+          while ($row = mysqli_fetch_assoc($result)) {
+            if ($row["kategori_aset"] == "bangunan") {
+              echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
+              echo '<article>';
+              echo '<div class="post-img" style="width:250px; height:250px;">';
+              echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+              echo '</div>';
+              echo '<h2 class="title">';
+              echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
+              echo '<p class="post-category">' . $row["alamat"] . '</p>';
+              echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+              echo '</h2>';
+              echo '</article>';
+              echo '</div>';
+            }
+          }
+          echo '</div>';
+          
+
+          // generate pagination links
+          $sql = "SELECT COUNT(*) as total_items FROM tbl_opset ";
+          $result = mysqli_query($conn, $sql);
+          $row = mysqli_fetch_assoc($result);
+          $total_items = $row["total_items"];
+          $total_pages = ceil($total_items / $items_per_page);
+          ?>
+
+</form>
 
 </div>
 

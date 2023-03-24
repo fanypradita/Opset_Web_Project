@@ -27,6 +27,24 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#save-btn").click(function() {
+        var id_aset = $id_aset; // Change this to the actual value of id_aset
+        $.ajax({
+          type: "POST",
+          url: "save_to_wishlist.php",
+          data: { id_aset: id_aset },
+          success: function() {
+            alert("Successfully saved to wishlist!");
+          }
+        });
+      });
+    });
+  </script>
   
 
   <!-- =======================================================
@@ -241,7 +259,7 @@ if (isset($_GET["id_aset"])) {
                 
                 
                   <button id="save-btn" type="button" class="btn btn-light" style="margin-left:166px;"><i class="bi bi-heart"></i>&nbsp;&nbsp;Simpan</button>
-                  <script>
+                  <!-- <script>
                       $(document).ready(function() {
                       $('#save-btn').click(function() {
                         // Retrieve the input values
@@ -265,7 +283,7 @@ if (isset($_GET["id_aset"])) {
                         });
                       });
                     });
-                    </script>
+                    </script> -->
                   &nbsp;&nbsp;
                   <button type="button" class="btn btn-light" ><i class="bi bi-share"></i>&nbsp;&nbsp;Bagikan</button> 
                 
