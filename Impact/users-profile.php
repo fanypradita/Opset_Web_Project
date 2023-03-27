@@ -440,50 +440,44 @@ $data = mysqli_fetch_assoc($result);
 <div class="tab-pane fade pt-3" id="pengajuan">
 
 <form>
- <!-- PHP code to retrieve data from database -->
 <?php
-  // Connect to database
-  $conn = mysqli_connect("localhost", "root", "", "pengajuan");
-  
-  // Check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
-  
-  // Retrieve data from opset table
-  $sql = "SELECT nama, email, nohp, hal, tgl_mulai, tgl_akhir, nama_instansi, nama_aset FROM pengajuan";
-  $result = mysqli_query($conn, $sql);
-  
-  // Display data in table format
-  echo "<table>
-         <tr>
-           <th>Nama</th>
-           <th>Email</th>
-           <th>No. HP</th>
-           <th>Hal</th>
-           <th>Tgl. Mulai</th>
-           <th>Tgl. Akhir</th>
-           <th>Nama Instansi</th>
-           <th>Nama Aset</th>
-         </tr>";
-         
-  while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>
-            <td>" . $row['nama'] . "</td>
-            <td>" . $row['email'] . "</td>
-            <td>" . $row['nohp'] . "</td>
-            <td>" . $row['hal'] . "</td>
-            <td>" . $row['tgl_mulai'] . "</td>
-            <td>" . $row['tgl_akhir'] . "</td>
-            <td>" . $row['nama_instansi'] . "</td>
-            <td>" . $row['nama_aset'] . "</td>
-          </tr>";
-  }
-  
-  echo "</table>";
-  
-  // Close database connection
-  mysqli_close($conn);
+// Menghubungkan ke database
+$conn = mysqli_connect("localhost", "root", "", "db_perhutani");
+
+// Memeriksa koneksi
+if (!$conn) {
+    die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Mengambil data dari tabel pengajuan
+$sql = "SELECT nama, email, instansi, tanggal FROM pengajuan";
+$result = mysqli_query($conn, $sql);
+
+// Menampilkan data dalam tabel
+echo "<style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+    </style>";
+echo "<table>";
+echo "<tr><th>Nama</th><th>Email</th><th>Instansi</th><th>Tanggal</th></tr>";
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "<tr><td>".$row["nama"]."</td><td>".$row["email"]."</td><td>".$row["instansi"]."</td><td>".$row["tanggal"]."</td></tr>";
+}
+echo "</table>";
+
+// Menutup koneksi
+mysqli_close($conn);
 ?>
 
 </form>
@@ -553,28 +547,77 @@ $data = mysqli_fetch_assoc($result);
           echo '</div>';
           echo '</div>';
           echo '</form>';
+?>
+<br>
+<style>
+  table {
+    border-collapse: collapse;
+  }
 
-          // generate HTML code for each item in the loop
-          echo '<div class="row" style="margin-bottom:20px;">';
-          while ($row = mysqli_fetch_assoc($result)) {
-            if ($row["kategori_aset"] == "bangunan" || $row["kategori_aset"] == "lahan" || $row["kategori_aset"] == "sport center") {
-              echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
-              echo '<article>';
-              echo '<div class="post-img" style="width:250px; height:250px;">';
-              echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-              echo '</div>';
-              echo '<h2 class="title">';
-              echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
-              echo '<p class="post-category">' . $row["alamat"] . '</p>';
-              echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-              echo '</h2>';
-              echo '</article>';
-              echo '</div>';
-            }
-          }
-          echo '</div>';
-          
+  td, th {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
 
+  tr {
+    margin-bottom: 10px;
+  }
+  .small-img {
+    max-width: 100px;
+    height: auto;
+  }
+  <style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  tr {
+    margin-bottom: 10px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  .small-img {
+    max-width: 100px;
+    height: auto;
+  }
+</style>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nama Aset</th>
+      <th>Alamat</th>
+      <th>Kategori Aset</th>
+      <th>Gambar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php while ($row = mysqli_fetch_assoc($result)) {
+      if ($row["kategori_aset"] == "bangunan" || $row["kategori_aset"] == "lahan" || $row["kategori_aset"] == "sport center") {
+        echo '<tr>';
+        echo '<td><a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a></td>';
+        echo '<td>' . $row["alamat"] . '</td>';
+        echo '<td>' . $row["kategori_aset"] . '</td>';
+        echo '<td><a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid small-img"></a></td>';
+        echo '</tr>';
+      }
+    } ?>
+  </tbody>
+</table>
+   
+<?php
           // generate pagination links
           $sql = "SELECT COUNT(*) as total_items FROM opset ";
           $result = mysqli_query($conn, $sql);
@@ -582,7 +625,7 @@ $data = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];
           $total_pages = ceil($total_items / $items_per_page);
           ?>
-
+</br>
 </form>
 
 </div>
