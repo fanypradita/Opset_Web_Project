@@ -275,7 +275,7 @@
             echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
-            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_aset"] . '</a>';
+            echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori2"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '</h2>';

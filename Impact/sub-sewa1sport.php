@@ -41,116 +41,116 @@
 
 <header id="header" class="header d-flex align-items-center">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
-      </a>
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html" style="font-size:15px;">Beranda</a></li>
-          <li><a href="sewasport.php" style="font-size:15px;">Sport Center</a></li>
-          <li><a href="sewa.php" style="font-size:15px;">Bangunan</a></li>
-          <li><a href="sewalahan.php" style="font-size:15px;">Lahan</a></li>
-          <!--
-          <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Properti</a></li>
-          -->
+<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  <a href="index.html" class="logo d-flex align-items-center">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- <img src="assets/img/logo.png" alt=""> -->
+    <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
+  </a>
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a href="index.html" style="font-size:15px;">Beranda</a></li>
+      <li><a href="sewa.php" style="font-size:15px;">Sport Center</a></li>
+      <li><a href="sewa.php" style="font-size:15px;">Bangunan</a></li>
+      <li><a href="sewalahan.php" style="font-size:15px;">Lahan</a></li>
+      <!--
+      <li><a href="#about">Tentang Kami</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="blog.html">Properti</a></li>
+      -->
 
-          <!-- <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="sewa.php">Sport Center</a></li>
-              <li><a href="sewa.php">Bangunan</a></li>
-              <li><a href="sewalahan.php">Lahan</a></li>
-              <li><a href="sewakos.php">Kos</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
+      <!-- <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+          <li><a href="sewa.php">Sport Center</a></li>
+          <li><a href="sewa.php">Bangunan</a></li>
+          <li><a href="sewalahan.php">Lahan</a></li>
+          <li><a href="sewakos.php">Kos</a></li>
+          <li><a href="#">Drop Down 4</a></li>
+        </ul>
+      </li> -->
+
+      <li class="dropdown"><a href="info.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+          <li><a href="info.html" style="font-size:13px;">Frequently Asked Questions</a></li>
+          <li><a href="daftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
+          <li><a href="bayarr.html" style="font-size:13px;">Metode Pembayaran</a></li>
+        </ul>
+      </li>
+      <!--
+      <li><a href="#contact">Contact</a></li>
+      -->
+      <li><a href="konsultasi.php" style="font-size:15px;">Konsultasi</a></li>
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <span class="d-none d-md-block dropdown-toggle ps-2"><i class="bi bi-person-circle" style="font-size:25px; color: white;"></i></span>
+        </a><!-- End Profile Iamge Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+<!--
+        <li class="dropdown-header">
+            <h6>Fany Pradita</h6>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
           </li> -->
 
-          <li class="dropdown"><a href="info.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="info.html" style="font-size:13px;">Frequently Asked Questions</a></li>
-              <li><a href="daftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
-              <li><a href="bayarr.html" style="font-size:13px;">Metode Pembayaran</a></li>
-            </ul>
+          <!-- <li>
+            <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+              <i class="bi bi-person"></i>
+              <span style="font-size:15px;">My Profile</span>
+            </a>
           </li>
-          <!--
-          <li><a href="#contact">Contact</a></li>
-          -->
-          <li><a href="konsultasi.php" style="font-size:15px;">Konsultasi</a></li>
-          <li class="nav-item dropdown pe-3">
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <span class="d-none d-md-block dropdown-toggle ps-2"><i class="bi bi-person-circle" style="font-size:25px; color: white;"></i></span>
-            </a><!-- End Profile Iamge Icon -->
+          <li>
+            <hr class="dropdown-divider">
+          </li> -->
 
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-<!--
-            <li class="dropdown-header">
-                <h6>Fany Pradita</h6>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li> -->
-  
-              <!-- <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                  <i class="bi bi-person"></i>
-                  <span style="font-size:15px;">My Profile</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li> -->
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
-                  <i class="bi bi-gear"></i>
-                  <span style="font-size:15px;">Account Settings</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <!-- <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                  <i class="bi bi-question-circle"></i>
-                  <span style="font-size:15px;">Need Help?</span>
-                </a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li> -->
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="login.php">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span style="font-size:15px;">Sign Out</span>
-                </a>
-              </li>
-  
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-  
-          </ul>
-        </ul>
-       
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+              <i class="bi bi-gear"></i>
+              <span style="font-size:15px;">Account Settings</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- <li>
+            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <i class="bi bi-question-circle"></i>
+              <span style="font-size:15px;">Need Help?</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li> -->
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="login.php">
+              <i class="bi bi-box-arrow-right"></i>
+              <span style="font-size:15px;">Sign Out</span>
+            </a>
+          </li>
+
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
+
       </ul>
-    </nav><!-- End Icons Navigation -->
-
-      </nav><!-- .navbar -->
-
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
-
-    </div>
-  </header><!-- End Header -->
-  <!-- End Header -->
+    </ul>
    
+  </ul>
+</nav><!-- End Icons Navigation -->
+
+  </nav><!-- .navbar -->
+
+  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+</div>
+</header><!-- End Header -->
+<!-- End Header -->
+ 
   <main id="main">
 
     <!-- ======= Breadcrumbs ======= -->
@@ -170,6 +170,7 @@
           <ol>
             <li><a href="index.html">Home</a></li>
             <li>Sewa Aset</li>
+            <li>Sub Sewa Aset</li>
           </ol>
           
 <!--
@@ -225,11 +226,11 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
+            $sql = "SELECT * FROM subkategori JOIN opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
           } else {
-            $sql = "SELECT * FROM opset ";
+            $sql = "SELECT * FROM subkategori JOIN opset WHERE subkategori.id_aset = opset.id_aset";
           }
-
+          
           // retrieve data from the MySQL database with pagination
           $items_per_page = 4;
           if (isset($_GET["page"])) {
@@ -255,26 +256,38 @@
           // generate HTML code for each item in the loop
           echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
-            if ($row["kategori_aset"] == "bangunan") {
-              echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
-              echo '<article>';
-              echo '<div class="post-img" style="width:250px; height:250px;">';
-              echo '<a href="sub-sewa1.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-              echo '</div>';
-              echo '<h2 class="title">';
-              echo '<a href="sub-sewa1.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
-              echo '<p class="post-category">' . $row["alamat"] . '</p>';
-              echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-              echo '</h2>';
-              echo '</article>';
-              echo '</div>';
+            if ($row["kategori_aset"] == "sport center") {
+            // echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
+            // echo '<article>';
+            // echo '<div class="post-img">';
+            // echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            // echo '</div>';
+            // echo '<h2 class="title">';
+            // echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
+            // echo '<p class="post-category">' . $row["alamat"] . '</p>';
+            // echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+            // echo '</h2>';
+            // echo '</article>';
+            // echo '</div>';
+
+            echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
+            echo '<article>';
+            echo '<div class="post-img" style="width:250px; height:250px;">';
+            echo '<a href="sub-sewasport.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            echo '</div>';
+            echo '<h2 class="title">';
+            echo '<a href="sub-sewasport.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori1"] . '</a>';
+            echo '<p class="post-category">' . $row["alamat"] . '</p>';
+            echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+            echo '</h2>';
+            echo '</article>';
+            echo '</div>';
             }
           }
           echo '</div>';
-          
 
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM opset ";
+          $sql = "SELECT COUNT(*) as total_items FROM subkategori";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];
@@ -283,7 +296,6 @@
 
 <div class="pagination justify-content-center">
           <div class="pagination">
-
             <?php if ($current_page > 1) : ?>
               <div class="page-item">
                 <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>

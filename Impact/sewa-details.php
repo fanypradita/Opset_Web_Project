@@ -217,7 +217,7 @@ if(isset($_POST['save-btn'])) {
             <div class="col-lg-6 text-center">
             
               <h2>
-              <?php echo $row["nama_aset"]; ?>
+              <?php echo $row["sub_kategori2"]; ?>
             </h2>
               <p>
               <?php echo $row["alamat"]; ?></p>
@@ -275,10 +275,10 @@ if(isset($_POST['save-btn'])) {
     <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-    <?php echo '<img src=" '. $row["imagess"] .' " alt="" class="img-fluid" >'; ?>
+    <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-    <?php echo '<img src=" '. $row["imagesss"] .' " alt="" class="img-fluid" >'; ?>
+    <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -297,7 +297,7 @@ if(isset($_POST['save-btn'])) {
               </div>
 </br>
               <h2 class="title">
-              <?php echo $row["nama_aset"]; ?>
+              <?php echo $row["sub_kategori2"]; ?>
 
               </h2>
               
@@ -363,7 +363,7 @@ if(isset($_POST['save-btn'])) {
                 <?php echo $row["luas_tanah"]; ?> m<sup>2</sup></td></tr> <tr><td class="font-weight-semibold">
                   Luas Bangunan
                 </td> <td>
-                <?php echo $row["luas_bangunan"]; ?> m<sup>2</sup></td></tr></tbody></table></div></div></div>
+                   m<sup>2</sup></td></tr></tbody></table></div></div></div>
                   <br>
                   
                   <h5>
@@ -415,7 +415,9 @@ if(isset($_POST['save-btn'])) {
                 </p>
 
                 <h3>Lokasi Properti</h3>
-                <?php echo $row["map_url"]; ?>
+                <iframe src="<?php echo $row['map_url']; ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    
                 
 
               <div class="meta-bottom">
