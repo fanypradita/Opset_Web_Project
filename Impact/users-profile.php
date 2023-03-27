@@ -219,7 +219,7 @@
 
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-            
+
             <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
               <h2><?php echo $row["nama"]; ?></h2>
               <h3>Costumer Perhutani Property</h3>
@@ -350,32 +350,9 @@ if (isset($_POST['submit'])) {
       $extensions = array("jpg", "jpeg", "png");
 
       if (in_array($foto_ext, $extensions)) {
-          if ($foto_size < 5000000) {
-              $foto_path = "uploads/customers/" . $foto_name;
-              move_uploaded_file($foto_tmp, $foto_path);
-
-              $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email', foto='$foto_path' WHERE username='$username'";
-              $result = mysqli_query($conn, $query);
-
-              if ($result) {
-                  echo "<script>alert('Berhasil update profil!')</script>";
-              } else {
-                  echo "<script>alert('Gagal update profil!')</script>";
-              }
-          } else {
-              echo "<script>alert('Ukuran file terlalu besar!')</script>";
-          }
-      } else {
-          echo "<script>alert('Ekstensi file tidak didukung!')</script>";
-      }
-  } else {
+         
       $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email' WHERE username='$username'";
       $result = mysqli_query($conn, $query);
-
-      if ($result) {
-          echo "<script>alert('Berhasil update profil!')</script>";
-      } else {
-          echo "<script>alert('Gagal update profil!')</script>";
       }
   }
 }
@@ -388,17 +365,93 @@ $data = mysqli_fetch_assoc($result);
 
     <form action="" method="POST">
     <div class="row">
-    <label for="foto">Foto:</label>
-        <?php if ($data['foto'] != null) { ?>
-            <img src="<?php echo $data['foto']; ?>" alt="Foto Profil">
-            <br>
-            <button type="button" name="hapus_foto">Hapus Foto</button>
-            <button type="button" name="edit_foto">Edit Foto</button>
-            <br>
-        <?php } else { ?>
-            <input type="file" name="foto" required>
-            <br>
-        <?php } ?>
+    <div class="profile-picture">
+
+  <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
+  <form action="upload.php" method="post" enctype="multipart/form-data">
+    <label for="fileToUpload" class="upload-btn">
+      <i class="fas fa-upload"></i> Upload
+    </label>
+    <input type="file" name="fileToUpload" id="fileToUpload" style="display:none;">
+</form>
+<form>
+    <button type="submit" class="hapus-btn" name="submit">
+      <i class="fas fa-trash-alt"></i> Hapus Foto
+    </button>
+    <input type="hidden" name="foto" value="<?php echo $row['foto']; ?>">
+  </form>
+</div>
+
+<style>
+.profile-picture {
+  display: flex;
+  align-items: center;
+}
+
+.upload-btn, .hapus-btn {
+  display: inline-block;
+  font-size: 14px;
+  padding: 5px 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-btn i, .hapus-btn i {
+  margin-right: 5px;
+}
+
+.hapus-btn {
+  background-color: #dc3545;
+}
+
+input[type="file"] {
+  display: none;
+}
+.foto-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto-wrapper img {
+  max-width: 100%;
+}
+
+.foto-wrapper form {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.foto-wrapper form input[type="file"] {
+  margin-right: 5px;
+}
+
+.foto-wrapper form input[type="submit"],
+.foto-wrapper form button[type="submit"] {
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.foto-wrapper form input[type="submit"]:hover,
+.foto-wrapper form button[type="submit"]:hover {
+  background-color: #0062cc;
+}
+
+</style>
+
+
     </div>
     <div class="row">
         <label for="nama">Nama:</label>
