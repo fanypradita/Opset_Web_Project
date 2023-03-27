@@ -601,6 +601,7 @@ mysqli_close($conn);
       <th>Alamat</th>
       <th>Kategori Aset</th>
       <th>Gambar</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -611,12 +612,19 @@ mysqli_close($conn);
         echo '<td>' . $row["alamat"] . '</td>';
         echo '<td>' . $row["kategori_aset"] . '</td>';
         echo '<td><a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid small-img"></a></td>';
+        echo '<td><button class="btn-delete" onclick="hapusAset(' . $row["id_aset"] . ')">Hapus</button></td>';
         echo '</tr>';
       }
     } ?>
   </tbody>
 </table>
-   
+<script>
+  function hapusAset(id) {
+    if (confirm("Anda yakin ingin menghapus aset ini?")) {
+      window.location.href = "hapus-aset.php?id=" + id;
+    }
+  }
+</script>
 <?php
           // generate pagination links
           $sql = "SELECT COUNT(*) as total_items FROM opset ";
