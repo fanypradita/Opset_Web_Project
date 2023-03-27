@@ -415,7 +415,7 @@
                   $servername = "localhost";
                   $username = "root";
                   $password = "";
-                  $dbname = "db_perhutanii";
+                  $dbname = "db_perhutani";
 
                   $conn = mysqli_connect($servername, $username, $password, $dbname);
 

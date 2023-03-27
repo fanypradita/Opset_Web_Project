@@ -154,7 +154,7 @@ if (!$conn) {
 
 if (isset($_GET["id_aset"])) {
   $id_aset = $_GET["id_aset"];
-  $sql = "SELECT * FROM tbl_opset WHERE id_aset = $id_aset";
+  $sql = "SELECT * FROM opset WHERE id_aset = $id_aset";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
 }
@@ -230,10 +230,10 @@ if (isset($_GET["id_aset"])) {
     <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-    <?php echo '<img src=" '. $row["imagess"] .' " alt="" class="img-fluid" >'; ?>
+    <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
     <div class="carousel-item">
-    <?php echo '<img src=" '. $row["imagesss"] .' " alt="" class="img-fluid" >'; ?>
+    <?php echo '<img src=" '. $row["images"] .' " alt="" class="img-fluid" >'; ?>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -301,7 +301,7 @@ if (isset($_GET["id_aset"])) {
                 <?php echo $row["luas_tanah"]; ?> m<sup>2</sup></td></tr> <tr><td class="font-weight-semibold">
                   Luas Bangunan
                 </td> <td>
-                <?php echo $row["luas_bangunan"]; ?> m<sup>2</sup></td></tr></tbody></table></div></div></div>
+                 m<sup>2</sup></td></tr></tbody></table></div></div></div>
                   
                   
                   <!-- <h5>
@@ -485,76 +485,7 @@ if (isset($_GET["id_aset"])) {
 
           <div style="    width: 40%;" class="col-lg-4">
 
-            <div class="sidebar">
 
-              <!-- ======= FORM PENGAJUAN ========-->
-              <div class="reply-form">
-             
-                </form>
-
-                <?php
-
-                $nama = $email = $jml = $instansi = $hal = $tgl_mulai = $tgl_akhir = $no_telepon = "";
-
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                  $nama = test_input($_POST["nama"]);
-                  $email = test_input($_POST["email"]);
-                  $jml = test_input($_POST["jml"]);
-                  $instansi = test_input($_POST["instansi"]);
-                  $hal = test_input($_POST["hal"]);
-                  $tgl_mulai = test_input($_POST["tgl_mulai"]);
-                  $tgl_akhir = test_input($_POST["tgl_akhir"]);
-                  $no_telepon = test_input($_POST["no_telepon"]);
-
-
-                  // connect to MySQL database
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "db_perhutani";
-
-                  $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-                  // check connection
-                  if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                  }
-
-                  // insert data into database
-                  $sql = "INSERT INTO pengajuan (nama, email, jml, instansi, hal, tgl_mulai, tgl_akhir, no_telepon) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tgl_mulai', '$tgl_akhir', '$no_telepon')";
-
-                  if (mysqli_query($conn, $sql)) {
-                    echo "<script type='text/javascript'>alert('submitted successfully!')</script>";
-                  } else {
-                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                  }
-
-                  if (isset($_GET["id_aset"])) {
-                    $id_aset = $_GET["id_aset"];
-                    $sql = "SELECT * FROM pengajuan WHERE id_aset = $id_aset";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_assoc($result);
-          
-                    // display the item's information to the user
-                    echo '<h1> Pengajuan Anda sedang diproses... </h1>';
-
-                    // display other information about the item as needed
-                  }
-
-                  mysqli_close($conn);
-                }
-
-                function test_input($data) {
-                  $data = trim($data);
-                  $data = stripslashes($data);
-                  $data = htmlspecialchars($data);
-                  return $data;
-                }
-                ?>
-
-              </div>
-            </div><!-- End blog comments -->
-            <br>
             <div class="sidebar">
 
               <!-- ======= FORM PENGAJUAN ========-->

@@ -50,7 +50,7 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a href="reindex.html" style="font-size:15px;">Beranda</a></li>
-          <li><a href="resewa.php" style="font-size:15px;">Sport Center</a></li>
+          <li><a href="resewasport.php" style="font-size:15px;">Sport Center</a></li>
           <li><a href="resewa.php" style="font-size:15px;">Bangunan</a></li>
           <li><a href="resewalahan.php" style="font-size:15px;">Lahan</a></li>
           <!--
@@ -102,6 +102,7 @@
   </header><!-- End Header -->
   <!-- End Header -->
 
+
  
   <main id="main">
 
@@ -121,10 +122,8 @@
         <div class="container">
         <ol>
             <li><a href="reindex.html">Beranda</a></li>
-            <li><a href="resewa.html">bangunan</a></li>
-            <li><a href="resub-sewa.html">sub bangunan</a></li>
+            <li><a href="resewasport.php">Sewa Aset</a></li>
           </ol>
-          
 <!--
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
@@ -161,7 +160,7 @@
         <div class="row gy-4 posts-list">
 
         <div class="row">
-
+            
         <?php
           // connect to the MySQL database
           $host = "localhost";
@@ -178,11 +177,11 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM subkategori JOIN opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
+            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%sport center%' OR alamat LIKE '%sport center%' OR kategori_aset LIKE '%sport center%'";
           } else {
-            $sql = "SELECT * FROM subkategori JOIN opset WHERE subkategori.id_aset = opset.id_aset";
+            $sql = "SELECT * FROM opset ";
           }
-          
+
           // retrieve data from the MySQL database with pagination
           $items_per_page = 4;
           if (isset($_GET["page"])) {
@@ -206,39 +205,28 @@
           echo '</form>';
 
           // generate HTML code for each item in the loop
-
           echo '<div class="row" style="margin-bottom:20px;">';
           while ($row = mysqli_fetch_assoc($result)) {
-            
-            
-            echo '</table>';
-            
-
-            echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
-            echo '<article>';
-            echo '<div class="post-img" style="width:250px; height:250px;">';
-            echo '<a href="resewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-            echo '</div>';
-            echo '<h2 class="title">';
-            echo '<a href="resewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_aset"] . '</a>';
-            echo '<p class="post-category">' . $row["alamat"] . '</p>';
-            echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-            echo '<button type="submit" name="add_to_cart" value="' . $row["id_aset"] . '" class="btn btn-outline-secondary" src="recart.php">Add to cart</button>';
-            if(isset($_POST["add_to_cart"])){
-              $id_aset = $_POST["add_to_cart"];
-              $_SESSION["cart"][$id_aset] = true;
-              header("Location: recart.php");
-              exit();
+            if ($row["kategori_aset"] == "sport center") {
+              echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
+              echo '<article>';
+              echo '<div class="post-img" style="width:250px; height:250px;">';
+              echo '<a href="resub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+              echo '</div>';
+              echo '<h2 class="title">';
+              echo '<a href="resub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a>';
+              echo '<p class="post-category">' . $row["alamat"] . '</p>';
+              echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+              echo '</h2>';
+              echo '</article>';
+              echo '</div>';
+            }
           }
-            echo '</h2>';
-            echo '</article>';
-            echo '</div>';
-
-          }
-        
+          echo '</div>';
           
+
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM subkategori";
+          $sql = "SELECT COUNT(*) as total_items FROM opset ";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];
@@ -247,6 +235,7 @@
 
 <div class="pagination justify-content-center">
           <div class="pagination">
+
             <?php if ($current_page > 1) : ?>
               <div class="page-item">
                 <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>

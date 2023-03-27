@@ -225,9 +225,9 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM tbl_opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
+            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
           } else {
-            $sql = "SELECT * FROM tbl_opset ";
+            $sql = "SELECT * FROM opset ";
           }
 
           // retrieve data from the MySQL database with pagination
@@ -274,7 +274,7 @@
           
 
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM tbl_opset ";
+          $sql = "SELECT COUNT(*) as total_items FROM opset ";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];

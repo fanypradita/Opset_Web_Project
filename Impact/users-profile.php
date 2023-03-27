@@ -450,7 +450,7 @@ $data = mysqli_fetch_assoc($result);
     die("Connection failed: " . mysqli_connect_error());
   }
   
-  // Retrieve data from tbl_opset table
+  // Retrieve data from opset table
   $sql = "SELECT nama, email, nohp, hal, tgl_mulai, tgl_akhir, nama_instansi, nama_aset FROM pengajuan";
   $result = mysqli_query($conn, $sql);
   
@@ -527,9 +527,9 @@ $data = mysqli_fetch_assoc($result);
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM tbl_opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
+            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
           } else {
-            $sql = "SELECT * FROM wishlist AS u INNER JOIN tbl_opset AS i ON u.id_aset = i.id_aset";
+            $sql = "SELECT * FROM wishlist AS u INNER JOIN opset AS i ON u.id_aset = i.id_aset";
           }
 
           // retrieve data from the MySQL database with pagination
@@ -576,7 +576,7 @@ $data = mysqli_fetch_assoc($result);
           
 
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM tbl_opset ";
+          $sql = "SELECT COUNT(*) as total_items FROM opset ";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];

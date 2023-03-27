@@ -185,7 +185,7 @@ if (!$conn) {
 
 if (isset($_GET["id_aset"])) {
   $id_aset = $_GET["id_aset"];
-  $sql = "SELECT * FROM tbl_opset WHERE id_aset = $id_aset";
+  $sql = "SELECT * FROM opset WHERE id_aset = $id_aset";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
 }

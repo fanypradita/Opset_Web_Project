@@ -226,9 +226,9 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM subkategori JOIN tbl_opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
+            $sql = "SELECT * FROM subkategori JOIN opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
           } else {
-            $sql = "SELECT * FROM subkategori JOIN tbl_opset WHERE subkategori.id_aset = tbl_opset.id_aset";
+            $sql = "SELECT * FROM subkategori JOIN opset WHERE subkategori.id_aset = opset.id_aset";
           }
           
           // retrieve data from the MySQL database with pagination

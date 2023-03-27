@@ -12,7 +12,7 @@ if (!$conn) {
 
 // Retrieve the item data from the database
 $id_aset = $_POST['id_aset']; // Assume this is the ID of the item to add to the wishlist
-$sql = "SELECT nama_aset, images, harga FROM tbl_opset WHERE id_aset = $id_aset";
+$sql = "SELECT nama_aset, images, harga FROM opset WHERE id_aset = $id_aset";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
   die('Error retrieving item data from database: ' . mysqli_error($conn));
