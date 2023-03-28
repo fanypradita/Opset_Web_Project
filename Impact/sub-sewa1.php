@@ -226,9 +226,9 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
+            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;" ;
           } else {
-            $sql = "SELECT * FROM opset WHERE id_aset = id_aset";
+            $sql = "SELECT * FROM opset ";
           }
           
           // retrieve data from the MySQL database with pagination
@@ -253,41 +253,41 @@
           echo '</div>';
           echo '</form>';
 
-          // generate HTML code for each item in the loop
-          echo '<div class="row" style="margin-bottom:20px;">';
-          while ($row = mysqli_fetch_assoc($result)) {
-            if ($row["kategori_aset"] == "bangunan") {
-            // echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
-            // echo '<article>';
-            // echo '<div class="post-img">';
-            // echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-            // echo '</div>';
-            // echo '<h2 class="title">';
-            // echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
-            // echo '<p class="post-category">' . $row["alamat"] . '</p>';
-            // echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-            // echo '</h2>';
-            // echo '</article>';
-            // echo '</div>';
+// generate HTML code for each item in the loop
+echo '<div class="row" style="margin-bottom:20px;">';
 
-            echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
-            echo '<article>';
-            echo '<div class="post-img" style="width:250px; height:250px;">';
-            echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-            echo '</div>';
-            echo '<h2 class="title">';
-            echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori1"] . '</a>';
-            echo '<p class="post-category">' . $row["alamat"] . '</p>';
-            echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-            echo '</h2>';
-            echo '</article>';
-            echo '</div>';
-            }
-          }
-          echo '</div>';
+// Query to get unique items
+$sql = "SELECT  id, sub_kategori1, kategori_aset, alamat, images, COUNT(sub_kategori1) AS jumlah
+FROM opset 
+WHERE kategori_aset = 'bangunan'  
+GROUP BY id, sub_kategori1;";
+
+
+$result = mysqli_query($conn, $sql);
+
+// Loop through unique items
+while ($row = mysqli_fetch_assoc($result)) {
+  echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
+  echo '<article>';
+  echo '<div class="post-img" style="width:250px; height:250px;">';
+  echo '<a href="sub-sewa.php?id=' . $row["id"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+  echo '</div>';
+  echo '<h2 class="title">';
+  echo '<a href="sub-sewa1.php?id=' . $row["id"] . '">' . $row["sub_kategori1"] . '</a>';
+  echo '<p class="post-category">' . $row["alamat"] . '</p>';
+  echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+  echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';
+  echo '</h2>';
+  echo '</article>';
+  echo '</div>';
+}
+
+echo '</div>';
+
 
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM opset";
+          $sql = "SELECT COUNT(nama_aset) as total_items FROM opset WHERE kategori_aset = 'bangunan' 
+          GROUP BY nama_aset, kategori_aset, sub_kategori1";;
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];
