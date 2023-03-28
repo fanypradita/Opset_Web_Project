@@ -592,7 +592,17 @@ if(isset($_POST['save-btn'])) {
                   </div>
                     
                   <br>
-                 
+                  <!-- <div class="row">
+                    <div class="col form-group">
+                      <label for="inputEmail4">Instansi</label>
+                      <select class="form-control">
+                        <option>Pilih</option>
+                        <option>Perusahaan</option>
+                        <option>Perorangan</option>
+                        <option>Organisasi</option>
+                      </select>
+                    </div>
+                  </div> -->
                   <div class="row">
                     <div class="col form-group">
                       <label for="inputEmail4">Instansi</label>
@@ -606,13 +616,12 @@ if(isset($_POST['save-btn'])) {
                       <textarea name="instansi" class="form-control" placeholder="Instansimu*"></textarea>
                     </div>
                   </div>
-                  
-                    <div class="row">
-                    <div class="col form-group">
-                      <label for="inputEmail4">Aset</label>
-                      <textarea name="sub_kategori2" class="form-control" placeholder="nama aset dan tujuan penyewaan*"></textarea>
-                    </div>
-                  </div>
+                  <br>
+                    <label for="input">Aset</label><br>
+                    <input type="radio" id="sub_kategori2" name="sub_kategori2">
+                      <?php echo $row["sub_kategori2"]; ?>
+                      <br>
+                  </input>
                   <br>
                   <!-- <div class="row">
                     <div class="col form-group">
@@ -627,9 +636,10 @@ if(isset($_POST['save-btn'])) {
 
 
                 </form>
-                
 
                 <?php
+
+                                
                 $nama = $email = $jml = $instansi = $hal = $tanggal = $tgl_akhir = $no_telepon = $sub_kategori2 = "";
 
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -643,45 +653,44 @@ if(isset($_POST['save-btn'])) {
                     $no_telepon = test_input($_POST["no_telepon"]);
                     $sub_kategori2 = test_input($_POST["sub_kategori2"]);
 
-                    // connect to MySQL database
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "db_perhutani";
 
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                  // connect to MySQL database
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "db_perhutani";
 
-                    // check connection
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
+                  $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-                    $email_exists_sql = "SELECT * FROM pengajuan_frontend WHERE email='$email'";
-                    $email_exists_result = mysqli_query($conn, $email_exists_sql);
+                  // check connection
+                  if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                  }
 
-                    if (mysqli_num_rows($email_exists_result) > 0) {
-                        echo "<script type='text/javascript'>alert('You have already submitted a request.')</script>";
+                  $email_exists_sql = "SELECT * FROM pengajuan_frontend WHERE email='$email'";
+                  $email_exists_result = mysqli_query($conn, $email_exists_sql);
+
+                  if (mysqli_num_rows($email_exists_result) > 0) {
+                    echo "<script type='text/javascript'>alert('You have already submitted a request.')</script>";
+                  } else {
+                    // insert data into database
+                    $sql = "INSERT INTO pengajuan_frontend (nama, email, jml, instansi, hal, tanggal, tgl_akhir, no_telepon, sub_kategori2) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tanggal', '$tgl_akhir', '$no_telepon', '$sub_kategori2)";
+
+                    if (mysqli_query($conn, $sql)) {
+                      echo "<script type='text/javascript'>alert('Submitted successfully!')</script>";
                     } else {
-                        // insert data into database
-                        $sql = "INSERT INTO pengajuan_frontend (nama, email, jml, instansi, hal, tanggal, tgl_akhir, no_telepon, sub_kategori2) VALUES ('$nama', '$email', '$jml', '$instansi', '$hal', '$tanggal', '$tgl_akhir', '$no_telepon', '$sub_kategori2')";
-                        if (mysqli_query($conn, $sql)) {
-                          // insert data into another table
-                          $sql2 = "INSERT INTO pengajuan (nama, email, instansi, no_telepon, tanggal) SELECT nama, email, instansi, no_telepon, tanggal FROM pengajuan_frontend WHERE email='$email'";
-                          mysqli_query($conn, $sql2);
-                      
-                          echo "<script type='text/javascript'>alert('Submitted successfully!')</script>";
-                        } else {
-                          echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                        }
-                      }
-                    mysqli_close($conn);
+                      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                    }
+                  }
+
+                  mysqli_close($conn);
                 }
 
                 function test_input($data) {
-                    $data = trim($data);
-                    $data = stripslashes($data);
-                    $data = htmlspecialchars($data);
-                    return $data;
+                  $data = trim($data);
+                  $data = stripslashes($data);
+                  $data = htmlspecialchars($data);
+                  return $data;
                 }
                 ?>
 

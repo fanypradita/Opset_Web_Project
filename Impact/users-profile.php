@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Users / Profile - NiceAdmin Bootstrap Template</title>
+  <title>Perhutani Property</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -327,61 +327,6 @@
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
 <!-- Profile Edit Form -->
-<?php
-
-include 'config.php';
-
-if (isset($_POST['submit'])) {
-  $nama = $_POST['nama'];
-  $jk = $_POST['jk'];
-  $tgl_lahir = $_POST['tgl_lahir'];
-  $alamat = $_POST['alamat'];
-  $nohp = $_POST['nohp'];
-  $noktp = $_POST['noktp'];
-  $nik = $_POST['nik'];
-  $email = $_POST['email'];
-
-  // Proses foto
-  if ($_FILES['foto']['error'] == 0) {
-      $foto_name = $_FILES['foto']['name'];
-      $foto_size = $_FILES['foto']['size'];
-      $foto_tmp = $_FILES['foto']['tmp_name'];
-      $foto_ext = strtolower(pathinfo($foto_name, PATHINFO_EXTENSION));
-      $extensions = array("jpg", "jpeg", "png");
-
-      if (in_array($foto_ext, $extensions)) {
-         
-      $query = "UPDATE tbl_customer SET nama='$nama', jk='$jk', tgl_lahir='$tgl_lahir', alamat='$alamat', nohp='$nohp', noktp='$noktp', nik='$nik', email='$email' WHERE username='$username'";
-      $result = mysqli_query($conn, $query);
-      }
-  }
-}
-
-$query = "SELECT * FROM tbl_customer WHERE username='$username'";
-$result = mysqli_query($conn, $query);
-$data = mysqli_fetch_assoc($result);
-?>
-    <title>Edit Profil</title>
-
-    <form action="" method="POST">
-    <div class="row">
-    <div class="profile-picture">
-
-  <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
-  <form action="upload.php" method="post" enctype="multipart/form-data">
-    <label for="fileToUpload" class="upload-btn">
-      <i class="fas fa-upload"></i> Upload
-    </label>
-    <input type="file" name="fileToUpload" id="fileToUpload" style="display:none;">
-</form>
-<form>
-    <button type="submit" class="hapus-btn" name="submit">
-      <i class="fas fa-trash-alt"></i> Hapus Foto
-    </button>
-    <input type="hidden" name="foto" value="<?php echo $row['foto']; ?>">
-  </form>
-</div>
-
 <style>
 .profile-picture {
   display: flex;
@@ -451,9 +396,28 @@ input[type="file"] {
 
 </style>
 
+    <title>Edit Profil</title>
 
-    </div>
+    <form action="update_profil.php" method="POST">
     <div class="row">
+        <div class="profile-picture">
+            <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <label for="fileToUpload" class="upload-btn">
+                    <i class="fas fa-upload"></i> Upload
+                </label>
+                <input type="file" name="fileToUpload" id="fileToUpload" style="display:none;">
+            </form>
+            <form>
+                <button type="submit" class="hapus-btn" name="submit">
+                    <i class="fas fa-trash-alt"></i> Hapus Foto
+                </button>
+                <input type="hidden" name="foto" value="<?php echo $data['foto']; ?>">
+            </form>
+        </div>
+    </div>
+    <form>
+<div class="row">
         <label for="nama">Nama:</label>
         <input type="text" name="nama" value="<?php echo $data['nama']; ?>" required>
 </div>
@@ -483,16 +447,18 @@ input[type="file"] {
 </div>
 <div class="row">
         <label for="email">Email:</label>
-        <input type="text" name="email" value="<?php echo $data['email']; ?>" required>
+        <input type="email" name="email" value="<?php echo $data['email']; ?>" required>
 </div>
 <br>
         <button type="submit" name="submit">Update Profil</button>
     </form>
 </div> 
+<!-- end form edit profil -->
 
 <div class="tab-pane fade pt-3" id="pengajuan">
 
 <form>
+  
 <?php
 // Menghubungkan ke database
 $conn = mysqli_connect("localhost", "root", "", "db_perhutani");
@@ -503,7 +469,7 @@ if (!$conn) {
 }
 
 // Mengambil data dari tabel pengajuan
-$sql = "SELECT nama, email, instansi, tanggal FROM pengajuan";
+$sql = "SELECT nama, instansi, tanggal, tgl_akhir, hal, sub_kategori2 FROM pengajuan_frontend";
 $result = mysqli_query($conn, $sql);
 
 // Menampilkan data dalam tabel
@@ -522,12 +488,38 @@ echo "<style>
             color: #333;
         }
     </style>";
+    
+    
+echo "<br>";
 echo "<table>";
-echo "<tr><th>Nama</th><th>Email</th><th>Instansi</th><th>Tanggal</th></tr>";
+echo "<tr><th>Nama</th><th>Instansi</th><th>Tanggal Mulai</th><th>Tanggal Selesai</th><th>Perihal</th><th>Nama Aset</th></tr>";
 while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr><td>".$row["nama"]."</td><td>".$row["email"]."</td><td>".$row["instansi"]."</td><td>".$row["tanggal"]."</td></tr>";
+    echo "<tr><td>".$row["nama"]."</td><td>".$row["instansi"]."</td><td>".$row["tanggal"]."</td><td>".$row["tgl_akhir"]."</td><td>".$row["hal"]."</td><td>".$row["sub_kategori2"]."</td></tr>";
 }
 echo "</table>";
+
+echo "<br>";
+echo '
+<form>
+  <div class="button-group">
+    
+  
+  
+  <button type="submit" class="btn btn-sm btn-primary" name="print_pdf">Print pdf</button>
+    <button type="submit" class="btn btn-sm btn-primary" name="print_excel">Print Excel</button>
+    <button type="submit" class="btn btn-primary" name="ajukan_lagi">Ingin mengajukan lagi?</button>
+</div>
+</form>
+<style>
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+.button-group button {
+  margin-right: 10px;
+}
+</style>';
+
 
 // Menutup koneksi
 mysqli_close($conn);
@@ -537,21 +529,10 @@ mysqli_close($conn);
 
 </div>
 
-<!-- <form>
-<div class="text">
-    <button type="submit" class="btn btn-primary">Print pdf</button>
-  </div>
-  <div class="text">
-    <button type="submit" class="btn btn-primary">Printf Excel</button>
-  </div>
-        </div>
-  <div class="text-center">
-    <button type="submit" class="btn btn-primary">Ingin mengajukan lagi?</button>
-  </div>
-</form> -->
+
 <!-- End settings Form -->
 
-</div>
+
 
 <div class="tab-pane fade pt-3" id="wishlist">
 
