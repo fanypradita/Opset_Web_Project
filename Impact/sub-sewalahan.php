@@ -226,9 +226,9 @@
           // process the search query
           if (isset($_GET["search"])) {
             $search_query = $_GET["search"];
-            $sql = "SELECT * FROM subkategori JOIN opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
+            $sql = "SELECT * FROM opset  WHERE nama_aset LIKE '%$search_query%' OR alamat LIKE '%$search_query%' OR kategori_aset LIKE '%$search_query%'";
           } else {
-            $sql = "SELECT * FROM subkategori JOIN opset WHERE subkategori.id_aset = opset.id_aset";
+            $sql = "SELECT * FROM opset WHERE id_aset = id_aset";
           }
           
           // retrieve data from the MySQL database with pagination
@@ -287,7 +287,7 @@
           echo '</div>';
 
           // generate pagination links
-          $sql = "SELECT COUNT(*) as total_items FROM subkategori";
+          $sql = "SELECT COUNT(*) as total_items FROM opset";
           $result = mysqli_query($conn, $sql);
           $row = mysqli_fetch_assoc($result);
           $total_items = $row["total_items"];

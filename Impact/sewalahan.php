@@ -227,7 +227,7 @@
             $search_query = $_GET["search"];
             $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
           } else {
-            $sql = "SELECT * FROM opset ";
+            $sql = "SELECT * FROM opset WHERE id_aset = id_aset";
           }
 
           // retrieve data from the MySQL database with pagination
