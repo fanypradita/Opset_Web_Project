@@ -369,41 +369,47 @@ if(isset($_POST['save-btn'])) {
                   <h5>
                     Deskripsi
                   </h5>
+                  <p>
+                    
+                  <?php echo $row["keterangan"]; ?>
+                    <p>
                   <br>
-                <p>
+                <!-- <p>
                   Graha Wana Java Pusdikbang SDM Perhutani yang berada di Kartoharjo Kota Madiun yang dikelola Perhutani Forestry Institute sangat cocok sebagai tempat untuk melangsungkan berbagai macam acara formal seperti pertemuan, workshop, seminar, dan rapat. Selain itu, gedung ini juga bisa menjadi salah satu pilihan terbaik untuk melaksanakan family gathering atau resepsi pernikahan.
                 </p>
 
                 <p>
                   Karena acara-acara tersebut sangat tidak efektif dan efisien diadakan di tempat dengan luas space yang terbatas, masa menyewa gedung menjadi solusinya.
                 </p>
-                <h5>
+                <h5> -->
                   Fasilitas Umum
                 </h5>
                 <div data-v-392c48dd="" class="detail-kost-facility-category__item-wrapper bg-c-grid bg-c-grid--vtop bg-c-grid--left ">
-                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dekat Jalan Tol" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" style=”float:left;” />    Dekat Jalan Tol</p>
+                        <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dekat Jalan Tol" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" src="https://static.mamikos.com/uploads/tags/HAAjIo8D.png" style=”float:left;” />
+                    <?php echo $row["fasilitas"]; ?></p>
                       </div>
-                    </div> <!---->
+                    <!-- </div> 
                   </div>
                 </div>
                 <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Kulkas" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" src="https://static.mamikos.com/uploads/tags/2j8mPZpr.png" style=”float:left;” />    Dekat Area Perbelanjaan</p>
               </div>
-            </div> <!---->
+            </div> 
           </div>
         </div>
         <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Tamu" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" src="https://static.mamikos.com/uploads/tags/8QrfWFox.png" style=”float:left;” />    Area Ramai</p>
       </div>
-    </div> <!---->
+    </div> 
   </div>
 </div>
 <div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="R. Makan" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" src="https://static.mamikos.com/uploads/tags/2fUI8VjB.png" style=”float:left;” />    Dekat Mushola</p>
   </div>
-</div> <!---->
+</div> 
 </div><div data-v-392c48dd="" class="detail-kost-facility-category__item-grid bg-c-grid__item bg-is-col-6 detail-kost-facility-category__item-grid--two-columns" data-testid="detailKostFacilityCategory__item-grid"><div data-v-3d87c57a="" data-v-392c48dd="" class="bg-c-list-item detail-kost-facility-item detail-kost-facility-category__item" data-testid="detailKostFacilityItem"><div class="bg-c-list-item__left-content"><div data-v-3d87c57a="" class="detail-kost-facility-item__icon"><img data-v-3d87c57a="" data-testid="detail-kost-facility__icon" alt="Dapur" class="detail-kost-facility-item__icon-image" data-src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" src="https://static.mamikos.com/uploads/tags/MJ4jiR3v.png" lstyle=”float:left;” />    Akses Mudah</p>
 </div>
-</div> <!---->
-<div data-v-05ef02e1="" data-v-7140aae4="" tabindex="-1" role="dialog" class="detail-kost-facilities-modal bg-c-modal bg-c-modal--backdrop bg-c-modal--md bg-c-modal--popup" data-testid="detailPagePublicFacilitiesModal"><!----></div></div> <div data-v-3624d904="" data-v-70417152="" class="detail-kost-parking-facilities"><div data-v-392c48dd="" data-v-3624d904="" data-testid="detailKostFacilityCategory" class="detail-kost-facility-category detail-kost-parking-facilities__content"><span data-v-392c48dd="" role="separator" class="detail-kost-facility-category__divider bg-c-divider"></span> <p data-v-392c48dd="" class="detail-kost-facility-category__title bg-c-text bg-c-text--heading-4">
+</div>
+<div data-v-05ef02e1="" data-v-7140aae4="" tabindex="-1" role="dialog" class="detail-kost-facilities-modal bg-c-modal bg-c-modal--backdrop bg-c-modal--md bg-c-modal--popup" data-testid="detailPagePublicFacilitiesModal"></div></div> <div data-v-3624d904="" data-v-70417152="" class="detail-kost-parking-facilities"><div data-v-392c48dd="" data-v-3624d904="" data-testid="detailKostFacilityCategory" class="detail-kost-facility-category detail-kost-parking-facilities__content"><span data-v-392c48dd="" role="separator" class="detail-kost-facility-category__divider bg-c-divider"></span> <p data-v-392c48dd="" class="detail-kost-facility-category__title bg-c-text bg-c-text--heading-4"> -->
 
+<!-- 
                 <blockquote>
                   <p>
                     Perhutani Forestry Institute mengelola beberapa aset yang kemudian dikomersialisasi dan dapat dinikmati oleh semua masyarakat.
@@ -412,7 +418,7 @@ if(isset($_POST['save-btn'])) {
                 <i class="fas fa-cat"></i>
                 <p>
                   Gedung pertemuan Pusdikbang SDM yang bernama Grha Wana Java mampu menampung sekitar 700 orang, dilengkapi dengan tempat parkir kendaraan yang luas, sound system, meja kursi, panggung (stage), ac dan hot spot (wi-fi).
-                </p>
+                </p> -->
 
                 <h3>Lokasi Properti</h3>
                 <iframe src="<?php echo $row['map_url']; ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
