@@ -256,10 +256,10 @@
           echo '<div class="row" style="margin-bottom:20px;">';
 
           // Query to get unique items
-          $sql = "SELECT nama_aset, kategori_aset, alamat, images, id, COUNT(nama_aset) AS jumlah
+          $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, alamat, images, id, COUNT(nama_aset) AS jumlah
                   FROM opset 
                   WHERE kategori_aset = 'bangunan' 
-                  GROUP BY nama_aset, kategori_aset, alamat, images;";
+                  GROUP BY nama_aset;";
           $result = mysqli_query($conn, $sql);
           
           // Loop through unique items
@@ -270,7 +270,7 @@
             echo '<a href="sub-sewa1.php?id=' . $row["id"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
-            echo '<a href="sub-sewa1.php?id=' . $row["id"] . '&nama_aset=' . $row["nama_aset"] . '">' . $row["nama_aset"] . '</a>';
+            echo '<a href="sub-sewa1.php?nama_aset=' . $row["nama_aset"] . '&sub_kategori1=' . $row["sub_kategori1"] . '">' . $row["nama_aset"] . '</a>';
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';
