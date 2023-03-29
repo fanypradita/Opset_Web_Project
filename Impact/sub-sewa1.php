@@ -256,17 +256,19 @@
 // generate HTML code for each item in the loop
 echo '<div class="row" style="margin-bottom:20px;">';
 
-$query = "SELECT DISTINCT id, sub_kategori1, sub_kategori2 FROM opset";
+$query = "SELECT DISTINCT id, nama_aset, sub_kategori1, sub_kategori2 FROM opset";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 $id = $row['id'];
+// Query to get unique items
+$sql = "SELECT id, nama_aset, sub_kategori1, kategori_aset, alamat, images, COUNT(id) AS jumlah
+        FROM opset 
+        WHERE kategori_aset = 'bangunan' AND id = '$id'
+        GROUP BY id, sub_kategori1";
+    
 
-$sql = "SELECT id, nama_aset, sub_kategori1, sub_kategori2 kategori_aset, alamat, images, COUNT(sub_kategori1) AS jumlah
-FROM opset 
-WHERE id = '$id'  
-GROUP BY id, sub_kategori1";
+ $result = mysqli_query($conn, $sql);
 
-$result = mysqli_query($conn, $sql);
 
 // Loop through unique items
 while ($row = mysqli_fetch_assoc($result)) {
@@ -276,7 +278,8 @@ while ($row = mysqli_fetch_assoc($result)) {
   echo '<a href="sub-sewa.php?id=' . $row["id"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
   echo '</div>';
   echo '<h2 class="title">';
-  echo '<a href="sub-sewa.php?nama_aset=' . $row["nama_aset"] . '">' . $row["sub_kategori1"] . '</a>';
+  $id = $row['id'];
+echo '<a href="subcategory.php?id=' . $id . '">' . $row["sub_kategori1"] . '</a><br>';
   echo '<p class="post-category">' . $row["alamat"] . '</p>';
   echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
   echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';
