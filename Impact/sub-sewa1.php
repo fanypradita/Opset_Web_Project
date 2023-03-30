@@ -223,82 +223,81 @@
             die("Connection failed: " . mysqli_connect_error());
           }
 
-          // process the search query
-          if (isset($_GET["search"])) {
-            $search_query = $_GET["search"];
-            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;" ;
-          } else {
-            $sql = "SELECT * FROM opset ";
-          }
-          
-          // retrieve data from the MySQL database with pagination
-          $items_per_page = 4;
-          if (isset($_GET["page"])) {
-            $current_page = $_GET["page"];
-          } else {
-            $current_page = 1;
-          }
-          $offset = ($current_page - 1) * $items_per_page;
-          $sql .= " LIMIT $offset, $items_per_page";
+         // process the search query
+         if (isset($_GET["search"])) {
+          $search_query = $_GET["search"];
+          $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;" ;
+        } else {
+          $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+          FROM opset 
+          WHERE kategori_aset = 'bangunan' 
+          GROUP BY sub_kategori1";
+        }
+        
+        // retrieve data from the MySQL database with pagination
+        $items_per_page = 4;
+        if (isset($_GET["page"])) {
+          $current_page = $_GET["page"];
+        } else {
+          $current_page = 1;
+        }
+        $offset = ($current_page - 1) * $items_per_page;
+        $sql .= " LIMIT $offset, $items_per_page";
 
-          $result = mysqli_query($conn, $sql);
+        $result = mysqli_query($conn, $sql);
 
-          // generate HTML code for the search bar
-          echo '<form class="form-inline mb-4" method="get">';
-          echo '<div class="input-group" style="width: 97.5%;">';
-          echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
-          echo '<div class="input-group-append">';
-          echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
+        // generate HTML code for the search bar
+        echo '<form class="form-inline mb-4" method="get">';
+        echo '<div class="input-group" style="width: 97.5%;">';
+        echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
+        echo '<div class="input-group-append">';
+        echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</form>';
+
+        // generate HTML code for each item in the loop
+        echo '<div class="row" style="margin-bottom:20px;">';
+        while ($row = mysqli_fetch_assoc($result)) {
+          if ($row["kategori_aset"] == "bangunan") {
+          // echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
+          // echo '<article>';
+          // echo '<div class="post-img">';
+          // echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+          // echo '</div>';
+          // echo '<h2 class="title">';
+          // echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
+          // echo '<p class="post-category">' . $row["alamat"] . '</p>';
+          // echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+          // echo '</h2>';
+          // echo '</article>';
+          // echo '</div>';
+
+          echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
+          echo '<article>';
+          echo '<div class="post-img" style="width:250px; height:250px;">';
+          echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
           echo '</div>';
+          echo '<h2 class="title">';
+          echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori1"] . '</a>';
+          echo '<p class="post-category">' . $row["alamat"] . '</p>';
+          echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+          echo '</h2>';
+          echo '</article>';
           echo '</div>';
-          echo '</form>';
+          }
+        }
+        echo '</div>';
 
-// generate HTML code for each item in the loop
-echo '<div class="row" style="margin-bottom:20px;">';
+        // generate pagination links
+        $sql = "SELECT COUNT(nama_aset) as total_items FROM opset WHERE kategori_aset = 'bangunan' 
+        GROUP BY nama_aset, kategori_aset, alamat, images";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $total_items = $row["total_items"];
+        $total_pages = ceil($total_items / $items_per_page);
+        ?>
 
-$query = "SELECT DISTINCT id, nama_aset, sub_kategori1, sub_kategori2 FROM opset";
-$result = mysqli_query($conn, $query);
-$row = mysqli_fetch_assoc($result);
-$id = $row['id'];
-// Query to get unique items
-$sql = "SELECT id, nama_aset, sub_kategori1, kategori_aset, alamat, images, COUNT(id) AS jumlah
-        FROM opset 
-        WHERE kategori_aset = 'bangunan' AND id = '$id'
-        GROUP BY id, sub_kategori1";
-    
-
- $result = mysqli_query($conn, $sql);
-
-
-// Loop through unique items
-while ($row = mysqli_fetch_assoc($result)) {
-  echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
-  echo '<article>';
-  echo '<div class="post-img" style="width:250px; height:250px;">';
-  echo '<a href="sub-sewa.php?id=' . $row["id"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-  echo '</div>';
-  echo '<h2 class="title">';
-  $id = $row['id'];
-echo '<a href="subcategory.php?id=' . $id . '">' . $row["sub_kategori1"] . '</a><br>';
-  echo '<p class="post-category">' . $row["alamat"] . '</p>';
-  echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-  echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';
-  echo '</h2>';
-  echo '</article>';
-  echo '</div>';
-}
-
-echo '</div>';
-
-
-          // generate pagination links
-          $sql = "SELECT COUNT(nama_aset) as total_items FROM opset WHERE kategori_aset = 'bangunan' 
-          GROUP BY nama_aset, kategori_aset, sub_kategori1";;
-          $result = mysqli_query($conn, $sql);
-          $row = mysqli_fetch_assoc($result);
-          $total_items = $row["total_items"];
-          $total_pages = ceil($total_items / $items_per_page);
-          ?>
 
 <div class="pagination justify-content-center">
           <div class="pagination">
