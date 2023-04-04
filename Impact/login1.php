@@ -6,9 +6,9 @@ error_reporting(0);
  
 session_start();
  
-if (isset($_SESSION['username'])) {
-    header("Location:users-profile.php");
-}
+// if (isset($_SESSION['username'])) {
+//     header("Location:users-profile.php");
+// }
  
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];

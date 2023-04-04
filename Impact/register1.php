@@ -6,9 +6,9 @@ error_reporting(0);
  
 session_start();
  
-if (isset($_SESSION['username'])) {
-    header("Location: login1.php");
-}
+// if (isset($_SESSION['username'])) {
+//     header("Location: login1.php");
+// }
  
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];

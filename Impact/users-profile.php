@@ -229,7 +229,7 @@
                 }
 
                 // Query untuk mengambil data terbaru dari tabel user
-                $sql = "SELECT * FROM tbl_customer ORDER BY id_customer DESC LIMIT 1";
+                $sql = "SELECT * FROM tbl_customer ORDER BY username DESC LIMIT 1";
                 $result = mysqli_query($conn, $sql);
 
                 // Menampilkan data terbaru
@@ -442,7 +442,7 @@
     }
 
     // Mengambil data dari tabel pengajuan
-    $sql = "SELECT pengajuan.nama, tbl_customer.nama, pengajuan.instansi, pengajuan.tanggal, pengajuan.tgl_akhir, pengajuan.hal, pengajuan.sub_kategori2, pengajuan.status 
+    $sql = "SELECT pengajuan.nama,  pengajuan.instansi, pengajuan.tanggal, pengajuan.tgl_akhir, pengajuan.hal, pengajuan.sub_kategori2, pengajuan.status 
     FROM pengajuan 
     INNER JOIN tbl_customer ON pengajuan.id_customer = tbl_customer.id_customer";
     $result = mysqli_query($conn, $sql);
@@ -516,8 +516,7 @@
 <div class="tab-pane fade pt-3" id="invoice">
   <form>
   </form>
-</div>
-
+  </div>
 <!-- == TAB WISHLIST == -->
 <div class="tab-pane fade pt-3" id="wishlist">
   <!-- Wishlist Form -->
