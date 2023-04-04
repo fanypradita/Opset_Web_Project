@@ -103,6 +103,8 @@
       .foto-wrapper form button[type="submit"]:hover {
         background-color: #0062cc;
       }
+    
+
 
       </style>
 
@@ -188,7 +190,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="login.php">
+                <a class="dropdown-item d-flex align-items-center" href="reindex.html">
                   <i class="bi bi-box-arrow-right"></i>
                   <span style="font-size:15px;">Sign Out</span>
                 </a>
@@ -227,7 +229,7 @@
                 }
 
                 // Query untuk mengambil data terbaru dari tabel user
-                $sql = "SELECT * FROM tbl_customer ORDER BY username DESC LIMIT 1";
+                $sql = "SELECT * FROM tbl_customer ORDER BY id_customer DESC LIMIT 1";
                 $result = mysqli_query($conn, $sql);
 
                 // Menampilkan data terbaru
@@ -287,6 +289,9 @@
                 </li>
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pengajuan">Pengajuan</button>
+                </li>
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#invoice">Invoice</button>
                 </li>
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wishlist">My wishlist</button>
@@ -423,6 +428,7 @@
 
 
 <!-- == TAB PENGAJUAN == -->
+
 <div class="tab-pane fade pt-3" id="pengajuan">
   <form>
   
@@ -436,7 +442,9 @@
     }
 
     // Mengambil data dari tabel pengajuan
-    $sql = "SELECT nama, instansi, tanggal, tgl_akhir, hal, sub_kategori2, status FROM pengajuan";
+    $sql = "SELECT pengajuan.nama, tbl_customer.nama, pengajuan.instansi, pengajuan.tanggal, pengajuan.tgl_akhir, pengajuan.hal, pengajuan.sub_kategori2, pengajuan.status 
+    FROM pengajuan 
+    INNER JOIN tbl_customer ON pengajuan.id_customer = tbl_customer.id_customer";
     $result = mysqli_query($conn, $sql);
 
     // Menampilkan data dalam tabel
@@ -461,10 +469,21 @@
     echo "<table>";
     echo "<tr><th>Nama</th><th>Instansi</th><th>Tanggal Mulai</th><th>Tanggal Selesai</th><th>Perihal</th><th>Nama Aset</th><th>Status</th></tr>";
     while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr><td>".$row["nama"]."</td><td>".$row["instansi"]."</td><td>".$row["tanggal"]."</td><td>".$row["tgl_akhir"]."</td><td>".$row["hal"]."</td><td>".$row["sub_kategori2"]."</td><td>".$row["status"]."</td></tr>";
+      echo "<tr><td>".$row["nama"]."</td><td>".$row["instansi"]."</td><td>".$row["tanggal"]."</td><td>".$row["tgl_akhir"]."</td><td>".$row["hal"]."</td><td>".$row["sub_kategori2"]."</td><td>";
+      
+      if ($row["status"] == "terima") {
+        echo "<a href='#' style='color: blue;'>".$row["status"]."</a>";
+      } else if ($row["status"] == "tolak") {
+        echo "<a href='#' style='color: red;'>".$row["status"]."</a>";
+      } else {
+        echo $row["status"];
+      }
+      
+      echo "</td></tr>";
     }
+    
     echo "</table>";
-
+    echo "<br>";
     echo "<br>";
     echo '
     <form>
@@ -493,6 +512,11 @@
 </div>
 <!-- == LAST TAB PENGAJUAN == -->
 
+
+<div class="tab-pane fade pt-3" id="invoice">
+  <form>
+  </form>
+</div>
 
 <!-- == TAB WISHLIST == -->
 <div class="tab-pane fade pt-3" id="wishlist">
