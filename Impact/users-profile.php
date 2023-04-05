@@ -516,7 +516,8 @@
 <div class="tab-pane fade pt-3" id="invoice">
   <form>
   </form>
-  </div>
+</div>
+
 <!-- == TAB WISHLIST == -->
 <div class="tab-pane fade pt-3" id="wishlist">
   <!-- Wishlist Form -->
