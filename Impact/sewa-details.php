@@ -428,10 +428,25 @@ if(isset($_POST['save-btn'])) {
                 </p> -->
 
                 <h3>Lokasi Properti</h3>
-                <iframe src="<?php echo $row['map_url']; ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <?php
 
-    
-                
+                // Menjalankan pernyataan SQL SELECT
+                $sql = "SELECT map_url FROM opset WHERE id_aset = '1'";
+                $result = $conn->query($sql);
+
+                // Memeriksa hasil query
+                if ($result->num_rows > 0) {
+                    // Mengambil baris hasil query
+                    $row = $result->fetch_assoc();
+                    // Mengambil URL dari hasil query
+                    $map_url = $row["map_url"];
+
+                    // Menyusun kode HTML dengan URL peta
+                    echo "<iframe src='" . $map_url . "' width='600' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>";
+                } else {
+                    echo "Tidak ada data peta yang ditemukan.";
+                }
+                ?>
 
               <!-- <div class="meta-bottom">
                 <i class="bi bi-folder"></i>
@@ -633,7 +648,10 @@ if(isset($_POST['save-btn'])) {
                   <div class="row">
                     <div class="col-md-12 form-group">
                       <label for="inputEmail4">Aset<span class="required">*</span></label></label>
-                      <textarea name="sub_kategori2" class="form-control" readonly><?php echo isset($_POST["sub_kategori2"]) ? $_POST["sub_kategori2"] : $row["sub_kategori2"]; ?></textarea>
+                      <textarea name="sub_kategori2" class="form-control">
+    <?php echo isset($_POST["sub_kategori2"]) ? $_POST["sub_kategori2"] : $row["sub_kategori2"]; ?>
+</textarea>
+
                     </div>
                   </div>
 

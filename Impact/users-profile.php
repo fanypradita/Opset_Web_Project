@@ -229,7 +229,7 @@
                 }
 
                 // Query untuk mengambil data terbaru dari tabel user
-                $sql = "SELECT * FROM tbl_customer ORDER BY username DESC LIMIT 1";
+                $sql = "SELECT * FROM tbl_customer ORDER BY username ";
                 $result = mysqli_query($conn, $sql);
 
                 // Menampilkan data terbaru
@@ -291,7 +291,7 @@
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pengajuan">Pengajuan</button>
                 </li>
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#invoice">Invoice</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#transaksi">transaksi</button>
                 </li>
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wishlist">My wishlist</button>
@@ -512,11 +512,82 @@
 </div>
 <!-- == LAST TAB PENGAJUAN == -->
 
-
-<div class="tab-pane fade pt-3" id="invoice">
+<!-- == TAB TRANSAKSI == -->
+<div class="tab-pane fade pt-3" id="transaksi">
   <form>
+  
+    <?php
+    // Menghubungkan ke database
+    $conn = mysqli_connect("localhost", "root", "", "db_perhutani");
+
+    // Memeriksa koneksi
+    if (!$conn) {
+        die("Koneksi gagal: " . mysqli_connect_error());
+    }
+
+    // Mengambil data dari tabel pengajuan
+    $sql = "SELECT tbl_customer.nama AS nama, pengajuan.instansi, transaksi.harga, transaksi.status, transaksi.durasi, pengajuan.nama_aset 
+    FROM pengajuan 
+    INNER JOIN transaksi ON pengajuan.id_customer = transaksi.id_customer
+    INNER JOIN tbl_customer ON tbl_customer.id_customer = pengajuan.id_customer";
+    $result = mysqli_query($conn, $sql);
+
+    // Menampilkan data dalam tabel
+    echo "<style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+            th, td {
+                text-align: left;
+                padding: 8px;
+                border-bottom: 1px solid #ddd;
+            }
+            th {
+                background-color: #f2f2f2;
+                color: #333;
+            }
+        </style>";
+        
+        
+    echo "<br>";
+    echo "<table>";
+    echo "<th>Nama</th><th>Instansi</th><th>Harga sewa</th><th>status</th><th>durasi</th><th>Nama Aset</th>";
+    while ($row = mysqli_fetch_assoc($result)) {
+      echo "<tr><td>".$row["nama"]."</td><td>".$row["instansi"]."</td><td>".$row["harga"]."</td><td>".$row["status"]."</td><td>".$row["durasi"]."</td><td>".$row["sub_kategori2"]."</td><td>";
+      
+      echo "</td></tr>";
+    }
+    
+    echo "</table>";
+    echo "<br>";
+    echo "<br>";
+    echo '
+    <form>
+      <div class="button-group">
+      <button type="submit" class="btn btn-sm btn-primary" name="print_pdf">Print pdf</button>
+        <button type="submit" class="btn btn-sm btn-primary" name="print_excel">Print Excel</button>
+        <button type="submit" class="btn btn-primary" name="ajukan_lagi">Ingin mengajukan lagi?</button>
+    </div>
+    </form>
+    <style>
+    .button-group {
+      display: flex;
+      justify-content: center;
+    }
+    .button-group button {
+      margin-right: 10px;
+    }
+    </style>';
+
+
+    // Menutup koneksi
+    mysqli_close($conn);
+    ?>
+
   </form>
 </div>
+<!-- == LAST TAB TRANSAKSI == -->
 
 <!-- == TAB WISHLIST == -->
 <div class="tab-pane fade pt-3" id="wishlist">

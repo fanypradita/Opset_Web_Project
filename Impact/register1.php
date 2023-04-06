@@ -6,13 +6,10 @@ error_reporting(0);
  
 session_start();
  
-// if (isset($_SESSION['username'])) {
-//     header("Location: login1.php");
-// }
- 
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
+    $nik = $_POST['nik'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
     $nama = $_POST['nama'];
@@ -21,14 +18,37 @@ if (isset($_POST['submit'])) {
     $alamat = $_POST['alamat'];
     $nohp = $_POST['nohp'];
     $noktp = $_POST['noktp'];
-    $foto = $_POST['foto'];
- 
+    $foto = "";
+
+    if(isset($_FILES['foto']['name'])) {
+        $foto_name = $_FILES['foto']['name'];
+        $foto_size = $_FILES['foto']['size'];
+        $foto_tmp = $_FILES['foto']['tmp_name'];
+        $foto_type = $_FILES['foto']['type'];
+        $foto_ext = strtolower(end(explode('.',$_FILES['foto']['name'])));
+        
+        $extensions= array("jpeg","jpg","png");
+        
+        if(in_array($foto_ext,$extensions)=== false){
+            echo "<script>alert('Ekstensi file foto harus jpeg, jpg, atau png.')</script>";
+            exit();
+        }
+        
+        if($foto_size > 2097152) {
+            echo "<script>alert('Ukuran file foto harus kurang dari 2MB.')</script>";
+            exit();
+        }
+        
+        $foto = rand(1000,1000000).".".$foto_ext;
+        move_uploaded_file($foto_tmp,"foto/".$foto);
+    }
+
     if ($password == $cpassword) {
         $sql = "SELECT * FROM tbl_customer WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, foto)
-                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$foto')";
+            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, nik, foto)
+                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$nik', '$foto')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
@@ -36,20 +56,19 @@ if (isset($_POST['submit'])) {
                 $email = "";
                 $_POST['password'] = "";
                 $_POST['cpassword'] = "";
-                
             } else {
-                echo "<script>alert('Username Telah Digunakan !.')</script>";
+                echo "<script>alert('Terjadi kesalahan saat menyimpan ke database: " . mysqli_error($conn) . ".')</script>";
             }
         } else {
             echo "<script>alert('Woops! Email Sudah Terdaftar.')</script>";
         }
-         
     } else {
         echo "<script>alert('Password Tidak Sesuai')</script>";
     }
 }
- 
-?>
+header("Location: login1.php");
+exit();
+?>   
  
 <!DOCTYPE html>
 <html>
