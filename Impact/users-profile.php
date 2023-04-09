@@ -103,7 +103,7 @@
       .foto-wrapper form button[type="submit"]:hover {
         background-color: #0062cc;
       }
-    
+  
 
 
       </style>
@@ -366,10 +366,11 @@
 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
     <title>Edit Profil</title>
 
-  <form action="update_profil.php" method="POST">
+  <form action="update_profil.php" method="POST" enctype="multipart/form-data">
     <div class="row">
       <div class="profile-picture">
         <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
+        <br>
         <form action="upload.php" method="post" enctype="multipart/form-data">
           <label for="fileToUpload" class="upload-btn">
           <i class="fas fa-upload"></i> Upload
@@ -385,38 +386,54 @@
       </div>
     </div>
 
-    
+    <br>
     <div class="row">
-            <label for="nama">Nama:</label>
-            <input type="text" name="nama" value="<?php echo $row['nama']; ?>" required>
+		  <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+		  <div class="col-sm-10">
+        <input type="text" name="nama" value="<?php echo $row['nama']; ?>" required>
+		  </div>
+	</div>
+    <div class="row">
+            <label for="jk" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+            <div class="col-sm-10">
+              <input type="text" name="jk" value="<?php echo $row['jk']; ?>" required>
+            </div>
     </div>
     <div class="row">
-            <label for="jk">Jenis Kelamin:</label>
-            <input type="text" name="jk" value="<?php echo $row['jk']; ?>" required>
+            <label for="tgl_lahir" class="col-sm-2 col-form-label">Tanggal Lahir</label>
+            <div class="col-sm-10">
+              <input type="date" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>" required>
+            </div>
     </div>
     <div class="row">
-            <label for="tgl_lahir">Tanggal Lahir:</label>
-            <input type="date" name="tgl_lahir" value="<?php echo $row['tgl_lahir']; ?>" required>
-    </div>
-    <div class="row">
-            <label for="alamat">Alamat:</label>
+            <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
+            <div class="col-sm-10">
             <input type="text" name="alamat" value="<?php echo $row['alamat']; ?>" required>
+              </div>
     </div>
     <div class="row">
-            <label for="nohp">No. HP:</label>
-            <input type="nunmber" name="nohp" value="<?php echo $row['nohp']; ?>" required>
+            <label for="nohp" class="col-sm-2 col-form-label">No. HP</label>
+            <div class="col-sm-10">
+            <input type="number" name="nohp" value="<?php echo $row['nohp']; ?>" required>
+              </div>
     </div>
     <div class="row">
-            <label for="noktp">No.KTP:</label>
+            <label for="noktp" class="col-sm-2 col-form-label">No.KTP</label>
+            <div class="col-sm-10">
             <input type="number" name="noktp" value="<?php echo $row['noktp']; ?>" required>
+              </div>
     </div>
     <div class="row">
-            <label for="nik">NIK:</label>
+            <label for="nik" class="col-sm-2 col-form-label">NIK</label>
+            <div class="col-sm-10">
             <input type="number" name="nik" value="<?php echo $row['nik']; ?>" required>
+              </div>
     </div>
     <div class="row">
-            <label for="email">Email:</label>
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
             <input type="email" name="email" value="<?php echo $row['email']; ?>" required>
+              </div>
     </div>
     <br>
             <button type="submit" name="submit">Update Profil</button>
