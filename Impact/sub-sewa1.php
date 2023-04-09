@@ -226,13 +226,28 @@
          // process the search query
          if (isset($_GET["search"])) {
           $search_query = $_GET["search"];
-          $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;" ;
-        } else {
-          $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
-          FROM opset 
-          WHERE kategori_aset = 'bangunan' 
-          GROUP BY sub_kategori1";
-        }
+          $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;";
+      } else {
+          if ($_GET["nama_aset"] == "ruko") {
+              $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+                      FROM opset 
+                      WHERE nama_aset='ruko'  
+                      GROUP BY sub_kategori1";
+          } else {
+              if ($_GET["nama_aset"] == "apartemen") {
+                  $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+                          FROM opset 
+                          WHERE nama_aset='apartemen'  
+                          GROUP BY sub_kategori1";
+              } else {
+                  $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+                          FROM opset 
+                          WHERE nama_aset='Kantor Divre Jateng'  
+                          GROUP BY sub_kategori1";
+              }
+          }
+      }
+      
         
         // retrieve data from the MySQL database with pagination
         $items_per_page = 4;
@@ -276,10 +291,11 @@
           echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
           echo '<article>';
           echo '<div class="post-img" style="width:250px; height:250px;">';
-          echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+          echo '<a href="sub-sewa.php?id=' . $row["id"] . '&nama_aset=' . $row["nama_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
           echo '</div>';
           echo '<h2 class="title">';
-          echo '<a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori1"] . '</a>';
+          echo '<a href="sub-sewa.php?id=' . $row["id"] . '&nama_aset=' . $row["nama_aset"] . '">' . $row["sub_kategori1"] . '</a><br>';
+
           echo '<p class="post-category">' . $row["alamat"] . '</p>';
           echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
           echo '</h2>';

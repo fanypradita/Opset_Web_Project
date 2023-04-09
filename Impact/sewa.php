@@ -255,6 +255,7 @@
           // generate HTML code for each item in the loop
           echo '<div class="row" style="margin-bottom:20px;">';
 
+          
           // Query to get unique items
           $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, alamat, images, id, COUNT(nama_aset) AS jumlah
                   FROM opset 
@@ -268,12 +269,11 @@
             echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
             echo '<article>';
             echo '<div class="post-img" style="width:250px; height:250px;">';
-            echo '<a href="sub-sewa1.php?id=' . $row["id"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+            echo '<a href="sub-sewa1.php?nama_aset=' . $row["nama_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
             echo '</div>';
             echo '<h2 class="title">';
- 
-                echo '<a href="sub-sewa1.php?nama_aset=' . $row["nama_aset"] . '"> ' . $row["nama_aset"] . '</a><br>';
-            
+            echo '<a href="sub-sewa1.php?nama_aset=' . $row["nama_aset"] . '"> ' . $row["nama_aset"] . '</a><br>';
+           
             echo '<p class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';

@@ -228,11 +228,25 @@
           $search_query = $_GET["search"];
           $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;" ;
         } else {
-          $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
-          FROM opset 
-          WHERE kategori_aset = 'bangunan' 
-          GROUP BY sub_kategori2";
+          if ($_GET["nama_aset"] == "ruko") {
+              $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+                      FROM opset 
+                      WHERE sub_kategori1='ruko1'  
+                      GROUP BY sub_kategori2";
+          } else if ($_GET["nama_aset"] == "apartemen") {
+              $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+                      FROM opset 
+                      WHERE sub_kategori1='-'  
+                      GROUP BY sub_kategori2";
+          } else {
+            if ($_GET["nama_aset"] == "Kantor Divre Jateng") {
+                $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+                        FROM opset 
+                        WHERE sub_kategori1 LIKE '%Gedung Rimba Graha%' OR sub_kategori1 LIKE '%Bangunan Kantor Perhutani%' 
+                        GROUP BY sub_kategori2";
+            }
         }
+      }
         
         // retrieve data from the MySQL database with pagination
         $items_per_page = 4;
