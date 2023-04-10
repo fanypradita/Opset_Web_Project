@@ -1,3 +1,47 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['username'])) {
+  // Redirect to login page
+  header("Location: login1.php");
+  exit;
+}
+
+  
+// Koneksi ke database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "db_perhutani";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Mengecek koneksi
+if (!$conn) {
+  die("Koneksi gagal: " . mysqli_connect_error());
+}
+
+// Query untuk mengambil data terbaru dari tabel user
+// $sql = "SELECT * FROM tbl_customer ORDER BY username ";
+// $result = mysqli_query($conn, $sql);
+
+$username = $_SESSION['username'];
+$sql = "SELECT * FROM tbl_customer WHERE username = '$username'";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+  $row = $result->fetch_assoc();
+$nama = $row["nama"];
+} else {
+  echo "Error fetching user data";
+}
+
+// Menampilkan data terbaru
+// if (mysqli_num_rows($result) > 0) {
+//   $row = mysqli_fetch_assoc($result);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -214,28 +258,7 @@
   </header><!-- End Header -->
   <!-- End Header -->
 
-  <?php
-                // Koneksi ke database
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "db_perhutani";
 
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-                // Mengecek koneksi
-                if (!$conn) {
-                  die("Koneksi gagal: " . mysqli_connect_error());
-                }
-
-                // Query untuk mengambil data terbaru dari tabel user
-                $sql = "SELECT * FROM tbl_customer ORDER BY username ";
-                $result = mysqli_query($conn, $sql);
-
-                // Menampilkan data terbaru
-                if (mysqli_num_rows($result) > 0) {
-                  $row = mysqli_fetch_assoc($result);
-  ?>
 
   <main id="main" class="main">
     <div class="breadcrumbs">
@@ -268,8 +291,8 @@
         <div class="col-xl-4">
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-              <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
-              <h2><?php echo $row["nama"]; ?></h2>
+              <img alt="Profile" class="rounded-circle" img src='<?php echo $row['image']; ?>'>
+              <h2><?php echo $row['nama']; ?></h2>
               <h3>Costumer Perhutani Property</h3>
             </div>
           </div>
@@ -313,7 +336,7 @@
             
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label ">Nama</div>
-                    <div class="col-lg-9 col-md-8"><?php echo $row['nama']; ?></div>
+                    <div class="col-lg-9 col-md-8"><?php echo $nama; ?></div>
                   </div>
 
                   <div class="row">
@@ -350,14 +373,7 @@
                     <div class="col-lg-3 col-md-4 label">Email</div>
                     <div class="col-lg-9 col-md-8"><?php echo $row['email']; ?></div>
                   </div>
-                  <?php
-                } else {
-                  echo "Tidak ada data yang ditemukan.";
-                }
 
-                // Menutup koneksi
-                mysqli_close($conn);
-                ?>
               </div>
     
          
@@ -369,7 +385,7 @@
   <form action="update_profil.php" method="POST" enctype="multipart/form-data">
     <div class="row">
       <div class="profile-picture">
-        <img alt="Profile" class="rounded-circle" src="<?php echo $row['foto']; ?>">
+        <img alt="Profile" class="rounded-circle" src="<?php echo $row['image']; ?>">
         <br>
         <form action="upload.php" method="post" enctype="multipart/form-data">
           <label for="fileToUpload" class="upload-btn">
@@ -381,7 +397,7 @@
           <button type="submit" class="hapus-btn" name="submit">
           <i class="fas fa-trash-alt"></i> Hapus Foto
           </button>
-          <input type="hidden" name="foto" value="<?php echo $row['foto']; ?>">
+          <input type="hidden" name="foto" value="<?php echo $row['image']; ?>">
         </form>
       </div>
     </div>
