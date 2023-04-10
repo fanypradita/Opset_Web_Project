@@ -1,15 +1,10 @@
-<?php 
- 
+<?php
+
 include 'config.php';
- 
-error_reporting(0);
- 
-session_start();
- 
+
 if (isset($_POST['submit'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $nik = $_POST['nik'];
     $password = md5($_POST['password']);
     $cpassword = md5($_POST['cpassword']);
     $nama = $_POST['nama'];
@@ -20,35 +15,59 @@ if (isset($_POST['submit'])) {
     $noktp = $_POST['noktp'];
     $foto = "";
 
-    if(isset($_FILES['foto']['name'])) {
-        $foto_name = $_FILES['foto']['name'];
-        $foto_size = $_FILES['foto']['size'];
-        $foto_tmp = $_FILES['foto']['tmp_name'];
-        $foto_type = $_FILES['foto']['type'];
-        $foto_ext = strtolower(end(explode('.',$_FILES['foto']['name'])));
-        
-        $extensions= array("jpeg","jpg","png");
-        
-        if(in_array($foto_ext,$extensions)=== false){
-            echo "<script>alert('Ekstensi file foto harus jpeg, jpg, atau png.')</script>";
-            exit();
-        }
-        
-        if($foto_size > 2097152) {
-            echo "<script>alert('Ukuran file foto harus kurang dari 2MB.')</script>";
-            exit();
-        }
-        
-        $foto = rand(1000,1000000).".".$foto_ext;
-        move_uploaded_file($foto_tmp,"foto/".$foto);
+// Mengupload file foto profil
+if(isset($_FILES['foto']) && $_FILES['foto']['name'] != ""){
+    $target_dir = "uploads/"; // Folder tempat menyimpan file foto
+    $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    
+    // Memeriksa apakah file yang diupload adalah file gambar
+    $check = getimagesize($_FILES["foto"]["tmp_name"]);
+    if($check !== false) {
+        $uploadOk = 1;
+    } else {
+        echo "<script>alert('File yang diupload bukan file gambar.')</script>";
+        $uploadOk = 0;
     }
+
+    // Memeriksa apakah file sudah ada di server
+    if (file_exists($target_file)) {
+        echo "<script>alert('Maaf, file sudah ada di server.')</script>";
+        $uploadOk = 0;
+    }
+
+    // Memeriksa ukuran file
+    if ($_FILES["foto"]["size"] > 500000) {
+        echo "<script>alert('Maaf, ukuran file terlalu besar.')</script>";
+        $uploadOk = 0;
+    }
+
+    // Memeriksa tipe file yang diizinkan
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif" ) {
+        echo "<script>alert('Maaf, hanya file JPG, JPEG, PNG & GIF yang diizinkan.')</script>";
+        $uploadOk = 0;
+    }
+
+    // Jika semua validasi file foto lolos, maka mengupload file foto
+    if ($uploadOk == 1) {
+        if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
+            $foto = basename($_FILES["foto"]["name"]);
+        } else {
+            echo "<script>alert('Terjadi kesalahan saat mengupload file foto.')</script>";
+            $foto = "";
+        }
+    } else {
+        $foto = "";
+    }
+}
 
     if ($password == $cpassword) {
         $sql = "SELECT * FROM tbl_customer WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, nik, foto)
-                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$nik', '$foto')";
+            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, foto)
+                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$foto')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
@@ -65,10 +84,11 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<script>alert('Password Tidak Sesuai')</script>";
     }
+    header("Location: login1.php");
+    exit();
 }
-header("Location: login1.php");
-exit();
-?>   
+?>
+ 
  
 <!DOCTYPE html>
 <html>
@@ -82,51 +102,52 @@ exit();
  
     <title>WebPerhutani</title>
 </head>
-<body>
-    <div class="container">
-        <form action="" method="POST" class="login-email">
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
-            <div class="input-group">
-                <input type="text" placeholder="Username" name="username" value="<?php echo $username; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="text" placeholder="Nama Lengkap" name="nama" value="<?php echo $nama; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="date" placeholder="Tanggal lahir" name="tgl_lahir" value="<?php echo $tgl_lahir; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="text" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?php echo $jk; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="text box" placeholder="Alamat" name="alamat" value="<?php echo $alamat; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="text" placeholder="No. HP" name="nohp" value="<?php echo $nohp; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="text" placeholder="NIK" name="noktp" value="<?php echo $noktp; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
-            </div>
-            <div class="input-group">
-                <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
-            </div>
-            <p class="login-register-text">Uploud Foto Profil</p>
-            <div class="input-group">
-                <input type="file" placeholder="" name="" value="<?php echo $foto; ?>" required>
-            </div >
-            
-            <div class="input-group">
-                <button name="submit" href="login1.php" class="btn">Register</button></a>
+<body><div class="container">
+    <form action="" method="POST" class="login-email">
+        <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+        <div class="input-group">
+            <input type="text" placeholder="Username" name="username" value="<?php echo isset($username) ? $username : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Nama Lengkap" name="nama" value="<?php echo isset($nama) ? $nama : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="date" placeholder="Tanggal lahir" name="tgl_lahir" value="<?php echo isset($tgl_lahir) ? $tgl_lahir : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="Jenis Kelamin" name="jenis_kelamin" value="<?php echo isset($jk) ? $jk : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="text box" placeholder="Alamat" name="alamat" value="<?php echo isset($alamat) ? $alamat : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="No. HP" name="nohp" value="<?php echo isset($nohp) ? $nohp : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="text" placeholder="NO. KTP" name="noktp" value="<?php echo isset($noktp) ? $noktp : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="email" placeholder="Email" name="email" value="<?php echo isset($email) ? $email : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="Password" name="password" value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>" required>
+        </div>
+        <div class="input-group">
+            <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo isset($_POST['cpassword']) ? $_POST['cpassword'] : ''; ?>" required>
+        </div>
+        <p class="login-register-text">Uploud Foto Profil</p>
+<div class="input-group">
+    <input type="file" placeholder="" name="foto_profil" required>
+</div>
 
-            </div>
-            <p class="login-register-text">Anda sudah punya akun? <a href="login1.php">Login </a></p>
-        </form>
-    </div>
+
+        <div class="input-group">
+            <button name="submit" href="login1.php" class="btn">Register</button></a>
+
+        </div>
+        <p class="login-register-text">Anda sudah punya akun? <a href="login1.php">Login </a></p>
+    </form>
+</div>
+
 </body>
 </html>
