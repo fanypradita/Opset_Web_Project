@@ -3,10 +3,10 @@ session_start();
 include 'config.php';
 
 
-if (isset($_SESSION['username'])) {
-    header("Location:users-profile.php");
-    exit();
-}
+// if (isset($_SESSION['username'])) {
+//     header("Location:login1.php");
+//     exit();
+// }
 
 $email = "";
 $password = "";

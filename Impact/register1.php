@@ -13,17 +13,17 @@ if (isset($_POST['submit'])) {
     $alamat = $_POST['alamat'];
     $nohp = $_POST['nohp'];
     $noktp = $_POST['noktp'];
-    $foto = "";
+    $image = "";
 
-// Mengupload file foto profil
-if(isset($_FILES['foto']) && $_FILES['foto']['name'] != ""){
-    $target_dir = "uploads/"; // Folder tempat menyimpan file foto
-    $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+// Mengupload file image profil
+if(isset($_FILES['image']) && $_FILES['image']['name'] != ""){
+    $target_dir = "github/Opset_Web_Project/Impact/assets/img/"; // Folder tempat menyimpan file image
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     
     // Memeriksa apakah file yang diupload adalah file gambar
-    $check = getimagesize($_FILES["foto"]["tmp_name"]);
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
     if($check !== false) {
         $uploadOk = 1;
     } else {
@@ -38,7 +38,7 @@ if(isset($_FILES['foto']) && $_FILES['foto']['name'] != ""){
     }
 
     // Memeriksa ukuran file
-    if ($_FILES["foto"]["size"] > 500000) {
+    if ($_FILES["image"]["size"] > 500000) {
         echo "<script>alert('Maaf, ukuran file terlalu besar.')</script>";
         $uploadOk = 0;
     }
@@ -49,16 +49,16 @@ if(isset($_FILES['foto']) && $_FILES['foto']['name'] != ""){
         $uploadOk = 0;
     }
 
-    // Jika semua validasi file foto lolos, maka mengupload file foto
+    // Jika semua validasi file image lolos, maka mengupload file image
     if ($uploadOk == 1) {
-        if (move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file)) {
-            $foto = basename($_FILES["foto"]["name"]);
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            $image = basename($_FILES["image"]["name"]);
         } else {
-            echo "<script>alert('Terjadi kesalahan saat mengupload file foto.')</script>";
-            $foto = "";
+            echo "<script>alert('Terjadi kesalahan saat mengupload file image.')</script>";
+            $image = "";
         }
     } else {
-        $foto = "";
+        $image = "";
     }
 }
 
@@ -66,8 +66,8 @@ if(isset($_FILES['foto']) && $_FILES['foto']['name'] != ""){
         $sql = "SELECT * FROM tbl_customer WHERE email='$email'";
         $result = mysqli_query($conn, $sql);
         if (!$result->num_rows > 0) {
-            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, foto)
-                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$foto')";
+            $sql = "INSERT INTO tbl_customer (username, email, password, cpassword, nama, jk, tgl_lahir, alamat, nohp, noktp, image)
+                    VALUES ('$username', '$email', '$password', '$cpassword' ,'$nama' ,'$jk', '$tgl_lahir', '$alamat' ,'$nohp', '$noktp', '$image')";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "<script>alert('Selamat, registrasi berhasil!')</script>";
@@ -135,9 +135,9 @@ if(isset($_FILES['foto']) && $_FILES['foto']['name'] != ""){
         <div class="input-group">
             <input type="password" placeholder="Confirm Password" name="cpassword" value="<?php echo isset($_POST['cpassword']) ? $_POST['cpassword'] : ''; ?>" required>
         </div>
-        <p class="login-register-text">Uploud Foto Profil</p>
+        <p class="login-register-text">Uploud image Profil</p>
 <div class="input-group">
-    <input type="file" placeholder="" name="foto_profil" required>
+    <input type="file" placeholder="" name="image_profil" required>
 </div>
 
 
