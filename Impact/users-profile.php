@@ -313,15 +313,15 @@ $nama = $row["nama"];
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#pengajuan">Pengajuan</button>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#transaksi">transaksi</button>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#wishlist">My wishlist</button>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-                </li>
+                </li> -->
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
                 </li>
@@ -435,12 +435,6 @@ $nama = $row["nama"];
               </div>
     </div>
     <div class="row">
-            <label for="nik" class="col-sm-2 col-form-label">NIK</label>
-            <div class="col-sm-10">
-            <input type="number" name="nik" value="<?php echo $row['nik']; ?>" required>
-              </div>
-    </div>
-    <div class="row">
             <label for="email" class="col-sm-2 col-form-label">Email</label>
             <div class="col-sm-10">
             <input type="email" name="email" value="<?php echo $row['email']; ?>" required>
@@ -495,48 +489,72 @@ $nama = $row["nama"];
         
         
     echo "<br>";
-    echo "<table>";
-    echo "<tr><th>Nama</th><th>Instansi</th><th>Tanggal Mulai</th><th>Tanggal Selesai</th><th>Perihal</th><th>Nama Aset</th><th>Status</th></tr>";
-    while ($row = mysqli_fetch_assoc($result)) {
-      echo "<tr><td>".$row["nama"]."</td><td>".$row["instansi"]."</td><td>".$row["tanggal"]."</td><td>".$row["tgl_akhir"]."</td><td>".$row["hal"]."</td><td>".$row["sub_kategori2"]."</td><td>";
-      
-      if ($row["status"] == "terima") {
-        echo "<a href='#' style='color: blue;'>".$row["status"]."</a>";
-        // Query untuk mengambil data transaksi dengan status "terima"
-        $query = "SELECT harga, durasi, status FROM transaksi WHERE status = 'terima'";
-        $result = mysqli_query($conn, $query);
+    ?>
+   <!-- Tabel pertama -->
+<table>
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Instansi</th>
+            <th>Tanggal Mulai</th>
+            <th>Tanggal Selesai</th>
+            <th>Perihal</th>
+            <th>Nama Aset</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . $row["nama"] . "</td>";
+            echo "<td>" . $row["instansi"] . "</td>";
+            echo "<td>" . $row["tanggal"] . "</td>";
+            echo "<td>" . $row["tgl_akhir"] . "</td>";
+            echo "<td>" . $row["hal"] . "</td>";
+            echo "<td>" . $row["sub_kategori2"] . "</td>";
+            echo "<td>";
+            if ($row["status"] == "terima") {
+                echo "<a href='#' style='color: blue;'>" . $row["status"] . "</a>";
+            } else {
+                echo $row["status"];
+            }
+            echo "</td>";
+            echo "</tr>";
+        }
         ?>
-
-    <table border="1">
+    </tbody>
+</table>
+<br>
+<!-- Tabel kedua -->
+<table>
+    <thead>
         <tr>
             <th>Harga</th>
             <th>Durasi</th>
             <th>Status</th>
         </tr>
+    </thead>
+    <tbody>
         <?php
-        // Loop untuk menampilkan data transaksi
-        while ($row = mysqli_fetch_assoc($result)) {
+        $query_terima = "SELECT transaksi.harga, transaksi.durasi, transaksi.status 
+                         FROM transaksi 
+                         INNER JOIN pengajuan ON pengajuan.id_customer = transaksi.id_customer 
+                         WHERE transaksi.status = 'terima'";
+        $result_terima = mysqli_query($conn, $query_terima);
+        while ($row_terima = mysqli_fetch_assoc($result_terima)) {
             echo "<tr>";
-            echo "<td>" . $row["harga"] . "</td>";
-            echo "<td>" . $row["durasi"] . "</td>";
-            echo "<td><a href='#' style='color: blue;'>" . $row["status"] . "</a></td>";
+            echo "<td>" . $row_terima["harga"] . "</td>";
+            echo "<td>" . $row_terima["durasi"] . "</td>";
+            echo "<td>" . $row_terima["status"] . "</td>";
             echo "</tr>";
         }
         ?>
-    </table>
-    <?php
-      } else if ($row["status"] == "tolak") {
-        echo "<a href='#' style='color: red;'>".$row["status"]."</a>";
-      } else {
-        echo $row["status"];
-      }
-      
-      echo "</td></tr>";
-    }
-    
-    echo "</table>";
-    echo "<br>";
+    </tbody>
+</table>
 
+
+    <?php
     echo "<br>";
     echo '
     <form>
@@ -566,7 +584,7 @@ $nama = $row["nama"];
 <!-- == LAST TAB PENGAJUAN == -->
 
 <!-- == TAB TRANSAKSI == -->
-<div class="tab-pane fade pt-3" id="transaksi">
+<!-- <div class="tab-pane fade pt-3" id="transaksi">
   <form>
   <?php
 // Koneksi ke database
@@ -607,7 +625,7 @@ mysqli_close($conn);
 
   </form>
 </div>
-
+ -->
 <!-- == LAST TAB TRANSAKSI == -->
 
 <!-- == TAB WISHLIST == -->
@@ -749,8 +767,7 @@ mysqli_close($conn);
 <!-- == LAST TAB WISTLIST == -->
 
 <!-- == TAB PROFILE SETTING == -->
-<div class="tab-pane fade pt-3" id="profile-settings">
-  <!-- Settings Form -->
+<!-- <div class="tab-pane fade pt-3" id="profile-settings">
   <form>
 
     <div class="row mb-3">
@@ -782,8 +799,8 @@ mysqli_close($conn);
       <div class="text-center">
         <button type="submit" class="btn btn-primary">Save Changes</button>
       </div>
-  </form><!-- End settings Form -->
-</div>
+  </form>
+</div> -->
 <!-- == LAST TAB PROFILE SETTING == -->
 
 <!-- == TAB CHANGE PASSWORD == -->

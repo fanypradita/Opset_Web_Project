@@ -649,7 +649,7 @@ if(isset($_POST['save-btn'])) {
                     <div class="col-md-12 form-group">
                       <label for="inputEmail4">Aset<span class="required">*</span></label></label>
                       <textarea name="sub_kategori2" class="form-control">
-    <?php echo isset($_POST["sub_kategori2"]) ? $_POST["sub_kategori2"] : $row["sub_kategori2"]; ?>
+                      <?php echo $row["sub_kategori2"]; ?>
 </textarea>
 
                     </div>
