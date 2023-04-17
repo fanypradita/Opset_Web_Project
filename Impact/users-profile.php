@@ -583,51 +583,6 @@ $nama = $row["nama"];
 </div>
 <!-- == LAST TAB PENGAJUAN == -->
 
-<!-- == TAB TRANSAKSI == -->
-<!-- <div class="tab-pane fade pt-3" id="transaksi">
-  <form>
-  <?php
-// Koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "db_perhutani");
-
-// Cek koneksi
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
-
-// Query untuk mengambil data transaksi dengan status "terima"
-$query = "SELECT harga, durasi, status FROM transaksi WHERE status = 'terima'";
-$result = mysqli_query($conn, $query);
-?>
-
-    <table border="1">
-        <tr>
-            <th>Harga</th>
-            <th>Durasi</th>
-            <th>Status</th>
-        </tr>
-        <?php
-        // Loop untuk menampilkan data transaksi
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>" . $row["harga"] . "</td>";
-            echo "<td>" . $row["durasi"] . "</td>";
-            echo "<td><a href='#' style='color: blue;'>" . $row["status"] . "</a></td>";
-            echo "</tr>";
-        }
-        ?>
-    </table>
-
-<?php
-// Tutup koneksi
-mysqli_close($conn);
-?>
-
-  </form>
-</div>
- -->
-<!-- == LAST TAB TRANSAKSI == -->
-
 <!-- == TAB WISHLIST == -->
 <div class="tab-pane fade pt-3" id="wishlist">
   <!-- Wishlist Form -->
@@ -646,35 +601,7 @@ mysqli_close($conn);
                 die("Connection failed: " . mysqli_connect_error());
               }
 
-              // process the search query
-              if (isset($_GET["search"])) {
-                $search_query = $_GET["search"];
-                $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%'";
-              } else {
-                $sql = "SELECT * FROM wishlist AS u INNER JOIN opset AS i ON u.id_aset = i.id_aset";
-              }
-
-              // retrieve data from the MySQL database with pagination
-              $items_per_page = 4;
-              if (isset($_GET["page"])) {
-                $current_page = $_GET["page"];
-              } else {
-                $current_page = 1;
-              }
-              $offset = ($current_page - 1) * $items_per_page;
-              $sql .= " LIMIT $offset, $items_per_page";
-
-              $result = mysqli_query($conn, $sql);
-
-              // generate HTML code for the search bar
-              echo '<form class="form-inline mb-4" method="get">';
-              echo '<div class="input-group" style="width: 97.5%;">';
-              echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
-              echo '<div class="input-group-append">';
-              echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
-              echo '</div>';
-              echo '</div>';
-              echo '</form>';
+             
     ?>
     <br>
     <style>
@@ -722,7 +649,7 @@ mysqli_close($conn);
       }
     </style>
 
-    <table>
+<table>
       <thead>
         <tr>
           <th>Nama Aset</th>
@@ -733,19 +660,34 @@ mysqli_close($conn);
         </tr>
       </thead>
       <tbody>
-        <?php while ($row = mysqli_fetch_assoc($result)) {
-          if ($row["kategori_aset"] == "bangunan" || $row["kategori_aset"] == "lahan" || $row["kategori_aset"] == "sport center") {
-            echo '<tr>';
-            echo '<td><a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '">' . $row["nama_aset"] . '</a></td>';
-            echo '<td>' . $row["alamat"] . '</td>';
-            echo '<td>' . $row["kategori_aset"] . '</td>';
-            echo '<td><a href="sub-sewa.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid small-img"></a></td>';
-            echo '<td><button class="btn-delete" onclick="hapusAset(' . $row["id_aset"] . ')">Hapus</button></td>';
-            echo '</tr>';
-          }
-        } ?>
+        <?php 
+$username = $_SESSION['username'];
+$sql_customer = "SELECT id_customer FROM tbl_customer WHERE username = '$username'";
+$result_customer = $conn->query($sql_customer);
+$row_customer = $result_customer->fetch_assoc();
+$id_customer = $row_customer['id_customer'];
+
+
+            $sql = "SELECT * FROM wishlist 
+            JOIN tbl_customer ON wishlist.id_customer = tbl_customer.id_customer 
+            WHERE wishlist.id_customer = $id_customer";
+$result = mysqli_query($conn, $sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+  echo '<tr>';
+  echo '<td>' . $row["sub_kategori2"] . '</td>';
+  echo '<td>' . $row["alamat_wishlist"] . '</td>';
+  echo '<td>' . $row["kategori_aset"] . '</td>';
+  echo '<td><img src="' . $row["images"] . '" alt="" class="img-fluid small-img"></td>';
+  echo '<td>';
+  echo '<button class="btn-delete" onclick="hapusAset(' . $row["id_aset"] . ')">Hapus</button>';
+  echo '</td>';
+  echo '</tr>';
+}
+?>
       </tbody>
     </table>
+
     <script>
       function hapusAset(id) {
         if (confirm("Anda yakin ingin menghapus aset ini?")) {
@@ -753,14 +695,7 @@ mysqli_close($conn);
         }
       }
     </script>
-    <?php
-              // generate pagination links
-              $sql = "SELECT COUNT(*) as total_items FROM opset ";
-              $result = mysqli_query($conn, $sql);
-              $row = mysqli_fetch_assoc($result);
-              $total_items = $row["total_items"];
-              $total_pages = ceil($total_items / $items_per_page);
-              ?>
+  
     </br>
   </form>
 </div>

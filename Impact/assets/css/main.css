@@ -252,7 +252,7 @@ section {
 # Header
 --------------------------------------------------------------*/
 .topbar {
-  background: #00796b;
+  background: #006342;
   height: 40px;
   font-size: 14px;
   transition: all 0.5s;
@@ -442,7 +442,7 @@ section {
     font-size: 15px;
     text-transform: none;
     font-weight: 600;
-    color: #006a5d;
+    color:#006342;
   }
 
   .navbar .dropdown ul a i {
@@ -569,8 +569,8 @@ section {
     padding: 10px 0;
     margin: 10px 20px;
     transition: all 0.5s ease-in-out;
-    background-color: #007466;
-    border: 1px solid #006459;
+    background-color: #006342;
+    border: 1px solid #006342;
   }
 
   .navbar .dropdown>.dropdown-active,
@@ -2673,7 +2673,7 @@ section {
 
 .footer .footer-links ul i {
   padding-right: 2px;
-  color: rgba(0, 131, 116, 0.8);
+  color: #006342;
   font-size: 12px;
   line-height: 0;
 }

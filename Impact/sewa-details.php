@@ -197,18 +197,8 @@ if (isset($_GET["id_aset"])) {
   $row = mysqli_fetch_assoc($result);
 }
 
-if(isset($_POST['save-btn'])) {
-  // Retrieve the id_aset value
-  $id_aset = $_POST['id_aset'];
 
-  // Insert the id_aset value into the wishlist table
-  $sql = "INSERT INTO wishlist (id_aset) VALUES ('$id_aset')";
-  if ($conn->query($sql) === TRUE) {
-    echo "Successfully saved to wishlist!";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
-}
+
 
 
   ?>
