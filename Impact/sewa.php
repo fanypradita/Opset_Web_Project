@@ -274,7 +274,7 @@
             echo '<h2 class="title">';
             echo '<a href="sub-sewa1.php?nama_aset=' . $row["nama_aset"] . '"> ' . $row["nama_aset"] . '</a><br>';
            
-            echo '<p class="post-category">' . $row["alamat"] . '</p>';
+            echo '<p  style="font: size 10px; "class="post-category">' . $row["alamat"] . '</p>';
             echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
             echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';
             echo '</h2>';

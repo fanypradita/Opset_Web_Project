@@ -635,15 +635,28 @@ if (isset($_GET["id_aset"])) {
                   
                   <br>
 
-                  <div class="row">
-                    <div class="col-md-12 form-group">
-                      <label for="inputEmail4">Aset<span class="required">*</span></label></label>
-                      <textarea name="sub_kategori2" class="form-control">
-                      <?php echo $row["sub_kategori2"]; ?>
-</textarea>
+              <div class="row">
+                <div class="form-group">
+                  <label for="sub_kategori2">Nama Aset</label>
+                  <select name="sub_kategori2" id="sub_kategori2" class="form-control">
+                      <?php
+                          
+                          // Query untuk mendapatkan data sub_kategori2
+                          $sql = "SELECT DISTINCT sub_kategori2 FROM opset";
+                          $result = mysqli_query($conn, $sql);
 
-                    </div>
-                  </div>
+                          // Loop untuk menampilkan setiap sub_kategori2
+                          while ($row = mysqli_fetch_assoc($result)) {
+                              echo "<option value='" . $row['sub_kategori2'] . "'>" . $row['sub_kategori2'] . "</option>";
+                          }
+
+                          // Tutup koneksi ke database
+                          mysqli_close($conn);
+                      ?>
+                  </select>
+              </div>
+          </div>
+
 
 
                   <br>

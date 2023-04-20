@@ -276,10 +276,10 @@
                     echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
                     echo '<article>';
                     echo '<div class="post-img" style="width:250px; height:250px;">';
-                    echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+                    echo '<a href="sub-sewalahan.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
                     echo '</div>';
                     echo '<h2 class="title">';
-                    echo '<a href="sewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori2"] . '</a>';
+                    echo '<a href="sub-sewalahan.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori2"] . '</a>';
                     echo '<p class="post-category">' . $row["alamat"] . '</p>';
                     echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
                     echo '</h2>';
