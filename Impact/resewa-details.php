@@ -172,7 +172,7 @@ if (isset($_GET["id_aset"])) {
             <div class="col-lg-6 text-center">
             
               <h2>
-              <?php echo $row["nama_aset"]; ?>
+              <?php echo $row["sub_kategori2"]; ?>
             </h2>
               <p>
               <?php echo $row["alamat"]; ?></p>
@@ -252,7 +252,7 @@ if (isset($_GET["id_aset"])) {
               </div>
 </br>
               <h2 class="title">
-              <?php echo $row["nama_aset"]; ?>
+              <?php echo $row["sub_kategori2"]; ?>
 
               </h2>
 
