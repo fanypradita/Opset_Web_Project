@@ -41,68 +41,115 @@
 
 <header id="header" class="header d-flex align-items-center">
 
-    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-      <a href="reindex.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
-      </a>
-      <nav id="navbar" class="navbar">
+<div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+  <a href="index.html" class="logo d-flex align-items-center">
+    <!-- Uncomment the line below if you also wish to use an image logo -->
+    <!-- <img src="assets/img/logo.png" alt=""> -->
+    <h1 style="font-size:20px;">PerhutaniPro<span>.</span></h1>
+  </a>
+  <nav id="navbar" class="navbar">
+    <ul>
+      <li><a href="index.html" style="font-size:15px;">Beranda</a></li>
+      <li><a href="sewa.php" style="font-size:15px;">Sport Center</a></li>
+      <li><a href="sewa.php" style="font-size:15px;">Bangunan</a></li>
+      <li><a href="sewalahan.php" style="font-size:15px;">Lahan</a></li>
+      <!--
+      <li><a href="#about">Tentang Kami</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="blog.html">Properti</a></li>
+      -->
+
+      <!-- <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
         <ul>
-          <li><a href="reindex.html" style="font-size:15px;">Beranda</a></li>
-          <li><a href="resewasport.php" style="font-size:15px;">Sport Center</a></li>
-          <li><a href="resewa.php" style="font-size:15px;">Bangunan</a></li>
-          <li><a href="resewalahan.php" style="font-size:15px;">Lahan</a></li>
-          <!--
-          <li><a href="#about">Tentang Kami</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
-          <li><a href="blog.html">Properti</a></li>
-          -->
-<!-- 
-          <li class="dropdown"><a href="#"><span>Opset</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="resewa.php">Sport Center</a></li>
-              <li><a href="resewa.php">Bangunan</a></li>
-              <li><a href="resewalahan.php">Lahan</a></li>
-              <li><a href="resewakos.php">Kos</a></li>
-            </ul>
-          </li> -->
-       
-          <li class="dropdown"><a href="reinfo.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="reinfo.html" style="font-size:13px;">Frequently Asked Questions</a></li>
-              <li><a href="redaftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
-              <li><a href="rebayar.html" style="font-size:13px;">Metode Pembayaran</a></li>
-            </ul>
-          </li>
-          <!--
-          <li><a href="#contact">Contact</a></li>
-          -->
-          <!-- <li><a href="reindex.html">Tentang Kami</a></li> -->
-          <li><a href="rekonsultasi.php" style="font-size:15px;">Konsultasi</a></li>
-          <li>
-          <div class="d-grid gap-2 d-md-block">
-            <button class="btn btn-secondary btn-lg" type="button" ><a href="login1.php">Login</button></a>
-          </div>
-        </li>
-          </ul>
+          <li><a href="sewa.php">Sport Center</a></li>
+          <li><a href="sewa.php">Bangunan</a></li>
+          <li><a href="sewalahan.php">Lahan</a></li>
+          <li><a href="sewakos.php">Kos</a></li>
+          <li><a href="#">Drop Down 4</a></li>
         </ul>
-       
+      </li> -->
+
+      <li class="dropdown"><a href="info.html" style="font-size:15px;"><span>Pusat Informasi</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <ul>
+          <li><a href="info.html" style="font-size:13px;">Frequently Asked Questions</a></li>
+          <li><a href="daftar.html" style="font-size:13px;">Tata cara pendaftaran</a></li>
+          <li><a href="bayarr.html" style="font-size:13px;">Metode Pembayaran</a></li>
+        </ul>
+      </li>
+      <!--
+      <li><a href="#contact">Contact</a></li>
+      -->
+      <li><a href="konsultasi.php" style="font-size:15px;">Konsultasi</a></li>
+      <li class="nav-item dropdown pe-3">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <span class="d-none d-md-block dropdown-toggle ps-2"><i class="bi bi-person-circle" style="font-size:25px; color: white;"></i></span>
+        </a><!-- End Profile Iamge Icon -->
+
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+<!--
+        <li class="dropdown-header">
+            <h6>Fany Pradita</h6>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li> -->
+
+          <!-- <li>
+            <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+              <i class="bi bi-person"></i>
+              <span style="font-size:15px;">My Profile</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li> -->
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="users-profile.php">
+              <i class="bi bi-gear"></i>
+              <span style="font-size:15px;">Account Settings</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <!-- <li>
+            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+              <i class="bi bi-question-circle"></i>
+              <span style="font-size:15px;">Need Help?</span>
+            </a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li> -->
+
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="login.php">
+              <i class="bi bi-box-arrow-right"></i>
+              <span style="font-size:15px;">Sign Out</span>
+            </a>
+          </li>
+
+        </ul><!-- End Profile Dropdown Items -->
+      </li><!-- End Profile Nav -->
+
       </ul>
-    </nav><!-- End Icons Navigation -->
+    </ul>
+   
+  </ul>
+</nav><!-- End Icons Navigation -->
 
-      </nav><!-- .navbar -->
+  </nav><!-- .navbar -->
 
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+  <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+  <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
-    </div>
-  </header><!-- End Header -->
-  <!-- End Header -->
-
-
+</div>
+</header><!-- End Header -->
+<!-- End Header -->
  
   <main id="main">
 
@@ -120,10 +167,12 @@
       </div>
       <nav>
         <div class="container">
-        <ol>
-            <li><a href="reindex.html">Beranda</a></li>
-            <li><a href="resewasport.php">Sewa Aset</a></li>
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li>Sewa Aset</li>
+            <li>Sub Sewa Aset</li>
           </ol>
+          
 <!--
           <form class="d-flex align-items-start me-2" role="search">
             <div class="col-md-4 me-2">
@@ -174,84 +223,84 @@
             die("Connection failed: " . mysqli_connect_error());
           }
 
+         // process the search query
+         if (isset($_GET["search"])) {
+          $search_query = $_GET["search"];
+          $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%bangunan%' OR alamat LIKE '%bangunan%' OR kategori_aset LIKE '%bangunan%' GROUP BY nama_aset;" ;
+        } else {
+          $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, sub_kategori2, alamat, images, id, id_aset, COUNT(nama_aset) AS jumlah
+          FROM opset 
+          WHERE kategori_aset = 'tanah' 
+          GROUP BY sub_kategori2";
+        }
+        
+        // retrieve data from the MySQL database with pagination
+        $items_per_page = 4;
+        if (isset($_GET["page"])) {
+          $current_page = $_GET["page"];
+        } else {
+          $current_page = 1;
+        }
+        $offset = ($current_page - 1) * $items_per_page;
+        $sql .= " LIMIT $offset, $items_per_page";
 
-          // process the search query
-          if (isset($_GET["search"])) {
-            $search_query = $_GET["search"];
-            $sql = "SELECT * FROM opset WHERE nama_aset LIKE '%sport center%' OR alamat LIKE '%sport center%' OR kategori_aset LIKE '%sport center%' GROUP BY nama_aset;" ;
-          } else {
-            $sql = "SELECT * FROM opset ";
-          }
+        $result = mysqli_query($conn, $sql);
 
+        // generate HTML code for the search bar
+        echo '<form class="form-inline mb-4" method="get">';
+        echo '<div class="input-group" style="width: 97.5%;">';
+        echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
+        echo '<div class="input-group-append">';
+        echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
+        echo '</div>';
+        echo '</div>';
+        echo '</form>';
 
-          // retrieve data from the MySQL database with pagination
-          $items_per_page = 4;
-          if (isset($_GET["page"])) {
-            $current_page = $_GET["page"];
-          } else {
-            $current_page = 1;
-          }
-          $offset = ($current_page - 1) * $items_per_page;
-          $sql .= " LIMIT $offset, $items_per_page";
+        // generate HTML code for each item in the loop
+        echo '<div class="row" style="margin-bottom:20px;">';
+        while ($row = mysqli_fetch_assoc($result)) {
+          if ($row["kategori_aset"] == "tanah") {
+          // echo '<div class="col-xl-4 col-md-6" style="margin-bottom:20px;">';
+          // echo '<article>';
+          // echo '<div class="post-img">';
+          // echo '<a href="sewa-details.php"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
+          // echo '</div>';
+          // echo '<h2 class="title">';
+          // echo '<a href="sewa-details.php">' . $row["nama_aset"] . '</a>';
+          // echo '<p class="post-category">' . $row["alamat"] . '</p>';
+          // echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+          // echo '</h2>';
+          // echo '</article>';
+          // echo '</div>';
 
-          $result = mysqli_query($conn, $sql);
-
-          // generate HTML code for the search bar
-          echo '<form class="form-inline mb-4" method="get">';
-          echo '<div class="input-group" style="width: 97.5%;">';
-          echo '<input type="text"  style="margin-right:10px" class="form-control" name="search" placeholder="Cari Properti yang anda inginkan ">';
-          echo '<div class="input-group-append">';
-          echo '<button type="submit" class="btn btn-primary"><i class="fa fa-search">Search</i></button>';
+          echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
+          echo '<article>';
+          echo '<div class="post-img" style="width:250px; height:250px;">';
+          echo '<a href="resewa-details.php?id_aset=' . $row["id_aset"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
           echo '</div>';
+          echo '<h2 class="title">';
+          echo '<a href="resewa-details.php?id_aset=' . $row["id_aset"] . '">' . $row["sub_kategori2"] . '</a>';
+          echo '<p class="post-category">' . $row["alamat"] . '</p>';
+          echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
+          echo '</h2>';
+          echo '</article>';
           echo '</div>';
-          echo '</form>';
-
-          // generate HTML code for each item in the loop
-          echo '<div class="row" style="margin-bottom:20px;">';
-
-          // Query to get unique items
-          $sql = "SELECT nama_aset, kategori_aset, sub_kategori1, alamat, images, id, COUNT(nama_aset) AS jumlah
-                  FROM opset 
-                  WHERE kategori_aset = 'sport center' 
-                  GROUP BY nama_aset";
-                  
-          $result = mysqli_query($conn, $sql);
-          
-          // Loop through unique items
-          while ($row = mysqli_fetch_assoc($result)) {
-            echo '<div class="col-xl-3 col-md-4" style="margin-bottom:20px;">';
-            echo '<article>';
-            echo '<div class="post-img" style="width:250px; height:250px;">';
-            echo '<a href="resub-sewa1sport.php?id=' . $row["id"] . '"><img src="' . $row["images"] . '" alt="" class="img-fluid"></a>';
-            echo '</div>';
-            echo '<h2 class="title">';
- 
-                echo '<a href="sub-sewa1sport.php?nama_aset=' . $row["nama_aset"] . '"> ' . $row["nama_aset"] . '</a><br>';
-            
-            echo '<p class="post-category">' . $row["alamat"] . '</p>';
-            echo '<p class="post-category">' . $row["kategori_aset"] . '</p>';
-            echo '<p class="post-category">' . $row["jumlah"] . ' item</p>';
-            echo '</h2>';
-            echo '</article>';
-            echo '</div>';
           }
-          
-          echo '</div>';
+        }
+        echo '</div>';
 
-          
+        // generate pagination links
+        $sql = "SELECT COUNT(nama_aset) as total_items FROM opset WHERE kategori_aset = 'tanah' 
+        GROUP BY nama_aset, kategori_aset, alamat, images";
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_assoc($result);
+        $total_items = $row["total_items"];
+        $total_pages = ceil($total_items / $items_per_page);
+        ?>
 
-          // generate pagination links
-          $sql = "SELECT COUNT(nama_aset) as total_items FROM opset WHERE kategori_aset = 'bangunan' 
-          GROUP BY nama_aset, kategori_aset, alamat, images";
-          $result = mysqli_query($conn, $sql);
-          $row = mysqli_fetch_assoc($result);
-          $total_items = $row["total_items"];
-          $total_pages = ceil($total_items / $items_per_page);
-          ?>
 
 <div class="pagination justify-content-center">
           <div class="pagination">
-
             <?php if ($current_page > 1) : ?>
               <div class="page-item">
                 <a href="?page=<?php echo $current_page - 1; ?>" class="page-link">&laquo; Previous</a>
